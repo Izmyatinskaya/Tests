@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 using wpf_тесты_для_обучения.Properties;
+using Path = System.IO.Path;
 
 namespace wpf_тесты_для_обучения
 {
@@ -24,50 +26,82 @@ namespace wpf_тесты_для_обучения
         private DatabaseHelper _databaseHelper;
         public LoginForm()
         {
-            InitializeComponent();
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-            LoadUsersIntoComboBox();
+            try {
+                InitializeComponent();
+                string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DB.mdf");
+                //_databaseHelper = new DatabaseHelper($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True");
+                //D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\DB.mdf Server=(localdb)\MSSQLLocalDB;Integrated Security=true;
+
+                _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                _databaseHelper.AllUsers = Properties.Settings.Default._allUsers;
+                LoadUsersIntoComboBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки формы входа", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
-
-
         private void LoadUsersIntoComboBox()
         {
-            // Получаем список пользователей с ролями
-            List<Users> users = _databaseHelper.GetUsersWithRoles();
-            // Очищаем ComboBox перед добавлением данных
-            userComboBox.Items.Clear();
+            try
+            {
+                // Получаем список пользователей с ролями
+                List<Users> users = _databaseHelper.GetUsersWithRoles();
+                // Очищаем ComboBox перед добавлением данных
+                userComboBox.Items.Clear();
 
-            userComboBox.ItemsSource = users;
-        }
+                userComboBox.ItemsSource = users;
+            }
+            
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки пользователей с ролями в комбобокс", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+}
 
         // Обработчик для кнопки вход
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (userComboBox.SelectedItem != null)
+            try
             {
-                Users selectedItem = (Users)userComboBox.SelectedItem;
-                string passwordDB = selectedItem.Password.ToString().Trim(' ');
-                string password = passwordBox1.Password.ToString().Trim(' ');
-                if (passwordDB != password)
+                if (userComboBox.SelectedItem != null)
                 {
-                    MessageBox.Show("Ошибка", "Неверный пароль");
-                    passwordBox1.Clear();
-                    return;
-                }
-                if (_databaseHelper._currentUser.UserRole.Id == 1)
-                {
-                    AdminForm adminForm = new AdminForm();
-                    adminForm.Show();
+                    Users selectedItem = (Users)userComboBox.SelectedItem;
+                    string passwordDB = selectedItem.Password.ToString().Trim(' ');
+                    string password = passwordBox1.Password.ToString().Trim(' ');
+                    if (passwordDB != password)
+                    {
+                        MessageBox.Show("Ошибка", "Неверный пароль");
+                        passwordBox1.Clear();
+                        return;
+                    }
+                    if (_databaseHelper._currentUser.UserRole.Id == 1)
+                    {
+                        AdminForm adminForm = new AdminForm(_databaseHelper);
+                        adminForm.Show();
+                    }
+                    else
+                    {
+                        MainForm mainForm = new MainForm(_databaseHelper);
+                        mainForm.Show();
+                    }
+                    this.Close();
                 }
                 else
-                {
-                    MainForm mainForm = new MainForm(_databaseHelper);
-                    mainForm.Show();
-                }
-                this.Close();
+                    MessageBox.Show($"Вы не выбрали пользователя");
             }
-            else
-                MessageBox.Show($"Вы не выбрали пользователя");
+            catch (Exception ex)
+            {
+                // Вывод сообщения об ошибке при поиске файла
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                    $"Метод: {ex.TargetSite}\n" +
+                    $"Трассировка стека: {ex.StackTrace}", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+
         }
 
 
@@ -75,52 +109,86 @@ namespace wpf_тесты_для_обучения
 
         private void ShowPassword_Click(object sender, RoutedEventArgs e)
         {
-            isPasswordVisible = !isPasswordVisible;
-
-            if (isPasswordVisible)
+            try
             {
-                // Показать пароль
-                passwordTextBox1.Text = passwordBox1.Password;
-                passwordTextBox1.Visibility = Visibility.Visible;
-                passwordBox1.Visibility = Visibility.Collapsed;
+                isPasswordVisible = !isPasswordVisible;
 
-                // Сменить иконку на закрытый глаз
-                eyeIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.EyeSlash;
+                if (isPasswordVisible)
+                {
+                    // Показать пароль
+                    passwordTextBox1.Text = passwordBox1.Password;
+                    passwordTextBox1.Visibility = Visibility.Visible;
+                    passwordBox1.Visibility = Visibility.Collapsed;
+
+                    // Сменить иконку на закрытый глаз
+                    eyeIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.EyeSlash;
+                }
+                else
+                {
+                    // Скрыть пароль
+                    passwordBox1.Password = passwordTextBox1.Text;
+                    passwordBox1.Visibility = Visibility.Visible;
+                    passwordTextBox1.Visibility = Visibility.Collapsed;
+
+                    // Сменить иконку на открытый глаз
+                    eyeIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.Eye;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Скрыть пароль
-                passwordBox1.Password = passwordTextBox1.Text;
-                passwordBox1.Visibility = Visibility.Visible;
-                passwordTextBox1.Visibility = Visibility.Collapsed;
-
-                // Сменить иконку на открытый глаз
-                eyeIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.Eye;
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка ", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
-        }
+}
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
+            try { 
             if (!isPasswordVisible)
             {
                 passwordTextBox1.Text = passwordBox1.Password;
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            RegistrationForm registrationForm = new RegistrationForm();
-            registrationForm.Show();
+            try {
+                UserAddForm userAddForm = new UserAddForm(_databaseHelper, true);
+                userAddForm.Show();
+            //RegistrationForm registrationForm = new RegistrationForm(_databaseHelper);
+            //registrationForm.Show();
             this.Close();
-            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки формы регистрации", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void userComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Users selectedItem = (Users)userComboBox.SelectedItem;
-            _databaseHelper._currentUser = selectedItem;
-            UserSession.SelectedUser = selectedItem;
-            
+            try
+            {
+                Users selectedItem = (Users)userComboBox.SelectedItem;
+                _databaseHelper._currentUser = selectedItem;
+                UserSession.SelectedUser = selectedItem;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка выбора пользоватлея", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
     }
 }

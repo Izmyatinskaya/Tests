@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
         Title="TestAddForm"
-        Width="800"
+        Width="895"
         Height="650"
-        Background="White"
-        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
-    <Grid>
+        Background="{StaticResource WindowDefaultBackground}"
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing" MinWidth="698" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+    <Grid x:Name="myGrid">
+
         <!-- Определяем строки -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -24,7 +25,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Name="columnGrid2" Width="2*"/>
+            <ColumnDefinition Name="columnGrid2" Width="2.5*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Верхний блок: фиксированный TextBox и TextBlock -->
@@ -36,59 +37,35 @@
                      Margin="0,0,0,10"
                      SelectionBrush="#FFFFBE5E"
                      PreviewMouseLeftButtonUp="titleTextBox_PreviewMouseLeftButtonUp"
-                     TextChanged="titleTextBox_TextChanged" />
-            <TextBlock Name="titleTextBlock"
-                       FontFamily="Arial Black" 
-                       FontSize="24" 
-                       Foreground="Black" 
-                       Visibility="Collapsed"
-                       Margin="0,0,0,10"/>
+                     TextChanged="titleTextBox_TextChanged"/>
+
+
         </StackPanel>
 
         <!-- Прокручиваемая область -->
-        <ScrollViewer Grid.Column="0" Margin="10,53,10,10" VerticalScrollBarVisibility="Auto" Grid.RowSpan="3">
-            <StackPanel x:Name="questionsStackPanel">
-                <!-- Здесь будут блоки вопросов -->
+        <ScrollViewer Grid.Column="0" Margin="25,100,10,10" VerticalScrollBarVisibility="Auto" Grid.RowSpan="3" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="questionsStackPanel" Width="Auto" HorizontalAlignment="Stretch">
+                <!--Здесь будут блоки вопросов-->
             </StackPanel>
+            <!--<DockPanel x:Name="questionsStackPanel"   HorizontalAlignment="Stretch">
+                
+            </DockPanel>-->
         </ScrollViewer>
-
-        <!-- Фиксированная кнопка внизу -->
-        <Button Grid.Row="3"
-                Content="Закончить тест"
-                FontSize="20"
-                Name="endTestButton"
-                Background="#FB9100"
-                Foreground="White"
-                FontWeight="Bold"
-                Visibility="Collapsed"
-                Click="endingTest_Click" HorizontalAlignment="Center" Padding="30,1,30,1" Margin="0,10,0,10" BorderBrush="{x:Null}"/>
 
         <!-- Правый столбец (без изменений) -->
         <StackPanel Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Margin="10,10,10,10" Visibility="{Binding ViewMode}">
-            <TextBlock FontSize="16" FontWeight="Bold" TextWrapping="Wrap" Margin="0,0,0,6">
+            <TextBlock Style="{StaticResource BoldTextBlockStyle}">
                 Нажмите, чтобы создать новый вопрос
             </TextBlock>
-            <Button Content="- 1 вариант ответа" FontFamily="Arial"
-                    FontSize="14" BorderThickness="0,0,0,0" Padding="3,4,3,4"
-                    Foreground="#FF080808" Background="{x:Null}"
-                    HorizontalContentAlignment="Left"
-                    Click="Button_Click_1"/>
-            <Button Content="- несколько вариантов ответа" FontFamily="Arial"
-                    FontSize="14" Background="White" Click="Button_Click"
-                    BorderThickness="0,0,0,0" Padding="3,4,3,4"
-                    Foreground="#FF080808" HorizontalContentAlignment="Left"/>
-            <Button Content="- с картинкой" FontFamily="Arial"
-                    FontSize="14" Background="White"
-                    BorderThickness="0,0,0,0" Padding="3,4,3,4"
-                    Foreground="#FF080808" HorizontalContentAlignment="Left"
-                    Click="Button_Click_2"/>
-            <Button Content="- картинка и несколько вариантов ответа" FontFamily="Arial"
-                    FontSize="14" Background="White"
-                    BorderThickness="0,0,0,0" Padding="3,4,3,4"
-                    Foreground="#FF080808" HorizontalContentAlignment="Left"
-                    Click="Button_Click_3"/>
+            <Button Content="- Один вариант" Style="{StaticResource CustomButtonStyle}" Click="Button_Click_1"/>
+            <Button Content="- Несколько вариантов" Style="{StaticResource CustomButtonStyle}" Click="Button_Click"/>
+            <Button Content="- С картинкой" Style="{StaticResource CustomButtonStyle}" Click="Button_Click_2"/>
+            <Button Style="{StaticResource CustomButtonStyle}" Click="Button_Click_3">
+                <TextBlock Text="- Картинка + варианты" TextWrapping="Wrap"/>
+            </Button>
 
-            <TextBlock FontSize="16" FontWeight="Bold" Margin="0,20,0,5" TextWrapping="Wrap">
+
+            <TextBlock Style="{StaticResource BoldTextBlockStyle}">
                Введите процент верных ответов для прохождения теста
             </TextBlock>
             <TextBox Name="completedPercentTextBox"
@@ -96,10 +73,10 @@
             BorderBrush="#FFABADB3"
             BorderThickness="1" />
             <!-- Раздел выбора должностей -->
-            <TextBlock FontSize="16" FontWeight="Bold" Margin="0,20,0,5" TextWrapping="Wrap">
+            <TextBlock Style="{StaticResource BoldTextBlockStyle}">
                 Выберите должности, которые смогут проходить этот тест
             </TextBlock>
-            <ListBox Name="rolesListBox">
+            <ListBox Name="rolesListBox" MaxHeight="115">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -115,7 +92,7 @@
                     Click="Button_Click_4"
                     Width="150"/>
 
-            <TextBlock x:Name="ErrorTextBlock" Foreground="Red" Visibility="Collapsed"/>
+            <TextBlock x:Name="ErrorTextBlock" TextWrapping="Wrap" Foreground="Red" Visibility="Collapsed" Margin="0,0,0,5"/>
         </StackPanel>
 
     </Grid>

@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 using wpf_тесты_для_обучения.Properties;
 
 namespace wpf_тесты_для_обучения
@@ -25,14 +26,24 @@ namespace wpf_тесты_для_обучения
         private DatabaseHelper _databaseHelper;
         public bool IsCorrect { get; set; }
         private Roles _role;
-        public EditRoleForm(Roles role)
+        public EditRoleForm(Roles role, DatabaseHelper databaseHelper)
         {
-            InitializeComponent();
-            this.DataContext = this;
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-            _role = role;
-            titleRoleTextBox.Text = role.Title;
-            LoadTestsIntoComboBox();
+            try
+            {
+                InitializeComponent();
+                this.DataContext = this;
+                _databaseHelper = databaseHelper;
+                //string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DB.mdf");
+                //_databaseHelper = new DatabaseHelper($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True");
+                //_databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                _role = role;
+                titleRoleTextBox.Text = role.Title;
+                LoadTestsIntoComboBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при отключении базы данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         private void LoadTestsIntoComboBox()
         {

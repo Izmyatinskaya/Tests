@@ -7,88 +7,92 @@
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
        Title="Вход" Height="450" Width="800"
-        Background="White"
-        WindowStartupLocation="CenterScreen">
+        Background="{StaticResource WindowDefaultBackground}"
+        WindowStartupLocation="CenterScreen"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" Icon="/логотипТесты.png">
+    <Window.Resources>
+
+    </Window.Resources>
     <Grid Width="800" Height="400">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
         <!-- Заголовок "Вход" -->
-        <TextBlock Text="Вход" 
-                   Style="{StaticResource AcentTextStyle}"
-                   Grid.Row="0"/>
 
+
+        <Image Source="/logoMain.png" Width="200"/>
+        <Border Style="{StaticResource LightBorder}"  Grid.Row="1" Grid.Column="1" Width="372" Height="320" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,90,0">
         <!-- Группа с элементами -->
-        <StackPanel Grid.Row="1" 
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-            <!-- Группа "Выберите пользователя" -->
-            <StackPanel Orientation="Vertical" Margin="0,10,0,10" HorizontalAlignment="Left">
-                <TextBlock Text="Выберите пользователя" 
-                           FontFamily="Arial" 
-                           FontSize="16" 
-                           Foreground="Black" 
-                           HorizontalAlignment="Left" />
-                <ComboBox Name="userComboBox" Width="200" Height="30" 
-                          HorizontalAlignment="Left" SelectionChanged="userComboBox_SelectionChanged">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding FullNameRole}" />
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="ВХОД" 
+                           Style="{StaticResource HeaderTextStyle}"
+                           HorizontalAlignment="Center" />      
+                <!-- Группа "Выберите пользователя" -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,10" HorizontalAlignment="Left">
+                    <TextBlock Text="Выберите пользователя" 
+                               Style="{StaticResource BaseTextStyle}"
+                               HorizontalAlignment="Left" />
+                    <ComboBox Style="{DynamicResource ComboBoxStyle1}" Name="userComboBox" Width="200" Height="30" 
+                              HorizontalAlignment="Left" SelectionChanged="userComboBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FullNameRole}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Группа "Введите пароль" -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,30" HorizontalAlignment="Left">
+                    <TextBlock Text="Введите пароль" 
+                               Style="{StaticResource BaseTextStyle}"
+                               HorizontalAlignment="Left" />
+                    <Grid>
+                        <PasswordBox Style="{StaticResource PasswordBoxStyle1}" 
+                    Name="passwordBox1"
+                    Width="170" Height="30"
+                    VerticalAlignment="Center"
+                    Margin="0,0,30,0"
+                    PasswordChanged="PasswordBox_PasswordChanged" />
+
+                        <TextBox Style="{StaticResource PasswordTextBoxStyle}"
+                 Name="passwordTextBox1"
+                 Width="170" Height="30"
+                 VerticalAlignment="Center"
+                 Margin="0,0,30,0"
+                 Visibility="Collapsed"/>
+
+                        <Button Style="{StaticResource TogglePasswordButtonStyle}" 
+                Width="30" Height="30"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="ShowPassword_Click">
+                            <fa:FontAwesome Icon="Eye" Name="eyeIcon" FontSize="16"/>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+
+                <Button  Content="Войти"
+                         Click="LoginButton_Click" 
+                         Grid.Row="1"
+                         Style="{StaticResource OrangeButtonStyle}" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"
+                         >
+
+                </Button>
+
+                <!-- Надпись "Регистрация" -->
+                <TextBlock Text="Регистрация" 
+               Style="{StaticResource LinkTextStyle}"
+               Grid.Row="1"
+               MouseDown="TextBlock_MouseDown" />
             </StackPanel>
+        </Border>
+       
 
-            <!-- Группа "Введите пароль" -->
-            <StackPanel Orientation="Vertical" Margin="0,10,0,10" HorizontalAlignment="Left">
-                <TextBlock Text="Введите пароль" 
-                           FontFamily="Arial" 
-                           FontSize="16" 
-                           Foreground="Black" 
-                           HorizontalAlignment="Left" />
-                <Grid>
-                    <!-- PasswordBox -->
-                    <PasswordBox Name="passwordBox1" 
-                                Width="170" Height="30" 
-                                VerticalAlignment="Center" 
-                                Margin="0,0,30,0"
-                                PasswordChanged="PasswordBox_PasswordChanged" />
-
-                    <!-- TextBox для отображения пароля -->
-                    <TextBox Name="passwordTextBox1" 
-                            Width="170" Height="30" 
-                            VerticalAlignment="Center" 
-                            Margin="0,0,30,0"
-                            Visibility="Collapsed" />
-
-                    <!-- Кнопка "глазик" -->
-                    <Button Width="30" Height="30"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Click="ShowPassword_Click" FontFamily="Calibri" >
-                        <fa:FontAwesome Icon="Eye" Name="eyeIcon" FontSize="16" />
-                    </Button>
-                </Grid>
-            </StackPanel>
-        </StackPanel>
-
-        <!-- Кнопка "Войти" -->
-        <Button Content="Войти" 
-                Grid.Row="2"
-                Width="150"
-                Style="{StaticResource OrangeButtonStyle}" 
-                FontSize="20" 
-                Click="LoginButton_Click" 
-                />
-
-        <!-- Надпись "Регистрация" -->
-        <TextBlock Text="Регистрация" 
-                   Style="{StaticResource LinkTextStyle}"
-                   Grid.Row="3"
-                   MouseDown="TextBlock_MouseDown" />
+        
     </Grid>
 </Window>

@@ -22,21 +22,40 @@ namespace wpf_тесты_для_обучения
     public partial class AddRoleForm : Window
     {
         private DatabaseHelper _databaseHelper;
-        public AddRoleForm()
+        public AddRoleForm( DatabaseHelper databaseHelper)
         {
-            InitializeComponent();
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-            LoadTestsIntoComboBox();
+            try
+            {
+                InitializeComponent();
+                _databaseHelper = databaseHelper;
+                //_databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                LoadTestsIntoComboBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки формы доб-я роли", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
         private void LoadTestsIntoComboBox()
         {
-            // Получаем список пользователей с ролями
-            List<Tests> tests = _databaseHelper.GetTestsList();
+            try
+            {
+                // Получаем список пользователей с ролями
+                List<Tests> tests = _databaseHelper.GetTestsList();
 
-            // Очищаем ComboBox перед добавлением данных
-            testsListBox.Items.Clear();
+                // Очищаем ComboBox перед добавлением данных
+                testsListBox.Items.Clear();
 
-            testsListBox.ItemsSource = tests;
+                testsListBox.ItemsSource = tests;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки комбобокса", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
         private void goBack_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -45,59 +64,89 @@ namespace wpf_тесты_для_обучения
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(UpdateErrors()>0) return;
-            string text = titleRoleTextBox.Text;
-            List<int> selectedTestIds = GetSelectedTestIds();
-
-            string query = @"INSERT INTO Roles (Title) OUTPUT INSERTED.Id VALUES (@text)";
-
-            SqlParameter[] parameters = new SqlParameter[]
+            try
             {
+                if (UpdateErrors() > 0) return;
+                string text = titleRoleTextBox.Text;
+                List<int> selectedTestIds = GetSelectedTestIds();
+
+                string query = @"INSERT INTO Roles (Title) OUTPUT INSERTED.Id VALUES (@text)";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
                 new SqlParameter("@text", text)
-            };
+                };
 
-            int rid = (int)_databaseHelper.ExecuteScalar(query, parameters);
+                int rid = (int)_databaseHelper.ExecuteScalar(query, parameters);
 
-            if (selectedTestIds.Count > 0)
-            {
-                string query2 = "INSERT INTO RoleAccess (Role_Id, Test_Id) VALUES " +
-                    string.Join(", ", selectedTestIds.Select((_, i) => $"(@rid, @tid{i})"));
+                if (selectedTestIds.Count > 0)
+                {
+                    string query2 = "INSERT INTO RoleAccess (Role_Id, Test_Id) VALUES " +
+                        string.Join(", ", selectedTestIds.Select((_, i) => $"(@rid, @tid{i})"));
 
-                // Формируем список параметров
-                List<SqlParameter> parameters2 = new List<SqlParameter>
+                    // Формируем список параметров
+                    List<SqlParameter> parameters2 = new List<SqlParameter>
                 {
                     new SqlParameter("@rid", rid)
                 };
 
-                parameters2.AddRange(selectedTestIds.Select((id, i) => new SqlParameter($"@tid{i}", id)));
+                    parameters2.AddRange(selectedTestIds.Select((id, i) => new SqlParameter($"@tid{i}", id)));
 
-                _databaseHelper.ExecuteNonQuery(query2, parameters2.ToArray());
+                    _databaseHelper.ExecuteNonQuery(query2, parameters2.ToArray());
+                }
+                MessageBox.Show("Роль успешно добавлена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
             }
-            MessageBox.Show("Роль успешно добавлена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка добавления роли", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
 
         }
         private List<int> GetSelectedTestIds()
         {
-            return testsListBox.ItemsSource
-                .Cast<Tests>()
-                .Where(test => test.IsSelected)
-                .Select(test => test.Id)
-                .ToList();
+            try
+            {
+                return testsListBox.ItemsSource
+                        .Cast<Tests>()
+                        .Where(test => test.IsSelected)
+                        .Select(test => test.Id)
+                        .ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка при выборе теста", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+                return null;
+            }
         }
 
 
 
         protected int UpdateErrors()
         {
-            errorTextBlock.Inlines.Clear(); // Очищаем текущие инлайны
-            if (titleRoleTextBox.Text == "")
+            try
             {
-                errorTextBlock.Inlines.Add(new LineBreak());
-                errorTextBlock.Inlines.Add(new Run { Text = "! " });
-                errorTextBlock.Inlines.Add(new Run { Text = "Вы не ввели название роли (должности)" });
+                errorTextBlock.Inlines.Clear(); // Очищаем текущие инлайны
+                if (titleRoleTextBox.Text == "")
+                {
+                    errorTextBlock.Inlines.Add(new LineBreak());
+                    errorTextBlock.Inlines.Add(new Run { Text = "! " });
+                    errorTextBlock.Inlines.Add(new Run { Text = "Вы не ввели название роли (должности)" });
+                }
+                return errorTextBlock.Inlines.Count;
             }
-            return errorTextBlock.Inlines.Count;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка обновления блока с ошибками", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return -1;
+            }
         }
     }
 }

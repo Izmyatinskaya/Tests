@@ -15,6 +15,7 @@ namespace wpf_тесты_для_обучения
 {
     public class Tests: INotifyPropertyChanged
     {
+        public DatabaseHelper _databaseHelper;
         public int Id { get; set; }
         public string Title { get; set; }
         public string FullTitle => $"{Id}. {Title}";
@@ -23,8 +24,8 @@ namespace wpf_тесты_для_обучения
             get
             {
                 string query = $"Select count(Id) from Questions where Test_Id = {Id}";
-                DatabaseHelper databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-                int count = (int)databaseHelper.ExecuteScalar(query);
+                //DatabaseHelper databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                int count = (int)_databaseHelper.ExecuteScalar(query);
                 return count;
             }
             }
@@ -46,12 +47,17 @@ namespace wpf_тесты_для_обучения
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         public Tests() { }
+        public Tests(DatabaseHelper databaseHelper)
+        {
+            _databaseHelper = databaseHelper;
+        }
 
-        public Tests(int id, string name, double isCompleted)
+        public Tests(int id, string name, double isCompleted, DatabaseHelper databaseHelper = null)
         {
             Id = id;
             Title = name;
             IsCompleted = isCompleted;
+            _databaseHelper = databaseHelper;
         }
         public List<Questions> Questions { get; set; } = new List<Questions>();
         // Метод для добавления вопроса в тест
@@ -63,7 +69,7 @@ namespace wpf_тесты_для_обучения
             }
         }
 
-        public void LoadQuestionsFromDatabase()
+        public void LoadQuestionsFromDatabase(DatabaseHelper databaseHelper)
         {
             // Запрос для извлечения всех вопросов, связанных с текущим тестом
             string query = $"SELECT q.Id, q.Test_Id, q.Question_Text, q.Image," +
@@ -71,7 +77,8 @@ namespace wpf_тесты_для_обучения
                 $"THEN 1 ELSE 0 END AS IsMultipleAnswers FROM Questions q WHERE q.Test_Id = {Id}";
 
             // Создаем подключение и выполняем запрос
-            DatabaseHelper databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                //_databaseHelper = databaseHelper;
+            //DatabaseHelper databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
             DataTable dataTable = databaseHelper.ExecuteSelectQuery(query);
             Questions.Clear();
             // Проходим по всем строкам DataTable и создаем экземпляры Questions
@@ -87,8 +94,34 @@ namespace wpf_тесты_для_обучения
                 );
 
                 // Добавляем вопрос в список
-                
+
                 Questions.Add(question);
+            }
+        }
+        public void LoadIfEmpty()
+        {
+            if (Id <= 0)
+                return; // некорректный ID
+
+            // Проверка, нужно ли загружать
+            bool needLoadTitle = string.IsNullOrWhiteSpace(Title);
+            bool needLoadIsCompleted = IsCompleted == 0;
+
+            if (!needLoadTitle && !needLoadIsCompleted)
+                return; // ничего не нужно загружать
+
+            string query = $"SELECT Title, Is_Completed FROM Tests WHERE Id = {Id}";
+            DataTable table = _databaseHelper.ExecuteSelectQuery(query);
+
+            if (table.Rows.Count > 0)
+            {
+                DataRow row = table.Rows[0];
+
+                if (needLoadTitle)
+                    Title = row["Title"].ToString();
+
+                if (needLoadIsCompleted)
+                    IsCompleted = Convert.ToDouble(row["Is_Completed"]);
             }
         }
 
@@ -127,13 +160,13 @@ namespace wpf_тесты_для_обучения
             return Answers.ToDictionary(answer => answer.Id, answer => answer.IsCorrect);
         }
 
-        public void LoadAnswersFromDatabase()
+        public void LoadAnswersFromDatabase(DatabaseHelper databaseHelper)
         {
             // Формируем запрос: выбираем все ответы для вопросов, принадлежащих данному тесту
             string query = $"SELECT Id, Question_Id, Answer_Text, Is_Correct FROM Answers WHERE Question_Id = {Id}";
 
             // Создаем подключение и выполняем запрос
-            DatabaseHelper databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+            //DatabaseHelper databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
             DataTable dataTable = databaseHelper.ExecuteSelectQuery(query);
             Answers.Clear();
             // Проходим по всем строкам DataTable и создаем экземпляры Answers

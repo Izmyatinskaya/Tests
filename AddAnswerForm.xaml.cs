@@ -25,24 +25,43 @@ namespace wpf_тесты_для_обучения
     {
         private DatabaseHelper _databaseHelper;
         public bool IsCorrect { get; set; }
-        public AddAnswerForm()
+        public AddAnswerForm(DatabaseHelper databaseHelper)
         {
-            IsCorrect = false;
-            InitializeComponent();
-            this.DataContext = this;
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-            LoadQuestionsIntoComboBox();
+            try
+            {
+                IsCorrect = false;
+                InitializeComponent();
+                this.DataContext = this;
+                _databaseHelper = databaseHelper;
+                //_databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                LoadQuestionsIntoComboBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки формы доб ответа", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void LoadQuestionsIntoComboBox()
         {
-            // Получаем список пользователей с ролями
-            List<Questions> questions = _databaseHelper.GetQuestionsList();
+            try
+            {
+                // Получаем список пользователей с ролями
+                List<Questions> questions = _databaseHelper.GetQuestionsList();
 
-            // Очищаем ComboBox перед добавлением данных
-            questionsComboBox.Items.Clear();
+                // Очищаем ComboBox перед добавлением данных
+                questionsComboBox.Items.Clear();
 
-            questionsComboBox.ItemsSource = questions;
+                questionsComboBox.ItemsSource = questions;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки комбобокса", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void goBack_MouseDown(object sender, MouseButtonEventArgs e)
@@ -52,42 +71,61 @@ namespace wpf_тесты_для_обучения
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Questions question = questionsComboBox.SelectedItem as Questions;
-            string text = answerTextBox.Text;
-            if (UpdateErrors() > 0) return;
+            try
+            {
+                Questions question = questionsComboBox.SelectedItem as Questions;
+                string text = answerTextBox.Text;
+                if (UpdateErrors() > 0) return;
 
-            string query = @"
+                string query = @"
             INSERT INTO Answers (Question_Id, Answer_Text, Is_Correct)
             VALUES (@questionId, @text, @correct)";
 
-            SqlParameter[] parameters = new SqlParameter[]
-            {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
                 new SqlParameter("@questionId", question.Id),
                 new SqlParameter("@text", text),
                 new SqlParameter("@correct", IsCorrect)
-            };
+                };
 
-            _databaseHelper.ExecuteNonQuery(query, parameters);
+                _databaseHelper.ExecuteNonQuery(query, parameters);
 
-            MessageBox.Show("Ответ успешно добавлен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close();
+                MessageBox.Show("Ответ успешно добавлен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки добавления ответа", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
         protected int UpdateErrors()
         {
-            errorTextBlock.Inlines.Clear(); // Очищаем текущие инлайны
-            if (questionsComboBox.SelectedItem as Questions == null)
-            { 
-                errorTextBlock.Inlines.Add(new LineBreak());
-                errorTextBlock.Inlines.Add(new Run { Text = "! " });
-                errorTextBlock.Inlines.Add(new Run { Text = "Вы не выбрали вопрос" });
-            }
-            if (answerTextBox.Text == "")
+            try
             {
-                errorTextBlock.Inlines.Add(new LineBreak());
-                errorTextBlock.Inlines.Add(new Run { Text = "! " });
-                errorTextBlock.Inlines.Add(new Run { Text = "Вы не ввели ответ" });
+                errorTextBlock.Inlines.Clear(); // Очищаем текущие инлайны
+                if (questionsComboBox.SelectedItem as Questions == null)
+                {
+                    errorTextBlock.Inlines.Add(new LineBreak());
+                    errorTextBlock.Inlines.Add(new Run { Text = "! " });
+                    errorTextBlock.Inlines.Add(new Run { Text = "Вы не выбрали вопрос" });
+                }
+                if (answerTextBox.Text == "")
+                {
+                    errorTextBlock.Inlines.Add(new LineBreak());
+                    errorTextBlock.Inlines.Add(new Run { Text = "! " });
+                    errorTextBlock.Inlines.Add(new Run { Text = "Вы не ввели ответ" });
+                }
+                return errorTextBlock.Inlines.Count;
             }
-            return errorTextBlock.Inlines.Count;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка обновления поля ошибки", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return -1;
+            }
         }
     }
 }

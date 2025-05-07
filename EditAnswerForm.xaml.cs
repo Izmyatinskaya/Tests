@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 using wpf_тесты_для_обучения.Properties;
 
 namespace wpf_тесты_для_обучения
@@ -24,22 +25,32 @@ namespace wpf_тесты_для_обучения
         private DatabaseHelper _databaseHelper;
         public bool IsCorrect { get; set; }
         private Answers _answer;
-        public EditAnswerForm(Answers answer)
+        public EditAnswerForm(Answers answer, DatabaseHelper databaseHelper)
         {
-            IsCorrect = answer.IsCorrect;
-            InitializeComponent();
-            this.DataContext = this;
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-            LoadQuestionsIntoComboBox();
-            _answer = answer;
-            answerTextBox.Text = answer.AnswerText;
-            questionsComboBox.SelectedItem = questionsComboBox.Items
-            .Cast<Questions>()
-            .FirstOrDefault(q => q.Id == answer.QuestionId);
-
+            try
+            {
+                IsCorrect = answer.IsCorrect;
+                InitializeComponent();
+                this.DataContext = this;
+                _databaseHelper = databaseHelper;
+                //string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DB.mdf");
+                //_databaseHelper = new DatabaseHelper($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True");
+                //_databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                LoadQuestionsIntoComboBox();
+                _answer = answer;
+                answerTextBox.Text = answer.AnswerText;
+                questionsComboBox.SelectedItem = questionsComboBox.Items
+                .Cast<Questions>()
+                .FirstOrDefault(q => q.Id == answer.QuestionId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при отключении базы данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-
-        private void LoadQuestionsIntoComboBox()
+       
+           
+            private void LoadQuestionsIntoComboBox()
         {
             // Получаем список пользователей с ролями
             List<Questions> questions = _databaseHelper.GetQuestionsList();

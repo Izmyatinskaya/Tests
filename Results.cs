@@ -12,6 +12,7 @@ namespace wpf_тесты_для_обучения
         public int Id { get; set; } // Уникальный идентификатор роли
         public int UserId { get; set; }
         public int TestId { get; set; }
+        public DateTime Date { get; set; }
         private double _score;
 
         public double Score
@@ -30,12 +31,13 @@ namespace wpf_тесты_для_обучения
         public int RowNumber { get; set; }
         public Results() { }
 
-        public Results(int id, int userId, int testId, double score)
+        public Results(int id, int userId, int testId, double score, DateTime date)
         {
             Id = id;
             UserId = userId;
             TestId = testId;
             Score = score;
+            Date = date;
         }
     }
 }

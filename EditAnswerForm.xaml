@@ -5,108 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
-        Title="EditAnswerForm" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
-    <Grid Width="800" Height="565">
+        Background="{StaticResource WindowDefaultBackground}"
+        Title="Изменить ответ" Height="450" ResizeMode="NoResize" Icon="/Frame 8.png" Width="600" 
+        WindowStartupLocation="CenterScreen">
+    <Grid  Margin="73,35,73,35">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Заголовок "Регистрация" -->
-        <TextBlock Text="Редактировать ответ"
-                   Style="{StaticResource AcentTextStyle}"
-                   Grid.Row="0"/>
+        <TextBlock Text="Изменить ответ" 
+                    Style="{StaticResource HeaderTextStyle}"
+                   Grid.Row="0" HorizontalAlignment="Center"/>
 
         <!-- Основная группа элементов -->
-        <StackPanel Grid.Row="1" 
-    HorizontalAlignment="Center"
-    VerticalAlignment="Top"
-    Width="400">
-            <!-- Группа выбора вопроса -->
-            <StackPanel Orientation="Vertical" Margin="0,15,0,0">
-                <TextBlock  Text="Выберите вопрос" 
-                        FontFamily="Arial" 
-                        FontSize="16" 
-                        Foreground="Black" />
-                <ComboBox Name="questionsComboBox"
-            Height="30"
-            BorderThickness="1"
-            BorderBrush="Red" >
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding FullTitle}" />
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
 
-                <TextBlock Style="{StaticResource LinkTextStyle}" 
-                           Text="Создать новый" 
-                           MouseDown="goToAddQuestionsForm_MouseDown" 
-                           HorizontalAlignment="Left" 
-                           Margin="0,0,0,0"  />
-            </StackPanel>
-            <!-- Группа ФИО -->
-            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                <TextBlock Text="Введите ответ" 
-            FontFamily="Arial" 
-            FontSize="16" 
-            Foreground="Black" />
-                <TextBox Name="answerTextBox"
-            Height="30"
-            BorderBrush="#FFABADB3"
-            BorderThickness="1" />
-            </StackPanel>
-            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                <TextBlock Text="Укажите верный он или нет" 
-            FontFamily="Arial" 
-            FontSize="16" 
-            Foreground="Black" />
-                <ComboBox Name="correctComboBox"
+        <Border Grid.Row="1" Style="{StaticResource LightBorder}"
+HorizontalAlignment="Center"
+VerticalAlignment="Top"
+Width="400">
+            <StackPanel>
+                <!-- Группа выбора вопроса -->
+                <StackPanel Orientation="Vertical" Margin="0,15,0,0">
+                    <TextBlock  Text="Выберите вопрос" 
+                        Style="{StaticResource BaseTextStyle}" />
+                    <ComboBox Name="questionsComboBox" Style="{StaticResource ComboBoxStyle1}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FullTitle}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <!-- Группа ФИО -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Введите ответ" 
+             Style="{StaticResource BaseTextStyle}" />
+                    <TextBox Name="answerTextBox"
+          Style="{StaticResource TextBoxStyle}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Укажите верный он или нет" 
+            Style="{StaticResource BaseTextStyle}" />
+                    <ComboBox Name="correctComboBox"
                           SelectedValue="{Binding Path=IsCorrect, Mode=TwoWay}"
                           SelectedValuePath="Content"
-                          Height="30" 
-                          BorderBrush="#FFABADB3" 
-                          BorderThickness="1">
-                    <ComboBoxItem Content="True"/>
-                    <ComboBoxItem Content="False"/>
-                </ComboBox>
+                         Style="{StaticResource ComboBoxStyle1}">
+                        <ComboBoxItem Content="True"/>
+                        <ComboBoxItem Content="False"/>
+                    </ComboBox>
 
-            </StackPanel>
+                    <TextBlock Name="errorTextBlock"
+           Style="{StaticResource ErrorBaseTextStyle}"
+           VerticalAlignment="Center" 
+           Margin="0,0,5,0" 
+           MouseDown="goToAddQuestionsForm_MouseDown" 
+           HorizontalAlignment="Center"  >
+                    </TextBlock>
 
-            <!-- Группа действий -->
-            <StackPanel Grid.Row="2" 
+                </StackPanel>
+
+                <!-- Группа действий -->
+                <StackPanel Grid.Row="2" 
     Orientation="Horizontal" 
     HorizontalAlignment="Center" 
     Margin="0,20,0,0">
-                <TextBlock Text="Назад" 
-        FontFamily="Arial" 
-        FontSize="14" 
-        Foreground="#FFA25100" 
-        TextDecorations="Underline" 
-        Cursor="Hand"
-        VerticalAlignment="Center" 
-        Margin="0,0,10,0" MouseDown="goBack_MouseDown" />
-                <Button Content="Редактировать"
+                    <TextBlock Text="Назад" Style="{StaticResource LinkTextStyle}"
+                           MouseDown="goBack_MouseDown" />
+                    <Button Content="Сохранить"
                         Style="{StaticResource OrangeButtonStyle}"
-                        Width="250" 
-                        FontSize="20" 
-                        Click="Button_Click" />        
+                        Click="Button_Click" />
+
+                </StackPanel>
 
             </StackPanel>
-            <StackPanel>
-                <TextBlock Name="errorTextBlock"
-                           FontFamily="Arial" 
-                           FontSize="14"
-                           Foreground="Red"
-                           Cursor="Hand"
-                           VerticalAlignment="Center" 
-                           Margin="0,0,5,0" 
-                           MouseDown="goToAddQuestionsForm_MouseDown" 
-                           HorizontalAlignment="Center"  >
-                </TextBlock>
-            </StackPanel>
-        </StackPanel>
+        </Border>
     </Grid>
 </Window>
 

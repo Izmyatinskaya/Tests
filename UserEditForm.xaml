@@ -3,165 +3,148 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
-            Title="Редактирование пользователя"     Width="800"
-Height="650"
-Background="White"
-WindowStartupLocation="CenterScreen">
+        Title="Изменение пользователя"
+        Width="700"
+        Background="{StaticResource WindowDefaultBackground}"
+        WindowStartupLocation="CenterScreen" Height="650" ResizeMode="NoResize" Icon="/Frame 8.png">
 
-    <Grid Width="800" Height="565">
+    <Grid Margin="73,35,73,35">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Заголовок "Регистрация" -->
-        <TextBlock Text="Редактирование пользователя"
-                   Style="{StaticResource AcentTextStyle}"/>
+        <!-- Заголовок -->
+        <TextBlock Text="Изменение пользователя"
+                   TextAlignment="Center"
+                   Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,10" />
 
-        <!-- Основная группа элементов -->
-        <StackPanel Grid.Row="1" 
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Width="400">
+        <!-- Основная часть -->
+        <Border Grid.Row="1"
+                Style="{StaticResource LightBorder}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Width="400">
+            <StackPanel>
 
-            <!-- Группа ФИО -->
-            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                <TextBlock Text="Введите фамилию" 
-                   FontFamily="Arial" 
-                   FontSize="16" 
-                   Foreground="Black" />
-                <TextBox Name="familiyaTextBox"
-                 Height="30"
-                 BorderBrush="#FFABADB3"
-                 BorderThickness="1" />
+                <!-- Фамилия -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Введите фамилию"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <TextBox Name="familiyaTextBox"
+                             Style="{StaticResource TextBoxStyle}" />
+                </StackPanel>
+
+                <!-- Имя -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Введите имя"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <TextBox Name="nameTextBox"
+                             Style="{StaticResource TextBoxStyle}" />
+                </StackPanel>
+
+                <!-- Отчество -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Введите отчество"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <TextBox Name="patronymicTextBox"
+                             Style="{StaticResource TextBoxStyle}" />
+                </StackPanel>
+
+                <!-- Должность -->
+                <StackPanel Orientation="Vertical" Margin="0,15,0,0">
+                    <TextBlock Text="Выберите должность"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <ComboBox Name="rolesComboBox"
+                              Style="{StaticResource ComboBoxStyle1}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <TextBlock Text="Новая должность(роль)"
+                              Style="{StaticResource LinkTextStyle}"
+                               Margin="0,0,10,0"
+                               MouseDown="goToAddNewRole_Click" />
+                </StackPanel>
+
+                <!-- Пароль -->
+                <StackPanel Orientation="Vertical" Margin="0,15,0,0">
+                    <TextBlock Text="Введите пароль"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <Grid>
+                        <PasswordBox Name="passwordBox1"
+                                     Style="{StaticResource PasswordBoxStyle1}"
+                                     Height="30"
+                                     PasswordChanged="PasswordBox1_PasswordChanged" 
+                                     Width="355" />
+                        <TextBox Name="passwordTextBox1"
+                                 Style="{StaticResource PasswordTextBoxStyle}"
+                                 Height="30"
+                                 Visibility="Collapsed" />
+                        <Button Style="{StaticResource TogglePasswordButtonStyle}" 
+                                Width="30" Height="30"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Click="ShowPassword_Click">
+                            <fa:FontAwesome Icon="Eye" Name="eyeIcon" FontSize="16"/>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Повтор пароля -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,5">
+                    <TextBlock Text="Повторите пароль"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <Grid>
+                        <PasswordBox Name="passwordBox2"
+                                     Height="30"
+                                     Style="{StaticResource PasswordBoxStyle1}"
+                                     PasswordChanged="PasswordBox2_PasswordChanged" 
+                                     Width="355" />
+                        <TextBox Name="passwordTextBox2"
+                                 Height="30"
+                                 Style="{StaticResource PasswordTextBoxStyle}"
+                                 Visibility="Collapsed" />
+                        <Button Style="{StaticResource TogglePasswordButtonStyle}" 
+                                Width="30" Height="30"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Click="ShowPassword_Click2">
+                            <fa:FontAwesome Icon="Eye" Name="eyeIcon2" FontSize="16"/>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Ошибка -->
+                <TextBlock Name="errorTextBlock"
+                           Text=""
+                           FontFamily="Arial"
+                           FontSize="14"
+                           Foreground="Red"
+                           Visibility="Collapsed"
+                           Margin="0" />
+
+                <!-- Кнопки -->
+                <StackPanel
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0,20,0,0">
+                    <TextBlock Text="Назад"
+                               Style="{StaticResource LinkTextStyle}"
+                               MouseDown="TextBlock_MouseDown"
+                               Margin="0,10,12,10" />
+                    <Button Content="Изменить"
+                            Style="{StaticResource OrangeButtonStyle}"
+                            Click="Button_Click" />
+                </StackPanel>
+
             </StackPanel>
-            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                <TextBlock Text="Введите имя" 
-                   FontFamily="Arial" 
-                   FontSize="16" 
-                   Foreground="Black" />
-                <TextBox Name="nameTextBox"
-                 Height="30" 
-                 BorderBrush="#FFABADB3" 
-                 BorderThickness="1" />
-            </StackPanel>
-            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                <TextBlock Text="Введите отчество" 
-                   FontFamily="Arial" 
-                   FontSize="16" 
-                   Foreground="Black" />
-                <TextBox Name="patronymicTextBox"
-                 Height="30" 
-                 BorderBrush="#FFABADB3" 
-                 BorderThickness="1" />
-            </StackPanel>
-
-            <!-- Группа выбора должности -->
-            <StackPanel Orientation="Vertical" Margin="0,15,0,0">
-                <TextBlock Text="Выберите должность" 
-       FontFamily="Arial" 
-       FontSize="16" 
-       Foreground="Black" />
-                <ComboBox Name="rolesComboBox"
-                  Height="30"
-                  BorderThickness="1"
-                  BorderBrush="Red" >
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Title}" />
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-            </StackPanel>
-
-            <!-- Группа ввода пароля -->
-            <StackPanel Orientation="Vertical" Margin="0,15,0,0">
-                <TextBlock Text="Введите пароль" 
-       FontFamily="Arial" 
-       FontSize="16" 
-       Foreground="Black" />
-                <Grid>
-                    <!-- PasswordBox -->
-                    <PasswordBox Name="passwordBox1"
-             Height="30"
-             BorderBrush="#FFABADB3"
-             BorderThickness="1"
-             Margin="0,0,0,0"
-             PasswordChanged="PasswordBox1_PasswordChanged" />
-
-                    <!-- TextBox для отображения пароля -->
-                    <TextBox Name="passwordTextBox1"
-         Height="30"
-         BorderBrush="#FFABADB3"
-         BorderThickness="1"
-         Margin="0,0,0,0"
-         Visibility="Collapsed" />
-                </Grid>
-            </StackPanel>
-
-            <StackPanel Orientation="Vertical" Margin="0,10,0,5">
-                <TextBlock Text="Повторите пароль" 
-       FontFamily="Arial" 
-       FontSize="16" 
-       Foreground="Black" />
-                <Grid>
-                    <!-- PasswordBox -->
-                    <PasswordBox Name="passwordBox2"
-             Height="30" 
-             BorderBrush="#FFABADB3" 
-             BorderThickness="1"
-             Margin="0,0,0,0"
-             PasswordChanged="PasswordBox2_PasswordChanged" />
-
-                    <!-- TextBox для отображения пароля -->
-                    <TextBox Name="passwordTextBox2"
-         Height="30"
-         BorderBrush="#FFABADB3"
-         BorderThickness="1"
-         Margin="0,0,0,0"
-         Visibility="Collapsed" />
-                </Grid>
-            </StackPanel>
-
-            <TextBlock Name="errorTextBlock" 
-               Text="" 
-               FontFamily="Arial" 
-               FontSize="14" 
-               Foreground="Red" 
-               Visibility="Collapsed"
-               Margin="0,0,0,0"/>
-            <!-- CheckBox для отображения/скрытия пароля -->
-            <CheckBox Content="Показать пароль" 
-              FontFamily="Arial" 
-              FontSize="14" 
-              Margin="0,0,0,0"
-              Checked="ShowPassword_Checked" 
-              Unchecked="ShowPassword_Checked" />
-
-
-        </StackPanel>
-
-        <!-- Группа действий -->
-        <StackPanel Grid.Row="2" 
-            Orientation="Horizontal" 
-            HorizontalAlignment="Center" 
-            Margin="0,0,0,20">
-            <TextBlock Text="Назад" 
-               FontFamily="Arial" 
-               FontSize="14" 
-               Foreground="#FFA25100" 
-               TextDecorations="Underline" 
-               Cursor="Hand"
-               VerticalAlignment="Center" 
-               Margin="0,0,10,0" MouseDown="TextBlock_MouseDown" />
-            <Button Content="Отредактировать"
-                    Style="{StaticResource OrangeButtonStyle}"
-                    Width="250"
-                    FontSize="20" 
-                    Click="Button_Click"/>
-        </StackPanel>
+        </Border>
     </Grid>
 </Window>

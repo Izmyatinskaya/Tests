@@ -1,0 +1,75 @@
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\x86\sqlite3.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\x64\sqlite3.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\cursors\wordpad_7010.cur
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\DB.mdf
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\DB_log.ldf
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\wpf тесты для обучения.exe.config
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\wpf тесты для обучения.exe
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\wpf тесты для обучения.pdb
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\FontAwesome.WPF.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\MaterialDesignColors.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\MaterialDesignThemes.Wpf.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\Microsoft.Data.Sqlite.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\Microsoft.Xaml.Behaviors.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\SQLitePCLRaw.batteries_v2.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\SQLitePCLRaw.core.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\System.Buffers.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\System.Memory.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\System.Numerics.Vectors.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\FontAwesome.WPF.xml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\MaterialDesignColors.pdb
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\MaterialDesignThemes.Wpf.pdb
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\MaterialDesignThemes.Wpf.xml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\Microsoft.Data.Sqlite.xml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\Microsoft.Xaml.Behaviors.pdb
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\Microsoft.Xaml.Behaviors.xml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\System.Buffers.xml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\System.Memory.xml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\System.Numerics.Vectors.xml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf тесты для обучения.csproj.AssemblyReference.cache
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\AddAnswerForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\AddQuestionForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\AddRoleForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\AdminForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\EditAnswerForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\EditQuestionForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\EditRoleForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\LoginForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\MainForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\MultipleQuestion.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\RegistrationForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\SingleQuestion.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\TestAddForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\UserAddForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\UserEditForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\App.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf тесты для обучения_Content.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf тесты для обучения_MarkupCompile.cache
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf тесты для обучения_MarkupCompile.lref
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\App.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\AddAnswerForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\AddQuestionForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\AddRoleForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\AdminForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\EditAnswerForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\EditQuestionForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\EditRoleForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\LoginForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\MainForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\MultipleQuestion.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\RegistrationForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\SingleQuestion.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\TestAddForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\UserAddForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\UserEditForm.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf тесты для обучения.g.resources
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf_тесты_для_обучения.Properties.Resources.resources
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf тесты для обучения.csproj.GenerateResource.cache
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf тесты для обучения.csproj.CoreCompileInputs.cache
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf ____.8870D955.Up2Date
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf тесты для обучения.exe
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Release\wpf тесты для обучения.pdb

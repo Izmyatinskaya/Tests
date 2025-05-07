@@ -5,101 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
-        Title="AddQuestionForm" Height="500" Width="800"  WindowStartupLocation="CenterScreen">
-    <Grid Width="800" Height="565">
+        Background="{StaticResource WindowDefaultBackground}"
+        Title="Добавить вопрос" ResizeMode="NoResize" Icon="/Frame 8.png" Height="500" Width="600"  
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="73,35,73,35">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Заголовок "Регистрация" -->
-        <TextBlock Text="Добавить вопрос"
-                   Style="{StaticResource AcentTextStyle}"/>
+        <TextBlock Text="Новый вопрос" TextAlignment="Center"
+                   Style="{StaticResource HeaderTextStyle}"/>
 
         <!-- Основная группа элементов -->
-        <StackPanel Grid.Row="1" 
-    HorizontalAlignment="Center"
-    VerticalAlignment="Top"
-    Width="400">
-            <!-- Группа выбора вопроса -->
-            <StackPanel Orientation="Vertical" Margin="0,15,0,0">
-                <TextBlock  Text="Выберите тест" 
-                        FontFamily="Arial" 
-                        FontSize="16" 
-                        Foreground="Black" />
-                <ComboBox Name="testsComboBox"
-            Height="30"
-            BorderThickness="1"
-             >
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding FullTitle}" />
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-            </StackPanel>
-            <!-- Группа ФИО -->
-            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                <TextBlock Text="Введите вопрос" 
-            FontFamily="Arial" 
-            FontSize="16" 
-            Foreground="Black" />
-                <TextBox Name="questionTextBox"
-            Height="30"
-            BorderBrush="#FFABADB3"
-            BorderThickness="1" />
-            </StackPanel>
-            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                <TextBlock Text="Загрузите изображение (необязательно)" 
-            FontFamily="Arial" 
-            FontSize="16" 
-            Foreground="Black" />
-                <Image Name="PreviewImage"
-           Width="50"
-           Height="50"
-           Stretch="Uniform"
-           Margin="10"/>
+        <Border Grid.Row="1" Style="{StaticResource LightBorder}"
+HorizontalAlignment="Center"
+VerticalAlignment="Top"
+Width="400">
+            <StackPanel >
+                <!-- Группа выбора вопроса -->
+                <StackPanel Orientation="Vertical" Margin="0,15,0,0">
+                    <TextBlock  Text="Выберите тест" 
+                       Style="{StaticResource BaseTextStyle}"/>
+                    <ComboBox Name="testsComboBox" Style="{StaticResource ComboBoxStyle1}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FullTitle}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
 
-                <Button Content="Загрузить изображение"
-            Click="LoadImage_Click"
-            Padding="5"
-            FontSize="14"/>
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Введите вопрос" Style="{StaticResource BaseTextStyle}" />
+                    <TextBox Name="questionTextBox" Style="{StaticResource TextBoxStyle}" />
+                </StackPanel>
 
-            </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Загрузите изображение (необязательно)" 
+                           Style="{StaticResource BaseTextStyle}" />
+                    <Image Name="PreviewImage"
+                       Width="50"
+                       Height="50"
+                       Stretch="Uniform"
+                       Margin="10"/>
 
-            <!-- Группа действий -->
-            <StackPanel Grid.Row="2" 
-    Orientation="Horizontal" 
-    HorizontalAlignment="Center" 
-    Margin="0,20,0,0">
-                <TextBlock Text="Назад" 
-        FontFamily="Arial" 
-        FontSize="14" 
-        Foreground="#FFA25100" 
-        TextDecorations="Underline" 
-        Cursor="Hand"
-        VerticalAlignment="Center" 
-        Margin="0,0,10,0" MouseDown="goBack_MouseDown" />
-                <Button Content="Добавить"
-                        Style="{StaticResource OrangeButtonStyle}"
-                        Width="250"
-                        FontSize="20"
-                        Click="Button_Click" />
+                    <Button Content="Загрузить изображение" 
+                        Click="LoadImage_Click" 
+                        Style="{StaticResource OrangeLittleButtonStyle}"/>
 
-            </StackPanel>
-            <StackPanel>
-                <TextBlock Name="errorTextBlock"
-                           FontFamily="Arial" 
-                           FontSize="14"
-                           Foreground="Red"
-                           Cursor="Hand"
-                           VerticalAlignment="Center" 
+                    <TextBlock Style="{StaticResource ErrorBaseTextStyle}" Name="errorTextBlock"
                            Margin="0,0,5,0" 
                            HorizontalAlignment="Center"  >
-                </TextBlock>
+                    </TextBlock>
+                </StackPanel>
+
+                <!-- Группа действий -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <TextBlock Text="Назад" 
+                           Style="{StaticResource LinkTextStyle}"
+                           MouseDown="goBack_MouseDown" Margin="0,10,12,10" />
+
+                    <Button Content="Добавить"
+                        Style="{StaticResource OrangeButtonStyle}"
+                        Click="Button_Click" />
+
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+        </Border>
     </Grid>
 </Window>
 

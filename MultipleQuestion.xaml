@@ -12,36 +12,41 @@
     <Grid>
         <StackPanel>
             <!-- Верхняя панель с номером и удалением -->
-            <DockPanel Margin="5">
-                <TextBlock FontSize="18" FontWeight="Bold" Foreground="Black" 
-                       Text="{Binding Number, StringFormat='{}{0}.', RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                
+            <DockPanel Margin="5" VerticalAlignment="Center">
+                <TextBlock Style="{StaticResource BaseTextStyle24}"  VerticalAlignment="Top"
+            Text="{Binding Number, StringFormat='{}{0}. ', RelativeSource={RelativeSource AncestorType=UserControl}}" />
+
                 <Button Name="deleteQuestionButton" Content="❌" Foreground="Red" Width="20" Height="20"
                     Background="Transparent" BorderThickness="0"
-                    Click="DeleteBlock" DockPanel.Dock="Right"/>
-            
+                    Click="DeleteBlock" DockPanel.Dock="Right" VerticalAlignment="Center"/>
 
-            <!-- Поле для ввода вопроса -->
+              
+                <Button Name="copyQuestionButton" Content="📄" Foreground="Gray" Width="20" Height="20"
+        Background="Transparent" BorderThickness="0" Visibility="Collapsed"
+        Click="CopyBlock" DockPanel.Dock="Right" VerticalAlignment="Center"/>
+
+
+                <!-- Поле для ввода вопроса -->
             <TextBox x:Name="questionTextBox"
                  Text="Введите вопрос?" 
                  FontSize="14" TextWrapping="Wrap"
-                 VerticalScrollBarVisibility="Auto" 
-                     
-                 Margin="5" KeyDown="questionTextBox_KeyDown" TextChanged="questionTextBox_TextChanged" PreviewMouseLeftButtonUp="questionTextBox_PreviewMouseLeftButtonUp" />
-                <TextBlock x:Name="questionTextBlock" Visibility="Collapsed" FontSize="14" TextWrapping="Wrap" Margin="5" Foreground="Black"/>
+                 VerticalScrollBarVisibility="Auto"
+                 Margin="5" KeyDown="questionTextBox_KeyDown" TextChanged="questionTextBox_TextChanged" PreviewMouseLeftButtonUp="questionTextBox_PreviewMouseLeftButtonUp" VerticalAlignment="Center" />
+
+                <TextBlock x:Name="questionTextBlock" Style="{StaticResource BaseTextStyle24}" Visibility="Collapsed" VerticalAlignment="Center" FontFamily="Lato Medium"/>
+                <!--<TextBlock x:Name="questionTextBlock" Visibility="Collapsed" FontSize="14" TextWrapping="Wrap" Margin="5" Foreground="Black" VerticalAlignment="Center"/>-->
             </DockPanel>
 
             <Image Name="image" Source="{Binding ImageSource}"
-   Visibility="{Binding ShowImage, Converter={StaticResource BooleanToVisibilityConverter}}" Cursor="Hand" MouseDown="image_MouseDown_1" MaxHeight="500"/>
+   Visibility="{Binding ShowImage, Converter={StaticResource BooleanToVisibilityConverter}}" Cursor="Hand" MouseDown="image_MouseDown_1" MaxHeight="500" MouseEnter="image_MouseEnter"/>
 
             <!-- Список ответов -->
             <StackPanel x:Name="AnswersPanel" Margin="5"/>
 
             <!-- Кнопка добавления нового ответа -->
-            <Button Name="addAnswerButton" Content="➕ Добавить ответ" Click="AddAnswer" Margin="5"/>
-
+            <Button  Name="addAnswerButton" Content="➕ Добавить ответ" Click="AddAnswer" Margin="0" Style="{StaticResource OrangeLittleButtonStyle}"/>
             <!-- Поле ошибок -->
-            <TextBlock x:Name="ErrorTextBlock" Foreground="Red" Visibility="Collapsed"/>
+            <TextBlock x:Name="ErrorTextBlock" Style="{StaticResource ErrorBaseTextStyle}" Visibility="Collapsed"/>
         </StackPanel>
     </Grid>
 </local:BaseQuestion>

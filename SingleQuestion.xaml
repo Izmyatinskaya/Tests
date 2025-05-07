@@ -12,25 +12,32 @@
 
     <StackPanel>
         <!-- Верхняя панель с номером и удалением -->
-        <DockPanel Margin="5">
-            <TextBlock FontSize="18" FontWeight="Bold" Foreground="Black" 
-                       Text="{Binding Number, StringFormat='{}{0}.', RelativeSource={RelativeSource AncestorType=UserControl}}" />
+        <DockPanel Margin="5" VerticalAlignment="Center">
+
+            <TextBlock Style="{StaticResource BaseTextStyle24}"  VerticalAlignment="Top"
+                       Text="{Binding Number, StringFormat='{}{0}.  ', RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            
             <Button Name="deleteQuestionButton" Content="❌" Foreground="Red" Width="20" Height="20"
                     Background="Transparent" BorderThickness="0"
-                    Click="DeleteBlock" DockPanel.Dock="Right"/>
+                    Click="DeleteBlock" DockPanel.Dock="Right" VerticalAlignment="Center"/>
+           
+            <Button Name="copyQuestionButton" Content="📄" Foreground="Gray" Width="20" Height="20"
+                    Background="Transparent" BorderThickness="0" Visibility="Collapsed"
+                    Click="CopyBlock" DockPanel.Dock="Right" VerticalAlignment="Center"/>
+
             <!-- Поле для ввода вопроса -->
             <TextBox x:Name="questionTextBox"
                  Text="Введите вопрос?" 
                  FontSize="14" TextWrapping="Wrap" 
                  VerticalScrollBarVisibility="Auto" 
-                 Margin="5" PreviewMouseLeftButtonUp="questionTextBox_PreviewMouseLeftButtonUp" KeyDown="questionTextBox_KeyDown" TextChanged="questionTextBox_TextChanged" />
+                 Margin="5" PreviewMouseLeftButtonUp="questionTextBox_PreviewMouseLeftButtonUp" KeyDown="questionTextBox_KeyDown" TextChanged="questionTextBox_TextChanged" VerticalAlignment="Center" MouseDoubleClick="questionTextBox_MouseDoubleClick" />
 
-            <TextBlock x:Name="questionTextBlock" Visibility="Collapsed" FontSize="14" TextWrapping="Wrap" Margin="5" Foreground="Black"/>
-            
+            <TextBlock x:Name="questionTextBlock" Style="{StaticResource BaseTextStyle24}" Visibility="Collapsed" VerticalAlignment="Center" FontFamily="Lato Medium"/>
+
+           
         </DockPanel>
-
-
-            <!-- Само изображение (отображается, если выбрано) -->
+       
+        <!-- Само изображение (отображается, если выбрано) -->
         <Image Name="image" Source="{Binding ImageSource}"
            Visibility="{Binding ShowImage, Converter={StaticResource BooleanToVisibilityConverter}}" Cursor="Hand" MouseDown="image_MouseDown_1" MaxHeight="500"/>
         <!--<Button Name="fullImageButton" Click="ShowFullImage" Width="14" Height="13">
@@ -38,14 +45,23 @@
                     <ImageBrush ImageSource="/page_white_magnify.png"/>
                 </Button.Background>
             </Button>-->
-
+        <!--<RadioButton x:Name="radioButton" IsChecked="True" Foreground="Black">
+            <RadioButton.Resources>
+                --><!-- Цвет кружка в выбранном состоянии --><!--
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF0078D7"/>
+                --><!-- Цвет кружка в обычном состоянии --><!--
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#FFCCCCCC"/>
+                --><!-- Цвет границы --><!--
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlDarkBrushKey}" Color="#FF707070"/>
+            </RadioButton.Resources>
+        </RadioButton>-->
         <!-- Список ответов -->
         <StackPanel x:Name="AnswersPanel" Margin="5"/>
 
         <!-- Кнопка добавления нового ответа -->
-        <Button Name="addAnswerButton" Content="➕ Добавить ответ" Click="AddAnswer" Margin="5"/>
+        <Button  Name="addAnswerButton" Content="➕ Добавить ответ" Click="AddAnswer" Margin="0" Style="{StaticResource OrangeLittleButtonStyle}"/>
 
         <!-- Поле ошибок -->
-        <TextBlock x:Name="ErrorTextBlock" Foreground="Red" Visibility="Collapsed"/>
+        <TextBlock x:Name="ErrorTextBlock" Style="{StaticResource ErrorBaseTextStyle}" Visibility="Collapsed"/>
     </StackPanel>
 </local:BaseQuestion>

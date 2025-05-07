@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 using wpf_тесты_для_обучения.Properties;
 
 namespace wpf_тесты_для_обучения
@@ -24,14 +25,23 @@ namespace wpf_тесты_для_обучения
         private Users _currentUser;
         private DatabaseHelper _databaseHelper;
       
-        public UserEditForm(Users user)
+        public UserEditForm(Users user, DatabaseHelper databaseHelper)
         {
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-            InitializeComponent();
-            _currentUser = user;
-            LoadRolesIntoComboBox();
-            LoadUserData();
-            
+            try
+            {
+                _databaseHelper = databaseHelper;
+                //string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DB.mdf");
+                //_databaseHelper = new DatabaseHelper($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True");
+                //_databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                InitializeComponent();
+                _currentUser = user;
+                LoadRolesIntoComboBox();
+                LoadUserData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при отключении базы данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
     private void LoadRolesIntoComboBox()
@@ -40,7 +50,7 @@ namespace wpf_тесты_для_обучения
         List<Roles> roles = _databaseHelper.GetRolesList();
 
         // Очищаем ComboBox перед добавлением данных
-        rolesComboBox.Items.Clear();
+       // roles2ComboBox.Items.Clear();
 
         rolesComboBox.ItemsSource = roles;
     }
@@ -240,7 +250,7 @@ namespace wpf_тесты_для_обучения
             // Проверка результата
             if (result != null && int.TryParse(result.ToString(), out int count) && count > 1)
             {
-                MessageBox.Show("Пользователь с таким ФИО уже существует.");
+                MessageBox.Show("Пользователь с таким ФИО уже существует.", "Уведомление");
                 return;
             }
 
@@ -265,9 +275,58 @@ namespace wpf_тесты_для_обучения
 
             _databaseHelper.ExecuteNonQuery(query, parameters);
 
-            MessageBox.Show("Уведомление", "Данные пользователя успешно отредактированы");
+            MessageBox.Show( "Данные пользователя успешно отредактированы", "Уведомление");
             this.Close();
 
+        }
+
+        private void goToAddNewRole_Click(object sender, MouseButtonEventArgs e)
+        {
+            AddRoleForm addRoleForm = new AddRoleForm(_databaseHelper);
+            addRoleForm.ShowDialog();
+            LoadRolesIntoComboBox();
+        }
+
+        private void ShowPassword_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHidePassword(passwordTextBox1, passwordBox1, eyeIcon);
+        }
+
+        private void ShowPassword_Click2(object sender, RoutedEventArgs e)
+        {
+            ShowHidePassword(passwordTextBox2, passwordBox2, eyeIcon2);
+        }
+        public void ShowHidePassword(TextBox passwordTextBox, PasswordBox passwordBox, FontAwesome.WPF.FontAwesome eye)
+        {
+            try
+            {
+                if (passwordTextBox.Visibility == Visibility.Collapsed)
+                {
+                    // Показать пароль
+                    passwordTextBox.Text = passwordBox2.Password;
+                    passwordTextBox.Visibility = Visibility.Visible;
+                    passwordBox.Visibility = Visibility.Collapsed;
+
+                    // Сменить иконку на закрытый глаз
+                    eye.Icon = FontAwesome.WPF.FontAwesomeIcon.EyeSlash;
+                }
+                else
+                {
+                    // Скрыть пароль
+                    passwordBox.Password = passwordTextBox.Text;
+                    passwordBox.Visibility = Visibility.Visible;
+                    passwordTextBox.Visibility = Visibility.Collapsed;
+
+                    // Сменить иконку на открытый глаз
+                    eye.Icon = FontAwesome.WPF.FontAwesomeIcon.Eye;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка ", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
     }
 }

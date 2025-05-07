@@ -20,13 +20,15 @@ namespace wpf_тесты_для_обучения
         public string Patronymic { get; set; }
         public Roles UserRole { get; set; } // Связь с ролью
         public string Password { get; set; }
+        public bool IsDone { get; set; }
+        public bool IsDone2 { get; set; }
 
         public string FullName => $"{FirstName} {Name} {Patronymic}";
         public string FullNameId => $"{Id}. {FirstName} {Name} {Patronymic}";
         public string FullNameRole => $"{FirstName} {Name} {Patronymic} - {UserRole.Title}";
         public Users() { }
 
-        public Users(int id, string firstName, string name, string patronymic, Roles userRole, string password)
+        public Users(int id, string firstName, string name, string patronymic, Roles userRole, string password, bool isDone)
         {
             Id = id;
             FirstName = firstName;
@@ -34,6 +36,7 @@ namespace wpf_тесты_для_обучения
             Patronymic = patronymic;
             UserRole = userRole;
             Password = password;
+            IsDone = isDone;
         }
 
         // Метод для получения строки в формате "Ф.И.О. - Название роли"
@@ -41,9 +44,8 @@ namespace wpf_тесты_для_обучения
         {
             return $"{FirstName} {Name} {Patronymic} - {UserRole.Title}";
         }
-    
 
-        // Метод для изменения пароля
+        
         public void ChangePassword(string newPassword)
             {
                 if (string.IsNullOrWhiteSpace(newPassword))

@@ -5,102 +5,81 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.IO;
+
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using wpf_тесты_для_обучения.Properties;
-using static MaterialDesignThemes.Wpf.Theme;
-using static System.Net.Mime.MediaTypeNames;
 using CheckBox = System.Windows.Controls.CheckBox;
 using RadioButton = System.Windows.Controls.RadioButton;
 using TextBox = System.Windows.Controls.TextBox;
+using MessageBox = System.Windows.MessageBox;
+using Panel = System.Windows.Controls.Panel;
+using Window = System.Windows.Window;
+using wpf_тесты_для_обучения.Enums;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace wpf_тесты_для_обучения
 {
-    /// <summary>
-    /// Логика взаимодействия для TestAddForm.xaml
-    /// </summary>
     public partial class TestAddForm : Window, INotifyPropertyChanged
     {
 
         private DatabaseHelper _databaseHelper;
         private int currentTest;
-        public enum TestMode
-        {
-            Create,    // Создание теста
-            Edit,      // Редактирование теста
-            View,      // Просмотр теста
-            Pass       // Прохождение теста
-        }
-
         private TestMode _mode;
-        public TestAddForm()
+        public TestAddForm(DatabaseHelper databaseHelper)
         {
-            InitializeComponent();
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-            LoadRolesIntoComboBox();
-        }
-        public TestAddForm(TestMode mode, int id =0)
-        {
-            InitializeComponent();
-            DataContext = this;
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-
-            CurrentTest = id;
-            IsViewMode = !(mode == TestMode.View);
-            _mode = mode;
-            switch (mode)
+            try
             {
-                case TestMode.Create:
-                    LoadRolesIntoComboBox();
-                    break;
+                InitializeComponent();
+                _databaseHelper = databaseHelper;
+                DataContext = this;
+                LoadRolesIntoComboBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка создания формы", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+        public TestAddForm(DatabaseHelper databaseHelper, TestMode mode, int id = 0)
+        {
+            try
+            {
+                InitializeComponent();
+                DataContext = this;
+                _databaseHelper = databaseHelper;
+                CurrentTest = id;
+                _mode = mode;
+                switch (mode)
+                {
+                    case TestMode.Create:
+                        LoadRolesIntoComboBox();
+                        break;
 
-                case TestMode.Edit:
-                    LoadRolesIntoComboBox();
-                    LoadTest(true);
-                    break;
-
-                case TestMode.View:
-                    columnGrid2.Width = new GridLength(0, GridUnitType.Star);
-                    LoadTest(false);
-                    break;
-
-                case TestMode.Pass:
-                    LoadTest(false);
-                    columnGrid2.Width = new GridLength(0, GridUnitType.Star);
-                    break;
+                    case TestMode.Edit:
+                        LoadRolesIntoComboBox();
+                        LoadTest();
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка создания формы", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
 
-        
 
-        private bool _viewMode = true;
-        public bool IsViewMode
+        public int CurrentTest
         {
-            get { return _viewMode; }
-            set
-            {
-                _viewMode = value;
-                OnPropertyChanged(nameof(IsViewMode));
-                OnPropertyChanged(nameof(ViewMode)); // Уведомляем, что ViewMode тоже изменился
-            }
+            get; set;
         }
-        public int CurrentTest 
-        {
-            get;set;
-        }
-
-        public Visibility ViewMode => IsViewMode ? Visibility.Visible : Visibility.Collapsed;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -116,142 +95,159 @@ namespace wpf_тесты_для_обучения
             rolesListBox.Items.Clear();
 
             rolesListBox.ItemsSource = roles;
-        }
+            if (_mode == TestMode.Edit)
+            {
+                // Получаем список Test_Id, которые связаны с данной ролью
+                string query = "SELECT Role_Id FROM RoleAccess WHERE Test_Id = @testId";
+                SqlParameter[] parameters = { new SqlParameter("@testId", CurrentTest) };
 
+                DataTable testRolesTable = _databaseHelper.ExecuteSelectQuery(query, parameters);
+                List<int> selectedRolesIds = testRolesTable.AsEnumerable()
+                                                          .Select(row => row.Field<int>("Role_Id"))
+                                                          .ToList();
+
+                // Отмечаем соответствующие тесты в ListBox
+                foreach (var role in roles)
+                {
+                    if (selectedRolesIds.Contains(role.Id))
+                    {
+                        role.IsSelected = true; // Устанавливаем свойство (нужно добавить в класс)
+                    }
+                }
+
+                // Обновляем ListBox
+                rolesListBox.Items.Refresh();
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MultipleQuestion newQuestion = new MultipleQuestion(false);
+            MultipleQuestion newQuestion = new MultipleQuestion(_databaseHelper, false);
             newQuestion.ParentStackPanel = questionsStackPanel;
             questionsStackPanel.Children.Add(newQuestion);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            SingleQuestion newQuestion = new SingleQuestion(false);
+            SingleQuestion newQuestion = new SingleQuestion(_databaseHelper, false);
             newQuestion.ParentStackPanel = questionsStackPanel;
             questionsStackPanel.Children.Add(newQuestion);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            SingleQuestion newQuestion = new SingleQuestion(true, "");
+            SingleQuestion newQuestion = new SingleQuestion(_databaseHelper, true, "");
             newQuestion.ParentStackPanel = questionsStackPanel;
             questionsStackPanel.Children.Add(newQuestion);
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            MultipleQuestion newQuestion = new MultipleQuestion(true, "");
+            MultipleQuestion newQuestion = new MultipleQuestion(_databaseHelper, true, "");
             newQuestion.ParentStackPanel = questionsStackPanel;
             questionsStackPanel.Children.Add(newQuestion);
         }
 
-        public void LoadTest(bool editMode = false)
+        public void LoadTest()
         {
-            string query = @"SELECT Title, Is_Completed FROM Tests WHERE Id = @id";
-
-            SqlParameter[] parameters = new SqlParameter[]
+            try
             {
+                string query = @"SELECT Title, Is_Completed FROM Tests WHERE Id = @id";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
                 new SqlParameter("@id", CurrentTest)
-            };
+                };
 
-            // Выполняем запрос один раз
-            DataTable result = _databaseHelper.ExecuteSelectQuery(query, parameters);
+                // Выполняем запрос один раз
+                DataTable result = _databaseHelper.ExecuteSelectQuery(query, parameters);
 
-            string title = result.Rows[0]["Title"].ToString();
-            double percent = Convert.ToDouble(result.Rows[0]["Is_Completed"]);
+                string title = result.Rows[0]["Title"].ToString();
+                double percent = Convert.ToDouble(result.Rows[0]["Is_Completed"]);
 
+                completedPercentTextBox.Text = percent.ToString();
+                titleTextBox.Visibility = Visibility.Collapsed;
 
-            titleTextBlock.Text = title;
-            titleTextBlock.Visibility = Visibility.Visible;
-            completedPercentTextBox.Text = percent.ToString();
-            titleTextBox.Visibility = Visibility.Collapsed;
-            if (_mode == TestMode.Pass)
-                endTestButton.Visibility = Visibility.Visible;
-            if (editMode)
-            {
-                titleTextBox.Text = title;
-                titleTextBox.Visibility = Visibility.Visible;
-                titleTextBlock.Visibility = Visibility.Collapsed;
-            }
-            
-
-            Tests test = new Tests(CurrentTest, title, percent);
-            test.LoadQuestionsFromDatabase();
-            foreach (Questions question in test.Questions)
-            {
-                if (!question.IsMultiple)
+                if (_mode == TestMode.Edit)
                 {
-                    SingleQuestion newQuestion;
-                    if (editMode)
-                    {
-                        if (question.Image != "")
-                        {
-                            newQuestion = new SingleQuestion(true, question, false, question.Image);
-                        }
-                        else
-                        {
-                            newQuestion = new SingleQuestion(false, question, false);
-                        }
-                    }
-                    else
-                    {
-                        if (question.Image != "")
-                        {
-                            newQuestion = new SingleQuestion(true, question, true, question.Image);
-                        }
-                        else
-                        {
-                            newQuestion = new SingleQuestion(false, question, true);
-                        }
-                    }
-                    newQuestion.ParentStackPanel = questionsStackPanel;
-                    questionsStackPanel.Children.Add(newQuestion);
-
-                    BaseQuestion.RenumberQuestions(questionsStackPanel);
-
+                    titleTextBox.Text = title;
+                    titleTextBox.Visibility = Visibility.Visible;
                 }
-                if (question.IsMultiple)
-                {
-                    MultipleQuestion newQuestion;
-                    if (editMode)
-                    {
-                        if (question.Image != "")
-                        {
-                            newQuestion = new MultipleQuestion(true, question, false, question.Image);
-                        }
-                        else
-                        {
-                            newQuestion = new MultipleQuestion(false, question, false);
-                        }
-                    }
-                    else
-                    {
-                        if (question.Image != "")
-                        {
-                            newQuestion = new MultipleQuestion(true, question, true, question.Image);
 
+
+                Tests test = new Tests(CurrentTest, title, percent);
+                test.LoadQuestionsFromDatabase(_databaseHelper);
+                foreach (Questions question in test.Questions)
+                {
+                    if (!question.IsMultiple)
+                    {
+                        SingleQuestion newQuestion;
+                        if (_mode == TestMode.Edit)
+                        {
+                            if (question.Image != "")
+                            {
+                                newQuestion = new SingleQuestion(_databaseHelper, true, question, false, question.Image);
+                            }
+                            else
+                            {
+                                newQuestion = new SingleQuestion(_databaseHelper, false, question, false);
+                            }
                         }
                         else
                         {
-                            newQuestion = new MultipleQuestion(false, question, true);
+                            if (question.Image != "")
+                            {
+                                newQuestion = new SingleQuestion(_databaseHelper, true, question, true, question.Image);
+                            }
+                            else
+                            {
+                                newQuestion = new SingleQuestion(_databaseHelper, false, question, true);
+                            }
                         }
+                        newQuestion.ParentStackPanel = questionsStackPanel;
+                        questionsStackPanel.Children.Add(newQuestion);
+                        BaseQuestion.RenumberQuestions(questionsStackPanel);
+
                     }
-                    newQuestion.ParentStackPanel = questionsStackPanel;
-                    questionsStackPanel.Children.Add(newQuestion);
-                    BaseQuestion.RenumberQuestions(questionsStackPanel);
+                    if (question.IsMultiple)
+                    {
+                        MultipleQuestion newQuestion;
+                        if (_mode == TestMode.Edit)
+                        {
+                            if (question.Image != "")
+                            {
+                                newQuestion = new MultipleQuestion(_databaseHelper, true, question, false, question.Image);
+                            }
+                            else
+                            {
+                                newQuestion = new MultipleQuestion(_databaseHelper, false, question, false);
+                            }
+                        }
+                        else
+                        {
+                            if (question.Image != "")
+                            {
+                                newQuestion = new MultipleQuestion(_databaseHelper, true, question, true, question.Image);
+
+                            }
+                            else
+                            {
+                                newQuestion = new MultipleQuestion(_databaseHelper, false, question, true);
+                            }
+                        }
+                        newQuestion.ParentStackPanel = questionsStackPanel;
+                        questionsStackPanel.Children.Add(newQuestion);
+                        BaseQuestion.RenumberQuestions(questionsStackPanel);
+                    }
                 }
             }
-            
-
-        }
-        private void updateError()
-        {
-            if (titleTextBox.Text == "Введите название теста ...")
+            catch (Exception ex)
             {
-                ErrorTextBlock.Visibility = Visibility.Visible;
-                ErrorTextBlock.Text = "Введите название теста";
+                // Вывод сообщения об ошибке при поиске файла
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                    $"Метод: {ex.TargetSite}\n" +
+                    $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки теста", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
+
         }
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
@@ -273,6 +269,7 @@ namespace wpf_тесты_для_обучения
                         ErrorTextBlock.Visibility = Visibility.Visible;
                         return;
                     }
+
                     double percent = Convert.ToDouble(completedPercentTextBox.Text);
                     string title = titleTextBox.Text;
                     if (_mode == TestMode.Create)
@@ -299,6 +296,10 @@ namespace wpf_тесты_для_обучения
                                 {
                                     ImageSource imageSource = singleQuestion.image.Source;
 
+                                    //MessageBox.Show(singleQuestion.ImagePath);
+                                    //image.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                                    //ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
+                                    //ImagePath = openFileDialog.FileName;
                                     imagePath = singleQuestion.SaveImage();
                                     if (string.IsNullOrEmpty(imagePath))
                                     {
@@ -326,6 +327,10 @@ namespace wpf_тесты_для_обучения
                                     if (answerChild is StackPanel stackPanel)
                                     {
                                         SortAnswersOut(stackPanel, questionId);
+                                    }
+                                    if (answerChild is Grid grid)
+                                    {
+                                        SortAnswersOut(grid, questionId);
                                     }
                                 }
                             }
@@ -362,9 +367,32 @@ namespace wpf_тесты_для_обучения
                                     {
                                         SortAnswersOut(stackPanel, questionId);
                                     }
+                                    if (answerChild is Grid grid)
+                                    {
+                                        SortAnswersOut(grid, questionId);
+                                    }
                                 }
                             }
                         }
+                        if (rolesListBox.ItemsSource is List<Roles> roles)
+                        {
+                            var selectedRoles = roles.Where(r => r.IsSelected).Select(r => r.Id).ToList();
+
+                            if (selectedRoles.Any())
+                            {
+                                foreach (int roleId in selectedRoles)
+                                {
+                                    string queryR = @"INSERT INTO RoleAccess (Role_Id, Test_Id) VALUES (@r_id, @t_id)";
+                                    SqlParameter[] parametersR = new SqlParameter[]
+                                    {
+                                        new SqlParameter("@r_id", roleId),
+                                        new SqlParameter("@t_id", testId)
+                                    };
+                                    _databaseHelper.ExecuteNonQuery(queryR, parametersR);
+                                }
+                            }
+                        }
+
                     }
                     if (_mode == TestMode.Edit)
                     {
@@ -428,7 +456,7 @@ namespace wpf_тесты_для_обучения
                                     }
                                 }
 
-                                if (singleQuestion.question != null) // Проверяем, существует ли вопрос (Id > 0)
+                                if (singleQuestion.question != null && singleQuestion.question.Id != 0) // Проверяем, существует ли вопрос (Id > 0)
                                 {
                                     // Обновляем существующий вопрос
                                     query = imagePath == null ?
@@ -508,6 +536,10 @@ namespace wpf_тесты_для_обучения
                                     {
                                         SortAnswersOut(stackPanel, singleQuestion.question.Id, singleQuestion.question);
                                     }
+                                    if (answerChild is Grid grid)
+                                    {
+                                        SortAnswersOut(grid, singleQuestion.question.Id, singleQuestion.question);
+                                    }
                                 }
                             }
                             if (child is MultipleQuestion multipleQuestion)
@@ -529,9 +561,9 @@ namespace wpf_тесты_для_обучения
                                         return;
                                     }
                                 }
-                                
 
-                                if (multipleQuestion.question != null) // Проверяем, существует ли вопрос (Id > 0)
+
+                                if (multipleQuestion.question != null && multipleQuestion.question.Id != 0) // Проверяем, существует ли вопрос (Id > 0)
                                 {
                                     query = imagePath == null ?
                                         @"UPDATE Questions SET Question_Text = @text WHERE Id = @id" :
@@ -609,9 +641,49 @@ namespace wpf_тесты_для_обучения
                                     {
                                         SortAnswersOut(stackPanel, multipleQuestion.question.Id, multipleQuestion.question);
                                     }
+                                    if (answerChild is Grid grid)
+                                    {
+                                        SortAnswersOut(grid, multipleQuestion.question.Id, multipleQuestion.question);
+                                    }
                                 }
                             }
                         }
+
+                        if (rolesListBox.ItemsSource is List<Roles> roles)
+                        {
+                            var selectedRoles = roles.Where(r => r.IsSelected).Select(r => r.Id).ToList();
+
+                            if (selectedRoles.Any())
+                            {
+                                using (SqlConnection connection = _databaseHelper.GetConnection())
+                                {
+                                    connection.Open();
+
+                                    // Удаляем старые записи для теста
+                                    string deleteQuery = "DELETE FROM RoleAccess WHERE Test_Id = @t_id";
+                                    using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
+                                    {
+                                        deleteCommand.Parameters.AddWithValue("@t_id", CurrentTest);
+                                        deleteCommand.ExecuteNonQuery();
+                                    }
+
+                                    // Добавляем только новые выбранные роли
+                                    string insertQuery = @"INSERT INTO RoleAccess (Role_Id, Test_Id) VALUES (@r_id, @t_id)";
+                                    using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                                    {
+                                        insertCommand.Parameters.Add("@r_id", SqlDbType.Int);
+                                        insertCommand.Parameters.AddWithValue("@t_id", CurrentTest);
+
+                                        foreach (int roleId in selectedRoles)
+                                        {
+                                            insertCommand.Parameters["@r_id"].Value = roleId;
+                                            insertCommand.ExecuteNonQuery();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
                     }
 
                     BaseQuestion.ResetQuestionCounter(); // Сбрасываем счётчик
@@ -619,86 +691,181 @@ namespace wpf_тесты_для_обучения
                     this.Close();
                 }
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка создания/редактирования теста", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
-       
+
         public void SortAnswersOut(StackPanel stackPanel, int questionId, Questions question = null)
         {
-
-            string answerText = "";
-            bool isCorrect = false;
-            int? answerId = null;
-            foreach (var stackChild in stackPanel.Children)
+            try
             {
-                if (stackChild is RadioButton radioButton )
+                string answerText = "";
+                bool isCorrect = false;
+                int? answerId = null;
+                foreach (var stackChild in stackPanel.Children)
                 {
-                    if (radioButton.Tag is int rbId)
+                    if (stackChild is RadioButton radioButton)
                     {
-                        answerId = rbId;
+                        if (radioButton.Tag is int rbId)
+                        {
+                            answerId = rbId;
+                        }
+                        isCorrect = radioButton.IsChecked == true;
                     }
-                    isCorrect = radioButton.IsChecked == true;
-                }
-                if (stackChild is CheckBox checkBox )
-                {
-                    if (checkBox.Tag is int cbId)
+                    if (stackChild is CheckBox checkBox)
                     {
-                        answerId = cbId;
+                        if (checkBox.Tag is int cbId)
+                        {
+                            answerId = cbId;
+                        }
+                        isCorrect = checkBox.IsChecked == true;
                     }
-                    isCorrect = checkBox.IsChecked == true;
+                    if (stackChild is TextBox textBox)
+                    {
+                        answerText = textBox.Text;
+                    }
                 }
-                if (stackChild is TextBox textBox)
+
+                answerId = question?.Answers.FirstOrDefault(a => a.Id == answerId)?.Id;
+
+
+                if (answerId.HasValue && answerId > 0) // Если у ответа уже есть ID, обновляем его
                 {
-                    answerText = textBox.Text;
-                }
-            }
+                    string updateQuery = @"UPDATE Answers SET Answer_Text = @text, Is_Correct = @correct WHERE Id = @answerId";
 
-            answerId = question?.Answers.FirstOrDefault(a => a.Id == answerId)?.Id;
-            
-
-            if (answerId.HasValue && answerId > 0) // Если у ответа уже есть ID, обновляем его
-            {
-                string updateQuery = @"UPDATE Answers SET Answer_Text = @text, Is_Correct = @correct WHERE Id = @answerId";
-
-                SqlParameter[] updateParameters = new SqlParameter[]
-                {
+                    SqlParameter[] updateParameters = new SqlParameter[]
+                    {
                     new SqlParameter("@answerId", answerId.Value),
                     new SqlParameter("@text", answerText),
                     new SqlParameter("@correct", isCorrect)
-                };
+                    };
 
-                int rowsAffected = _databaseHelper.ExecuteNonQuery(updateQuery, updateParameters);
+                    int rowsAffected = _databaseHelper.ExecuteNonQuery(updateQuery, updateParameters);
 
-                if (rowsAffected <= 0)
-                {
-                    MessageBox.Show("Ошибка при обновлении ответа.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    if (rowsAffected <= 0)
+                    {
+                        MessageBox.Show("Ошибка при обновлении ответа.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
                 }
-            }
-            else // Если ID нет, добавляем новый ответ
-            {
-                string insertQuery = @"INSERT INTO Answers (Question_Id, Answer_Text, Is_Correct) OUTPUT INSERTED.Id VALUES (@questionid, @text, @correct)";
-
-                SqlParameter[] insertParameters = new SqlParameter[]
+                else // Если ID нет, добавляем новый ответ
                 {
+                    string insertQuery = @"INSERT INTO Answers (Question_Id, Answer_Text, Is_Correct) OUTPUT INSERTED.Id VALUES (@questionid, @text, @correct)";
+
+                    SqlParameter[] insertParameters = new SqlParameter[]
+                    {
                     new SqlParameter("@questionid", questionId),
                     new SqlParameter("@text", answerText),
                     new SqlParameter("@correct", isCorrect)
-                };
+                    };
 
-                int newAnswerId = Convert.ToInt32(_databaseHelper.ExecuteScalar(insertQuery, insertParameters));
+                    int newAnswerId = Convert.ToInt32(_databaseHelper.ExecuteScalar(insertQuery, insertParameters));
 
-                if (newAnswerId <= 0)
-                {
-                    MessageBox.Show("Ошибка при добавлении ответа.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    if (newAnswerId <= 0)
+                    {
+                        MessageBox.Show("Ошибка при добавлении ответа.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    // Добавляем новый ответ в список question.Answers (если question не null)
+                    question?.Answers.Add(new Answers(newAnswerId, questionId, answerText, isCorrect));
                 }
-
-                // Добавляем новый ответ в список question.Answers (если question не null)
-                question?.Answers.Add(new Answers(newAnswerId, questionId, answerText, isCorrect));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка перебора вопросов", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
-        public List<int> GetAnswersIdsList(Panel answersPanel)
+        public void SortAnswersOut(Grid stackPanel, int questionId, Questions question = null)
+        {
+            try
+            {
+                string answerText = "";
+                bool isCorrect = false;
+                int? answerId = null;
+                foreach (var stackChild in stackPanel.Children)
+                {
+                    if (stackChild is RadioButton radioButton)
+                    {
+                        if (radioButton.Tag is int rbId)
+                        {
+                            answerId = rbId;
+                        }
+                        isCorrect = radioButton.IsChecked == true;
+                    }
+                    if (stackChild is CheckBox checkBox)
+                    {
+                        if (checkBox.Tag is int cbId)
+                        {
+                            answerId = cbId;
+                        }
+                        isCorrect = checkBox.IsChecked == true;
+                    }
+                    if (stackChild is TextBox textBox)
+                    {
+                        answerText = textBox.Text;
+                    }
+                }
+
+                answerId = question?.Answers.FirstOrDefault(a => a.Id == answerId)?.Id;
+
+
+                if (answerId.HasValue && answerId > 0) // Если у ответа уже есть ID, обновляем его
+                {
+                    string updateQuery = @"UPDATE Answers SET Answer_Text = @text, Is_Correct = @correct WHERE Id = @answerId";
+
+                    SqlParameter[] updateParameters = new SqlParameter[]
+                    {
+                    new SqlParameter("@answerId", answerId.Value),
+                    new SqlParameter("@text", answerText),
+                    new SqlParameter("@correct", isCorrect)
+                    };
+
+                    int rowsAffected = _databaseHelper.ExecuteNonQuery(updateQuery, updateParameters);
+
+                    if (rowsAffected <= 0)
+                    {
+                        MessageBox.Show("Ошибка при обновлении ответа.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+                else // Если ID нет, добавляем новый ответ
+                {
+                    string insertQuery = @"INSERT INTO Answers (Question_Id, Answer_Text, Is_Correct) OUTPUT INSERTED.Id VALUES (@questionid, @text, @correct)";
+
+                    SqlParameter[] insertParameters = new SqlParameter[]
+                    {
+                    new SqlParameter("@questionid", questionId),
+                    new SqlParameter("@text", answerText),
+                    new SqlParameter("@correct", isCorrect)
+                    };
+
+                    int newAnswerId = Convert.ToInt32(_databaseHelper.ExecuteScalar(insertQuery, insertParameters));
+
+                    if (newAnswerId <= 0)
+                    {
+                        MessageBox.Show("Ошибка при добавлении ответа.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    // Добавляем новый ответ в список question.Answers (если question не null)
+                    question?.Answers.Add(new Answers(newAnswerId, questionId, answerText, isCorrect));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                   $"Метод: {ex.TargetSite}\n" +
+                   $"Трассировка стека: {ex.StackTrace}", "Ошибка перебора вопросов", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+        public List<int> GetAnswersIdsList(StackPanel answersPanel)
         {
             List<int> answersId = new List<int>(); // Создаём список ID
 
@@ -709,6 +876,15 @@ namespace wpf_тесты_для_обучения
                 {
                     // Получаем ID из каждого StackPanel
                     int? idFromStackPanel = ExtractIdFromStackPanel(stackPanel);
+                    if (idFromStackPanel.HasValue)
+                    {
+                        answersId.Add(idFromStackPanel.Value); // Добавляем ID в список
+                    }
+                }
+                if (child is Grid grid)
+                {
+                    // Получаем ID из каждого StackPanel
+                    int? idFromStackPanel = ExtractIdFromStackPanel(grid);
                     if (idFromStackPanel.HasValue)
                     {
                         answersId.Add(idFromStackPanel.Value); // Добавляем ID в список
@@ -738,131 +914,69 @@ namespace wpf_тесты_для_обучения
 
             return null; // Если ID не найден, возвращаем null
         }
-        public List<int> GetSelectedAnswersIds(Panel answersPanel)
-        {
-            List<int> answersId = new List<int>(); // Создаём список ID
-
-            // Перебираем все элементы в AnswersPanel
-            foreach (var child in answersPanel.Children)
-            {
-                if (child is StackPanel stackPanel)
-                {
-                    // Получаем ID из каждого StackPanel
-                    int? idFromStackPanel = ExtractSelectedIdFromStackPanel(stackPanel);
-                    if (idFromStackPanel.HasValue)
-                    {
-                        answersId.Add(idFromStackPanel.Value); // Добавляем ID в список
-                    }
-                }
-            }
-
-            return answersId; // Возвращаем список всех ID
-        }
-
-        public int? ExtractSelectedIdFromStackPanel(StackPanel stackPanel)
+        public int? ExtractIdFromStackPanel(Grid stackPanel)
         {
             // Перебираем все дочерние элементы StackPanel
             foreach (var stackChild in stackPanel.Children)
             {
                 // Извлекаем ID из радио-кнопок
-                if (stackChild is RadioButton radioButton && radioButton.Tag is int rbId )
+                if (stackChild is RadioButton radioButton && radioButton.Tag is int rbId)
                 {
-                    if((bool)radioButton.IsChecked)
                     return rbId; // Возвращаем ID радио-кнопки
                 }
 
                 // Извлекаем ID из чекбоксов
                 if (stackChild is CheckBox checkBox && checkBox.Tag is int cbId)
                 {
-                    if ((bool)checkBox.IsChecked)
-                        return cbId; // Возвращаем ID чекбокса
+                    return cbId; // Возвращаем ID чекбокса
                 }
             }
 
             return null; // Если ID не найден, возвращаем null
         }
+        public List<int> GetSelectedAnswersIds(Panel answersPanel)
+        {
+            List<int> selectedAnswerIds = new List<int>();
 
+            foreach (var child in answersPanel.Children)
+            {
+                if (child is Grid grid)
+                {
+                    foreach (UIElement element in grid.Children)
+                    {
+                        if (element is CheckBox checkBox && checkBox.IsChecked == true)
+                        {
+                            if (checkBox.Tag is int id)
+                            {
+                                selectedAnswerIds.Add(id);
+                            }
+                        }
+                        if (element is RadioButton radioButton && radioButton.IsChecked == true)
+                        {
+                            if (radioButton.Tag is int id)
+                            {
+                                selectedAnswerIds.Add(id);
+                            }
+                        }
+                    }
+                }
+            }
 
+            return selectedAnswerIds;
+        }
         private void titleTextBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             titleTextBox.SelectAll();
         }
-
         private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(titleTextBox.Text != "Введите название теста ...")
-            titleTextBox.Foreground = Brushes.Black;
+            if (titleTextBox.Text != "Введите название теста ...")
+                titleTextBox.Foreground = Brushes.Black;
         }
-
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             BaseQuestion.ResetQuestionCounter();
         }
 
-        private void endingTest_Click(object sender, RoutedEventArgs e)
-        {
-            double result = 0;
-            
-            foreach (var child in questionsStackPanel.Children)
-            {
-                if (child is SingleQuestion singleQuestion)
-                {
-                    Dictionary<int, bool> boolListBD = singleQuestion.question.GetAnswerValidity();
-                    List<int> selectedAnswerId = GetSelectedAnswersIds(singleQuestion.AnswersPanel);
-                    if (selectedAnswerId.Count == 0)
-                    { MessageBox.Show($"Вы не выбрали ответ на вопрос"); return; }
-                    boolListBD.TryGetValue(selectedAnswerId[0], out bool t);
-                    if (t)
-                        result += 1;
-
-                }
-                if (child is MultipleQuestion multipleQuestion)
-                {
-                    Dictionary<int, bool> boolListBD = multipleQuestion.question.GetAnswerValidity();
-                    List<int> selectedAnswerIds = GetSelectedAnswersIds(multipleQuestion.AnswersPanel);
-                    if (selectedAnswerIds.Count == 0)
-                    { MessageBox.Show("Вы не выбрали ответ на вопрос"); return; }
-                    // Количество верных ответов в базе
-                    int totalCorrectAnswers = boolListBD.Count(kvp => kvp.Value);
-                    double priceAnswer = 1.0 / totalCorrectAnswers;
-                    priceAnswer = Math.Round(priceAnswer, 4);
-
-                    // Количество верных ответов, выбранных пользователем
-                    int correctAnswersCount = selectedAnswerIds.Count(answerId =>
-                        boolListBD.TryGetValue(answerId, out bool isCorrect) && isCorrect);
-                    int incorrectAnswersCount = selectedAnswerIds.Count(answerId =>
-                        boolListBD.TryGetValue(answerId, out bool isCorrect) && !isCorrect);
-
-
-                    result += Math.Round(correctAnswersCount * priceAnswer - incorrectAnswersCount * priceAnswer, 2);
-                }
-            }
-            if (_databaseHelper._currentUser.UserRole.Id != 1)
-            {
-                string query = @"INSERT INTO Results (User_Id, Test_Id, Score) VALUES (@user, @testid, @score)";
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                                    new SqlParameter("@user", UserSession.SelectedUser.Id),
-                                    new SqlParameter("@testid", CurrentTest),
-                                    new SqlParameter("@score", result)
-                };
-                _databaseHelper.ExecuteNonQuery(query, parameters);
-
-            }
-            Tests test = new Tests();
-            test.Id = CurrentTest;
-            double percent = Math.Round(result / test.Count * 100, 2);
-            string status = percent >= test.IsCompleted ? "пройден" : "провален";
-
-            MessageBox.Show(
-                $"Тест {status}\r\n" +
-                $"Ваш результат прохождения теста составил:\r\n" +
-                $"{result} из {test.Count}\r\n" +
-                $"{percent}%",
-                "Результат"
-            );
-
-            this.Close();
-        }
     }
 }

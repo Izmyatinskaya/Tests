@@ -5,72 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
-        Title="MainForm" Height="520" Width="700" MinWidth="700" MinHeight="520" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Главная" Height="520" Width="1000" MinWidth="700" MinHeight="520" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="{StaticResource WindowDefaultBackground}" Icon="/Frame 8.png">
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
-            <RowDefinition Height="10*" />
+            <!--<RowDefinition Height="60" />
+            <RowDefinition Height="10*" />-->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="290"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0"
-                Grid.Row="0"
-                Style="{StaticResource OrangeButtonStyle}"
-                Content="Назад"
-                FontSize="20" 
-                Width="200"
-                Click="Button_Click"
-                Margin="10,10,0,10"/>
-        
-        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,0,0,0">
-            <Label FontSize="14">
-                <TextBlock Name="countLabel" Text="Всего тестов: " TextWrapping="Wrap"/>
-            </Label>
-            <Label FontSize="14">
-                <TextBlock Name="testCountLabel" Text="Выполнено тестов: 1 из 5" TextWrapping="Wrap"/>
-            </Label>
-            <Label FontSize="14">
-                <TextBlock Text="Среднее количество попыток: " TextWrapping="Wrap"/>
-            </Label>
-            <Label FontSize="14">
-                <TextBlock Text="Средний процент прохождения: " TextWrapping="Wrap"/>
-            </Label>
-            
-        </StackPanel>
+        <Border Style="{StaticResource LightBorder}"  
+                Margin="30 30 20 30 " 
+                Grid.Column="0">
+            <StackPanel  Grid.Row="1" Grid.Column="0" Margin="10,0,0,10">
+                <DockPanel Margin="0 0 0 30">
+                    <Image Source="/User.png" Width="52" HorizontalAlignment="Left" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Name="userNameTextBlock" Text="Иванов Иван Ивановович" Style="{StaticResource BaseTextStyle}" VerticalAlignment="Center"  />
+                </DockPanel>
+                <Label>
+                    <TextBlock Style="{StaticResource BaseTextStyle}" Name="countLabel" Text="Всего тестов:" />
+                </Label>
+                <Label>
+                    <TextBlock Style="{StaticResource BaseTextStyle}" Name="testCountLabel" Text="Пройдено тестов:" />
+                </Label>
+                <!--<Label FontSize="14">
+                    <TextBlock Style="{StaticResource DefaultTextBlockStyle}" Name="averageCountAttemptsLabel" Text="Среднее количество попыток: " TextWrapping="Wrap"/>
+                </Label>-->
 
-        <ScrollViewer  Grid.Row="1" Grid.Column="1">
-            
-            <WrapPanel Name="wrapPanel"  Grid.Row="1" Grid.Column="1" ScrollViewer.CanContentScroll="True">
-                <!-- Пример фиксированных элементов -->
-                <StackPanel>
-                    <Button Content="Тест №1" Width="200" Height="200" Margin="10" BorderBrush="#FFFB9100" Background="#FFE4FFCB" BorderThickness="1,1,1,1" FontFamily="Arial" FontSize="16"/>
-                    <Button x:Name="ResultsButton" Width="200"  Background="White" BorderBrush="#FFFB9100" BorderThickness="1" Padding="10">
-                        <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock Text="Результаты" VerticalAlignment="Center" Margin="5,0"/>
-                                <TextBlock Text="▼" FontSize="14" VerticalAlignment="Center"/>
-                            </StackPanel>
-                            <DataGrid>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="№" Binding="{Binding Id}" />
-                                    <DataGridTextColumn Header="Дата" Binding="{Binding Title}" />
-                                    <DataGridTextColumn Header="Результат" Binding="{Binding Count}" />
-                                </DataGrid.Columns>
+                <Button Margin="0 30 0 0" Style="{StaticResource OrangeButtonStyle}"
+                        Content="Выйти"
+                        Click="Button_Click"
+                        />
+            </StackPanel>
+        </Border>
 
-                            </DataGrid>
-                        </StackPanel>
-                    </Button>
+        <Border  Grid.Column="1" Style="{StaticResource LightBorder}"  
+                Margin="30 30 20 30 " Padding="15,15,0,15">
+            <ScrollViewer  Margin="10 0 0 0" >
+                <WrapPanel  Name="wrapPanel"  Grid.Row="1" Grid.Column="1" ScrollViewer.CanContentScroll="True">
+                    <!-- Пример фиксированных элементов -->
+                    <StackPanel Margin="10,20,20,0">
+                        <StackPanel.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                      Color="Black"
+                      ShadowDepth="5" Direction="20"/>
+                        </StackPanel.Effect>
+                        <Border Style="{StaticResource DarkBorder}" Padding="0" 
+                                 BorderThickness="1,1,1,0" Margin="0,0,0,-7" >
+                            
+                            <Button Height="270" Width="260" BorderThickness="0,0,0,0" Background="White" VerticalAlignment="Top" >
+                                <!-- Основное содержимое кнопки -->
+                                    <StackPanel Grid.Row="0" VerticalAlignment="Top" Margin="10,10,10,0" >
+                                        <TextBlock Text="Общие понятия, номенклатура деталей" Style="{StaticResource SubheaderTextStyle}" VerticalAlignment="Top" />
+                                        <TextBlock Text="7 вопросов" Style="{StaticResource BaseTextStyle}" Margin="0,25,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Text="порог прохождения:" Style="{StaticResource BaseTextStyle}" Margin="0,15,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Text="90% (6 вопросов)" Style="{StaticResource BaseTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,50"/>
+                                    </StackPanel>
 
+                            </Button>
+                        </Border>
+                        <Button Style="{StaticResource GreyButtonStyle}" 
+                                 Grid.Row="1" 
+                                 Content="Результаты ▼"
+                                 Width="264"/>      
+
+                        <ListBox >
+                            <ListBoxItem>cdkj</ListBoxItem>
+                            <ListBoxItem>cdkj</ListBoxItem>
+                            <ListBoxItem>cdkj</ListBoxItem>
+                            <ListBoxItem>cdkj</ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
                     
-                </StackPanel>
-                <Button Content="Тест №2" Width="200" Height="200" Margin="10" BorderBrush="#FFFB9100" Background="#FFFFC9C9" FontFamily="Arial" FontSize="16" />
-                <Button Content="Тест №3" Width="200" Height="200" Margin="10" BorderBrush="#FFFB9100" Background="White" FontFamily="Arial" FontSize="16" />
+                </WrapPanel>
+            </ScrollViewer>
+        </Border>
 
-            </WrapPanel>
-        </ScrollViewer>
 
     </Grid>
 

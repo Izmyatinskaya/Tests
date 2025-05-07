@@ -30,88 +30,136 @@ namespace wpf_тесты_для_обучения
         public bool IsCorrect { get; set; }
         private string _path;
         private bool returnIdOnClose= false;
-        public AddQuestionForm()
-        { 
-            InitializeComponent();
-            this.DataContext = this;
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-            LoadTestsIntoComboBox();
+        public AddQuestionForm(DatabaseHelper databaseHelper)
+        {
+            try
+            {
+                InitializeComponent();
+                _databaseHelper = databaseHelper;
+                this.DataContext = this;
+                //_databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                LoadTestsIntoComboBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки формы доб вопроса", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void LoadTestsIntoComboBox()
         {
-            // Получаем список пользователей с ролями
-            List<Tests> tests = _databaseHelper.GetTestsList();
+            try
+            {
+                // Получаем список пользователей с ролями
+                List<Tests> tests = _databaseHelper.GetTestsList();
 
-            // Очищаем ComboBox перед добавлением данных
-            testsComboBox.Items.Clear();
+                // Очищаем ComboBox перед добавлением данных
+                testsComboBox.Items.Clear();
 
-            testsComboBox.ItemsSource = tests;
+                testsComboBox.ItemsSource = tests;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки в комбобокс", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Tests test = testsComboBox.SelectedItem as Tests;
-            string text = questionTextBox.Text;
-            _path = Questions.SaveImage(_path);
-            if (UpdateErrors() > 0) return;
-
-            string query = _path != null ?
-                @"INSERT INTO Questions (Test_Id, Question_Text, Image) VALUES (@testId, @text, @image)" :
-                @"INSERT INTO Questions (Test_Id, Question_Text) VALUES (@testId, @text)";
-
-
-            SqlParameter[] parameters = _path != null ? new SqlParameter[]
+            try
             {
+                Tests test = testsComboBox.SelectedItem as Tests;
+                string text = questionTextBox.Text;
+                _path = Questions.SaveImage(_path);
+                if (UpdateErrors() > 0) return;
+
+                string query = _path != null ?
+                    @"INSERT INTO Questions (Test_Id, Question_Text, Image) VALUES (@testId, @text, @image)" :
+                    @"INSERT INTO Questions (Test_Id, Question_Text) VALUES (@testId, @text)";
+
+
+                SqlParameter[] parameters = _path != null ? new SqlParameter[]
+                {
                 new SqlParameter("@testId", test.Id),
                 new SqlParameter("@text", text),
                 new SqlParameter("@image", _path)
-            } :
-            new SqlParameter[]
-            {
+                } :
+                new SqlParameter[]
+                {
                 new SqlParameter("@testId", test.Id),
                 new SqlParameter("@text", text)
-            };
+                };
 
-            _databaseHelper.ExecuteNonQuery(query, parameters);
+                _databaseHelper.ExecuteNonQuery(query, parameters);
 
-            MessageBox.Show("Вопрос успешно добавлен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Вопрос успешно добавлен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            this.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка добавления вопроса", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void LoadImage_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            try
             {
-                Title = "Выберите изображение",
-                Filter = "Изображения (*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp",
-                Multiselect = false
-            };
+                OpenFileDialog openFileDialog = new OpenFileDialog
+                {
+                    Title = "Выберите изображение",
+                    Filter = "Изображения (*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp",
+                    Multiselect = false
+                };
 
-            if (openFileDialog.ShowDialog() == true)
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    string filePath = openFileDialog.FileName;
+                    _path = filePath;// Questions.SaveImage(filePath);
+                    PreviewImage.Source = new BitmapImage(new Uri(filePath));
+                }
+            }
+            catch (Exception ex)
             {
-                string filePath = openFileDialog.FileName;
-                _path = filePath;// Questions.SaveImage(filePath);
-                PreviewImage.Source = new BitmapImage(new Uri(filePath));
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки картинки", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
         protected int UpdateErrors()
         {
-            errorTextBlock.Inlines.Clear(); // Очищаем текущие инлайны
-            if (testsComboBox.SelectedItem as Tests == null)
+            try
             {
-                errorTextBlock.Inlines.Add(new LineBreak());
-                errorTextBlock.Inlines.Add(new Run { Text = "! " });
-                errorTextBlock.Inlines.Add(new Run { Text = "Вы не выбрали тест" });
+                errorTextBlock.Inlines.Clear(); // Очищаем текущие инлайны
+                if (testsComboBox.SelectedItem as Tests == null)
+                {
+                    errorTextBlock.Inlines.Add(new LineBreak());
+                    errorTextBlock.Inlines.Add(new Run { Text = "! " });
+                    errorTextBlock.Inlines.Add(new Run { Text = "Вы не выбрали тест" });
+                }
+                if (questionTextBox.Text == "")
+                {
+                    errorTextBlock.Inlines.Add(new LineBreak());
+                    errorTextBlock.Inlines.Add(new Run { Text = "! " });
+                    errorTextBlock.Inlines.Add(new Run { Text = "Вы не ввели вопрос" });
+                }
+                return errorTextBlock.Inlines.Count;
             }
-            if (questionTextBox.Text == "")
+            catch (Exception ex)
             {
-                errorTextBlock.Inlines.Add(new LineBreak());
-                errorTextBlock.Inlines.Add(new Run { Text = "! " });
-                errorTextBlock.Inlines.Add(new Run { Text = "Вы не ввели вопрос" });
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                  $"Метод: {ex.TargetSite}\n" +
+                  $"Трассировка стека: {ex.StackTrace}", "Ошибка обновления поля ошибки", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return -1;
             }
-            return errorTextBlock.Inlines.Count;
+            
         }
         private void goBack_MouseDown(object sender, MouseButtonEventArgs e)
         {

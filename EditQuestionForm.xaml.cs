@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 using wpf_тесты_для_обучения.Properties;
 
 namespace wpf_тесты_для_обучения
@@ -27,29 +28,38 @@ namespace wpf_тесты_для_обучения
         public bool IsCorrect { get; set; }
         private string _path;
         private Questions _question;
-        public EditQuestionForm(Questions question)
+        public EditQuestionForm(Questions question, DatabaseHelper databaseHelper)
         {
-            InitializeComponent();
-            this.DataContext = this;
-            _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
-            LoadTestsIntoComboBox();
-            _question = question;
-            questionTextBox.Text = _question.QuestionText;
-            testsComboBox.SelectedItem = testsComboBox.Items
-            .Cast<Tests>()
-            .FirstOrDefault(q => q.Id == _question.TestId);
-
-            _path = question.Image;
-
-            if (!string.IsNullOrEmpty(_path))
+            try
             {
-                PreviewImage.Source = new BitmapImage(new Uri("file:///" + System.IO.Path.Combine(Directory.GetCurrentDirectory(), _path).Replace("\\", "/")));
-            }
-            else
-            {
-                PreviewImage.Source = null;
-            }
+                InitializeComponent();
+                this.DataContext = this;
+                _databaseHelper = databaseHelper;
+                //string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DB.mdf");
+                //_databaseHelper = new DatabaseHelper($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True");
+                //_databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                LoadTestsIntoComboBox();
+                _question = question;
+                questionTextBox.Text = _question.QuestionText;
+                testsComboBox.SelectedItem = testsComboBox.Items
+                .Cast<Tests>()
+                .FirstOrDefault(q => q.Id == _question.TestId);
 
+                _path = question.Image;
+
+                if (!string.IsNullOrEmpty(_path))
+                {
+                    PreviewImage.Source = new BitmapImage(new Uri("file:///" + System.IO.Path.Combine(Directory.GetCurrentDirectory(), _path).Replace("\\", "/")));
+                }
+                else
+                {
+                    PreviewImage.Source = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при отключении базы данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void LoadTestsIntoComboBox()

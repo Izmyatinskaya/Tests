@@ -8,10 +8,10 @@
         Title="Регистрация"
         Width="800"
         Height="650"
-        Background="White"
+        Background="{StaticResource WindowDefaultBackground}"
         WindowStartupLocation="CenterScreen">
 
-    <Grid Width="800" Height="565">
+    <Grid Width="800" Height="600">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -32,9 +32,7 @@
             <!-- Группа ФИО -->
             <StackPanel Orientation="Vertical" Margin="0,10,0,0">
                 <TextBlock Text="Введите фамилию" 
-                           FontFamily="Arial" 
-                           FontSize="16" 
-                           Foreground="Black" />
+                           Style="{StaticResource DefaultTextBlockStyle}" />
                 <TextBox Name="familiyaTextBox"
                          Height="30"
                          BorderBrush="#FFABADB3"
@@ -42,9 +40,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="0,10,0,0">
                 <TextBlock Text="Введите имя" 
-                           FontFamily="Arial" 
-                           FontSize="16" 
-                           Foreground="Black" />
+                           Style="{StaticResource DefaultTextBlockStyle}" />
                 <TextBox Name="nameTextBox"
                          Height="30" 
                          BorderBrush="#FFABADB3" 
@@ -52,9 +48,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="0,10,0,0">
                 <TextBlock Text="Введите отчество" 
-                           FontFamily="Arial" 
-                           FontSize="16" 
-                           Foreground="Black" />
+                          Style="{StaticResource DefaultTextBlockStyle}" />
                 <TextBox Name="patronymicTextBox"
                          Height="30" 
                          BorderBrush="#FFABADB3" 
@@ -64,13 +58,9 @@
             <!-- Группа выбора должности -->
             <StackPanel Orientation="Vertical" Margin="0,15,0,0">
                 <TextBlock Text="Выберите должность" 
-               FontFamily="Arial" 
-               FontSize="16" 
-               Foreground="Black" />
+             Style="{StaticResource DefaultTextBlockStyle}" />
                 <ComboBox Name="rolesComboBox"
-                          Height="30"
-                          BorderThickness="1"
-                          BorderBrush="Red" >   
+                          Height="30" >   
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Title}" />
@@ -82,9 +72,7 @@
             <!-- Группа ввода пароля -->
             <StackPanel Orientation="Vertical" Margin="0,15,0,0">
                 <TextBlock Text="Введите пароль" 
-               FontFamily="Arial" 
-               FontSize="16" 
-               Foreground="Black" />
+              Style="{StaticResource DefaultTextBlockStyle}"/>
                 <Grid>
                     <!-- PasswordBox -->
                     <PasswordBox Name="passwordBox1"
@@ -106,9 +94,7 @@
 
             <StackPanel Orientation="Vertical" Margin="0,10,0,5">
                 <TextBlock Text="Повторите пароль" 
-               FontFamily="Arial" 
-               FontSize="16" 
-               Foreground="Black" />
+             Style="{StaticResource DefaultTextBlockStyle}" />
                 <Grid>
                     <!-- PasswordBox -->
                     <PasswordBox Name="passwordBox2"
@@ -137,9 +123,8 @@
                        Margin="0,0,0,0"/>
             <!-- CheckBox для отображения/скрытия пароля -->
             <CheckBox Content="Показать пароль" 
-                      FontFamily="Arial" 
-                      FontSize="14" 
-                      Margin="0,0,0,0"
+                        Style="{StaticResource CheckBoxStyle}" 
+                     
                       Checked="ShowPassword_Checked" 
                       Unchecked="ShowPassword_Checked" />
 
