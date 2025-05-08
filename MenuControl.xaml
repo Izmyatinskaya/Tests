@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="wpf_тесты_для_обучения.MenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:wpf_тесты_для_обучения"
+             mc:Ignorable="d" 
+               d:DesignHeight="450" d:DesignWidth="200">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Border Style="{StaticResource MenuBorder}">
+        <ItemsControl x:Name="MenuItemsControl" 
+              ItemsSource="{Binding MenuItems, RelativeSource={RelativeSource AncestorType=UserControl}}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Button Content="{Binding Title}" 
+                                Style="{Binding Style}" 
+                                Command="{Binding Command}"
+                                CommandParameter="{Binding CommandParameter}"
+                                Click="MenuItem_Click"/>
+
+                        <ItemsControl ItemsSource="{Binding Children}" 
+                                      Visibility="{Binding IsExpanded, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Button Content="{Binding Title}" 
+                                                Style="{Binding Style}" 
+                                                Command="{Binding Command}"
+                                                CommandParameter="{Binding CommandParameter}"
+                                                Click="MenuItem_Click"/>
+
+                                        <ItemsControl ItemsSource="{Binding Children}" 
+                                                    Visibility="{Binding IsExpanded, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="{Binding Title}" 
+                                                            Style="{Binding Style}" 
+                                                            Command="{Binding Command}"
+                                                            CommandParameter="{Binding CommandParameter}"
+                                                            Click="MenuItem_Click"
+                                                            />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Border>
+</UserControl>

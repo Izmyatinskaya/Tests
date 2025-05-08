@@ -1,0 +1,153 @@
+﻿<Window x:Class="wpf_тесты_для_обучения.UserAddForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:wpf_тесты_для_обучения"
+        mc:Ignorable="d"
+        Title="Добавление нового пользователя"
+        Width="700"
+        Background="{StaticResource WindowDefaultBackground}"
+        WindowStartupLocation="CenterScreen" MinHeight="650" Icon="/Frame 8.png" Height="650" MaxHeight="650" ResizeMode="NoResize">
+
+    <Grid Margin="73,35,73,35">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Новый пользователь"
+                   Name="titleTextBlock"
+                   TextAlignment="Center"
+                   Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,10" />
+
+        <!-- Основная часть -->
+        <Border Grid.Row="1"
+                Style="{StaticResource LightBorder}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Width="400">
+            <StackPanel>
+
+                <!-- Фамилия -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Введите фамилию"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <TextBox Name="familiyaTextBox"
+                             Style="{StaticResource TextBoxStyle}" />
+                </StackPanel>
+
+                <!-- Имя -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Введите имя"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <TextBox Name="nameTextBox"
+                             Style="{StaticResource TextBoxStyle}" />
+                </StackPanel>
+
+                <!-- Отчество -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <TextBlock Text="Введите отчество"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <TextBox Name="patronymicTextBox"
+                             Style="{StaticResource TextBoxStyle}" />
+                </StackPanel>
+
+                <!-- Должность -->
+                <StackPanel Orientation="Vertical" Margin="0,15,0,0">
+                    <TextBlock Text="Выберите должность"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <ComboBox Name="rolesComboBox"
+                              Style="{StaticResource ComboBoxStyle1}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <TextBlock Text="Новая должность(роль)"
+                              Style="{StaticResource LinkTextStyle}"
+                               Margin="0,0,10,0"
+                               MouseDown="goToAddNewRole_Click" />
+                </StackPanel>
+
+                <!-- Пароль -->
+                <StackPanel Orientation="Vertical" Margin="0,15,0,0">
+                    <TextBlock Text="Введите пароль"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <Grid>
+                        <PasswordBox Name="passwordBox1"
+                                     Style="{StaticResource PasswordBoxStyle1}"
+                                     Height="30"
+                                     PasswordChanged="PasswordBox1_PasswordChanged" 
+                                     Width="355" HorizontalAlignment="Left" />
+                        <TextBox Name="passwordTextBox1"
+                                 Style="{StaticResource PasswordTextBoxStyle}"
+                                 Height="30"
+                                 Visibility="Collapsed" />
+                        <Button Style="{StaticResource TogglePasswordButtonStyle}" 
+                                Width="30" Height="30"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Click="ShowPassword_Click">
+                            <fa:FontAwesome Icon="Eye" Name="eyeIcon" FontSize="16"/>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Повтор пароля -->
+                <StackPanel Orientation="Vertical" Margin="0,10,0,5">
+                    <TextBlock Text="Повторите пароль"
+                               Style="{StaticResource BaseTextStyle}" />
+                    <Grid>
+                        <PasswordBox Name="passwordBox2"
+                                     Height="30"
+                                     Style="{StaticResource PasswordBoxStyle1}"
+                                     PasswordChanged="PasswordBox2_PasswordChanged" 
+                                     Width="355" HorizontalAlignment="Left" />
+                        <TextBox Name="passwordTextBox2"
+                                 Height="30"
+                                 Style="{StaticResource PasswordTextBoxStyle}"
+                                 Visibility="Collapsed" />
+                        <Button Style="{StaticResource TogglePasswordButtonStyle}" 
+                                Width="30" Height="30"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Click="ShowPassword_Click2">
+                            <fa:FontAwesome Icon="Eye" Name="eyeIcon2" FontSize="16"/>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Ошибка -->
+                <TextBlock Name="errorTextBlock"
+                           Text=""
+                           FontFamily="Arial"
+                           FontSize="14"
+                           Foreground="Red"
+                           Visibility="Collapsed"
+                           Margin="0" />
+
+                <!-- Кнопки -->
+                <StackPanel 
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0,20,0,0">
+                    <TextBlock Text="Назад"
+                               Name="goBackTextBlock"
+                               Style="{StaticResource LinkTextStyle}"
+                               MouseDown="TextBlock_MouseDown"
+                               Margin="0,10,12,10" />
+                    <Button Content="Добавить"
+                            Name="addButton"
+                            Style="{StaticResource OrangeButtonStyle}"
+                            Click="Button_Click" />
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
