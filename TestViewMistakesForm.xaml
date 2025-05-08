@@ -9,7 +9,8 @@
         Width="715"
         Height="650"
         Background="{StaticResource WindowDefaultBackground}"
-        WindowStartupLocation="CenterScreen" Closing="Window_Closing" MinWidth="698" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Icon="/Frame 8.png">
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing" MinWidth="698" 
+        ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" >
     <Grid x:Name="myGrid" Margin="73,35,73,35">
 
         <!-- Определяем строки -->

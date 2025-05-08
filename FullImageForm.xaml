@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
-        Title="Просмотр картинки" Icon="/Frame 8.png" Height="450" Width="800" Closed="Window_Closed" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Просмотр картинки" Height="450" Width="800" Closed="Window_Closed" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="LeftColumn" MinWidth="20" Width="250"/>

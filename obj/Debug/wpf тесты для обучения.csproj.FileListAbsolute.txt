@@ -15,11 +15,9 @@ D:\Проекты\Тесты обучение WPF\wpf тесты для обуч
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Debug\System.Numerics.Vectors.xml
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\wpf тесты для обучения.csproj.AssemblyReference.cache
-D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\RegistrationForm.g.cs
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\App.g.cs
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\wpf тесты для обучения_MarkupCompile.cache
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\wpf тесты для обучения_MarkupCompile.lref
-D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\RegistrationForm.baml
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\wpf тесты для обучения.g.resources
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\wpf_тесты_для_обучения.Properties.Resources.resources
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\wpf тесты для обучения.csproj.GenerateResource.cache

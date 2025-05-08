@@ -1,0 +1,20 @@
+# Сборка
+bin/
+obj/
+[Bb]uild/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet
+[Nn]u[Gg]et/
+*.nupkg
+packages/
+
+# Резервные файлы
+*.bak
+*.tmp

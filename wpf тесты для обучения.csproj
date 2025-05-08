@@ -52,6 +52,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo2.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
@@ -169,9 +172,6 @@
     <Compile Include="Properties\RoleAccess.cs" />
     <Compile Include="Properties\Test.cs" />
     <Compile Include="Properties\User.cs" />
-    <Compile Include="RegistrationForm.xaml.cs">
-      <DependentUpon>RegistrationForm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ReportPeriodForm.xaml.cs">
       <DependentUpon>ReportPeriodForm.xaml</DependentUpon>
     </Compile>
@@ -254,10 +254,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MultipleQuestion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RegistrationForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -426,6 +422,15 @@
     </Content>
     <Resource Include="LoadImage.png" />
     <Resource Include="logobelar-1 2.jpg" />
+    <Resource Include="logo1-32.png" />
+    <Resource Include="logo1-16.png" />
+    <Resource Include="logo1-64.ico" />
+    <Resource Include="logo1-256.ico" />
+    <Resource Include="logo1-16.ico" />
+    <Resource Include="logo1-24.ico" />
+    <Resource Include="logo1-32.ico" />
+    <Resource Include="logo1.ico" />
+    <Resource Include="logo2.ico" />
     <Content Include="logobelar-1.png" />
     <Content Include="logobelar.png" />
     <Resource Include="logoMain.png" />

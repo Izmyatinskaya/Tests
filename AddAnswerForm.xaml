@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Background="{StaticResource WindowDefaultBackground}"
         Title="Добавить ответ" Height="450" Width="600"  
-        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/Frame 8.png">
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="73,35,73,35">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

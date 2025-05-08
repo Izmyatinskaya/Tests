@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
-        Title="Главная" Height="520" Width="1000" MinWidth="700" MinHeight="520" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="{StaticResource WindowDefaultBackground}" Icon="/Frame 8.png">
+        Title="Главная" Height="520" Width="1000" 
+        MinWidth="700" MinHeight="520" 
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" 
+        Background="{StaticResource WindowDefaultBackground}">
 
     <Grid>
         <Grid.RowDefinitions>

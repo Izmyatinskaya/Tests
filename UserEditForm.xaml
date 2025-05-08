@@ -9,7 +9,7 @@
         Title="Изменение пользователя"
         Width="700"
         Background="{StaticResource WindowDefaultBackground}"
-        WindowStartupLocation="CenterScreen" Height="650" ResizeMode="NoResize" Icon="/Frame 8.png">
+        WindowStartupLocation="CenterScreen" Height="650" ResizeMode="NoResize" >
 
     <Grid Margin="73,35,73,35">
         <Grid.RowDefinitions>

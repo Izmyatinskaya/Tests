@@ -9,7 +9,7 @@
        Title="Вход" Height="450" Width="800"
         Background="{StaticResource WindowDefaultBackground}"
         WindowStartupLocation="CenterScreen"
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" Icon="/логотипТесты.png">
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" >
     <Window.Resources>
 
     </Window.Resources>

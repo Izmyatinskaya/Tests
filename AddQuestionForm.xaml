@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
         Background="{StaticResource WindowDefaultBackground}"
-        Title="Добавить вопрос" ResizeMode="NoResize" Icon="/Frame 8.png" Height="500" Width="600"  
+        Title="Добавить вопрос" ResizeMode="NoResize" Height="500" Width="600"  
         WindowStartupLocation="CenterScreen">
     <Grid Margin="73,35,73,35">
         <Grid.RowDefinitions>

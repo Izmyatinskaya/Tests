@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
         Background="{StaticResource WindowDefaultBackground}"
-        Title="Добавить роль" Height="500" Width="600"  ResizeMode="NoResize" Icon="/Frame 8.png" WindowStartupLocation="CenterScreen">
+        Title="Добавить роль" Height="500" Width="600"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="73,35,73,35">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

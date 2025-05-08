@@ -1363,11 +1363,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <ControlTemplate x:Key="StaticComboBoxTextBox" TargetType="{x:Type TextBox}">
-       <Border x:Name="PART_ContentHost"
+            <Border x:Name="PART_ContentHost"
              Focusable="False"
              Background="{TemplateBinding Background}" />
-   </ControlTemplate>
+        </ControlTemplate>
+        
+        
         <!-- Стиль для ComboBox -->
         <Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
             <Setter Property="Background" Value="White"/>
@@ -1531,7 +1534,7 @@
         
         <!--серый комбобокс-->
            <!--серый toogle-button-->
-   <Style x:Key="ComboBoxToggleButtonGrey" TargetType="{x:Type ToggleButton}">
+        <Style x:Key="ComboBoxToggleButtonGrey" TargetType="{x:Type ToggleButton}">
        <Setter Property="Template">
            <Setter.Value>
                <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -1563,88 +1566,99 @@ Height="{TemplateBinding ActualHeight}">
            </Setter.Value>
        </Setter>
    </Style>
-        
+
         <Style x:Key="ComboBoxGreyStyle3" TargetType="{x:Type ComboBox}">
             <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource BlockBorder2}"/>
-                <Setter Property="Foreground" Value="{StaticResource BlockBorder2}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="Padding" Value="6,3,5,3"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type ComboBox}">
-                            <Grid>
-                                <!-- Основной контейнер с закругленными углами -->
-                                <Border x:Name="mainBorder"
-        Background="{TemplateBinding Background}"
-        BorderBrush="{TemplateBinding BorderBrush}"
-        BorderThickness="{TemplateBinding BorderThickness}"
-        CornerRadius="4">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
+            <Setter Property="BorderBrush" Value="{StaticResource BlockBorder2}"/>
+            <Setter Property="Foreground" Value="{StaticResource BlockBorder2}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="6,3,5,3"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="{StaticResource BaseText}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <Border x:Name="mainBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="4">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
+                                    <!-- Добавьте этот TextBlock для отображения текста по умолчанию -->
+                                    <TextBlock x:Name="placeholderText"
+                                       Text="{TemplateBinding Text}"
+                                       Foreground="{StaticResource BlockBorder2}"
+                                       FontSize="16"
+                                       FontFamily="{StaticResource BaseText}"
+                                       Margin="{TemplateBinding Padding}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Visibility="Collapsed"/>
 
-                                    <TextBlock Text="{TemplateBinding Text}"
-            Foreground="{StaticResource BlockBorder2}"
-            FontSize="16"
-            FontFamily="{StaticResource BaseText}"
-    Margin="{TemplateBinding Padding}"
-    VerticalAlignment="Center"
-    HorizontalAlignment="Left"/>
                                     <!-- ContentPresenter для отображения выбранного элемента -->
-                                        <ContentPresenter 
-                    x:Name="contentPresenter"
-                    Grid.Column="0"
-                    Content="{TemplateBinding SelectionBoxItem}"
-                    ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                    Margin="{TemplateBinding Padding}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"/>
+                                    <ContentPresenter 
+                                x:Name="contentPresenter"
+                                Grid.Column="0"
+                                Content="{TemplateBinding SelectionBoxItem}"
+                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                Margin="{TemplateBinding Padding}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"/>
 
-                                        <!-- ToggleButton с выравниванием по правому краю -->
-                                        <ToggleButton 
-                    Grid.Column="1"
-                    x:Name="toggleButton"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    BorderThickness="0"
-                    Width="20"
-                    IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                    Style="{StaticResource ComboBoxToggleButtonGrey}"/>
-                                    </Grid>
-                                    
-                                </Border>
+                                    <ToggleButton 
+                                Grid.Column="1"
+                                x:Name="toggleButton"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                Width="20"
+                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                Style="{StaticResource ComboBoxToggleButtonGrey}"/>
+                                </Grid>
+                            </Border>
 
-                                <!-- Выпадающий список -->
-                                <Popup 
+                            <!-- Выпадающий список -->
+                            <Popup 
             x:Name="PART_Popup"
             AllowsTransparency="True"
             Placement="Bottom"
             IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
-                                    <Border 
+                                <Border 
                 Background="White"
                 BorderBrush="{StaticResource BlockBorder2}"
                 BorderThickness="1"
                 CornerRadius="0 0 4 4">
-                                        <ScrollViewer>
-                                            <ItemsPresenter/>
-                                        </ScrollViewer>
-                                    </Border>
-                                </Popup>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="{StaticResource AccentBrushLight}"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
+                                    <ScrollViewer>
+                                        <ItemsPresenter/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <!-- Показываем placeholder, когда ничего не выбрано -->
+                            <Trigger Property="SelectedItem" Value="{x:Null}">
+                                <Setter TargetName="placeholderText" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="contentPresenter" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource AccentBrushLight}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Setter Property="ItemContainerStyle" Value="{StaticResource ComboBoxItemStyle}"/>
         </Style>
+
+
+
         <!-- ЛИСТБОКС -->
         <!-- Стиль для элементов ListBox -->
         <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
