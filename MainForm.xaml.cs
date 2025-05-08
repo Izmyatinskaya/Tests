@@ -315,6 +315,7 @@ namespace wpf_тесты_для_обучения
             try
             {
                 TestViewPassForm testViewPassForm = new TestViewPassForm(_databaseHelper, TestMode.Pass, test.Id);
+                testViewPassForm.Owner = Window.GetWindow(this);
                 testViewPassForm.ShowDialog();
                 LoadTests();
                 UpdateCompletedTestsLabel();

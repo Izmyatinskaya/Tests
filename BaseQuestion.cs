@@ -81,7 +81,8 @@ namespace wpf_тесты_для_обучения
         protected void ShowFullImage(object sender, RoutedEventArgs e, StackPanel answersPanel, string questionText)
         {
             FullImageForm fullImageForm = new FullImageForm(answersPanel, questionText, ImageSource);
-            fullImageForm.Show();
+            fullImageForm.Owner = Window.GetWindow(this);
+            fullImageForm.ShowDialog();
         }
 
         public static void ShowFullImage(string imagePath)
