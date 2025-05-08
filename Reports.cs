@@ -153,6 +153,203 @@ namespace wpf_тесты_для_обучения
 
         #region Additional Word Components for All Users Report
 
+        public void GenerateAllUsersOverallReport(string outputDirectory)
+        {
+            // Создаем директорию, если не существует
+            Directory.CreateDirectory(outputDirectory);
+
+            // Получаем всех пользователей
+            var users = GetAllUsers();
+            if (!users.Any())
+            {
+                throw new InvalidOperationException("Нет данных о пользователях");
+            }
+
+            // Создаем общий отчет
+            string baseFileName = $"Общий отчет по пользователям за все время {DateTime.Now:dd_MM_yyyy}";
+            string wordFilePath = Path.Combine(outputDirectory, $"{baseFileName}.docx");
+
+            var wordApp = new Application();
+            var doc = wordApp.Documents.Add();
+
+            try
+            {
+                // 1. Заголовок отчета
+                AddOverallReportHeader(doc);
+
+                // 2. Сводная статистика по всем пользователям за все время
+                AddOverallSummaryStatistics(doc, users);
+
+                // 3. Детализация по каждому пользователю
+                foreach (var user in users)
+                {
+                    var results = GetUserResults(user.Id);
+                    if (!results.Any()) continue;
+
+                    // Добавляем раздел для пользователя
+                    AddUserSectionHeader(doc, user);
+
+                    // Добавляем таблицу результатов
+                    AddWordResultsTable(doc, results);
+
+                    // Добавляем статистику по пользователю
+                    AddWordStatistics(doc, results);
+
+                    // Добавляем разделитель между пользователями
+                    doc.Paragraphs.Add().Range.InsertParagraphAfter();
+                    doc.Paragraphs.Add().Range.InsertParagraphAfter();
+                }
+
+                // Сохраняем документ
+                doc.SaveAs2(wordFilePath);
+            }
+            finally
+            {
+                doc.Close();
+                wordApp.Quit();
+            }
+        }
+
+        #region Additional Word Components for Overall Report
+
+        private void AddOverallReportHeader(Document doc)
+        {
+            var title = doc.Paragraphs.Add();
+            title.Range.Text = "Общий отчет по прохождению тестов за все время";
+            title.Range.Font.Bold = 1;
+            title.Range.Font.Size = 16;
+            title.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+            title.Range.InsertParagraphAfter();
+
+            var generationDate = doc.Paragraphs.Add();
+            generationDate.Range.Text = $"Дата формирования: {DateTime.Now:dd.MM.yyyy}";
+            generationDate.Range.Font.Italic = 0;
+            generationDate.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+            generationDate.Range.InsertParagraphAfter();
+
+            doc.Paragraphs.Add().Range.InsertParagraphAfter();
+        }
+
+        private void AddOverallSummaryStatistics(Document doc, List<Users> users)
+        {
+            var sectionTitle = doc.Paragraphs.Add();
+            sectionTitle.Range.Text = "Общая статистика за все время:";
+            sectionTitle.Range.Font.Bold = 1;
+            sectionTitle.Range.Font.Size = 14;
+            sectionTitle.Range.InsertParagraphAfter();
+
+            int totalTestsTaken = 0;
+            double totalAveragePercent = 0;
+            int usersWithResults = 0;
+            var allResults = new List<Results>();
+
+            foreach (var user in users)
+            {
+                var results = GetUserResults(user.Id);
+                if (!results.Any()) continue;
+
+                allResults.AddRange(results);
+                
+                totalAveragePercent += results.Average(r => r.Percent);
+                usersWithResults++;
+            }
+
+            if (usersWithResults > 0)
+            {
+                totalAveragePercent /= usersWithResults;
+
+                var stats = doc.Paragraphs.Add();
+                stats.Range.Text = $"Всего пользователей с результатами: {usersWithResults}";
+                stats.Range.InsertParagraphAfter();
+
+                stats = doc.Paragraphs.Add();
+                totalTestsTaken += allResults.GroupBy(r => r.TestId).Count();
+                stats.Range.Text = $"Всего пройдено тестов: {totalTestsTaken}";
+                stats.Range.InsertParagraphAfter();
+
+                stats = doc.Paragraphs.Add();
+                stats.Range.Text = $"Средний процент выполнения по всем пользователям: {Math.Round(totalAveragePercent, 2)}%";
+                stats.Range.InsertParagraphAfter();
+
+                // Дополнительная статистика
+                if (allResults.Any())
+                {
+                    var firstTestDate = allResults.Min(r => r.Date);
+                    var lastTestDate = allResults.Max(r => r.Date);
+
+                    stats = doc.Paragraphs.Add();
+                    stats.Range.Text = $"Период тестирования: с {firstTestDate:dd.MM.yyyy} по {lastTestDate:dd.MM.yyyy}";
+                    stats.Range.InsertParagraphAfter();
+
+                    // Статистика по тестам
+                    var testStats = allResults.GroupBy(r => r.TestId)
+                        .Select(g => new {
+                            Test = g.First().Test.Title,
+                            Attempts = g.Count(),
+                            AvgPercent = g.Average(r => r.Percent)
+                        })
+                        .OrderByDescending(x => x.Attempts);
+
+                    // Добавляем таблицу статистики по тестам
+                    AddTestStatisticsTable(doc, testStats);
+                }
+            }
+            else
+            {
+                var noData = doc.Paragraphs.Add();
+                noData.Range.Text = "Нет данных о результатах тестирования";
+                noData.Range.InsertParagraphAfter();
+            }
+
+            doc.Paragraphs.Add().Range.InsertParagraphAfter();
+        }
+
+        private void AddTestStatisticsTable(Document doc, IEnumerable<dynamic> testStats)
+        {
+            doc.Paragraphs.Add();
+            var sectionTitle = doc.Paragraphs.Add();
+            sectionTitle.Range.Text = "Статистика по тестам:";
+            sectionTitle.Range.Font.Bold = 1;
+            sectionTitle.Range.Font.Size = 14;
+            sectionTitle.Range.InsertParagraphAfter();
+            doc.Paragraphs.Add();
+
+            // Создаем пустой параграф для таблицы
+            var tableParagraph = doc.Paragraphs.Add();
+            var tableRange = tableParagraph.Range;
+
+            // Создаем таблицу
+            var table = doc.Tables.Add(
+                Range: tableRange,
+                NumRows: testStats.Count() + 1,
+                NumColumns: 3,
+                DefaultTableBehavior: WdDefaultTableBehavior.wdWord9TableBehavior,
+                AutoFitBehavior: WdAutoFitBehavior.wdAutoFitWindow
+            );
+
+            // Заголовки таблицы
+            table.Cell(1, 1).Range.Text = "Тест";
+            table.Cell(1, 2).Range.Text = "Количество прохождений";
+            table.Cell(1, 3).Range.Text = "Средний процент";
+
+            // Заполнение данными
+            int row = 2;
+            foreach (var stat in testStats)
+            {
+                table.Cell(row, 1).Range.Text = stat.Test;
+                table.Cell(row, 2).Range.Text = stat.Attempts.ToString();
+                table.Cell(row, 3).Range.Text = $"{Math.Round(stat.AvgPercent, 2)}%";
+                row++;
+            }
+
+            // Форматирование таблицы
+            table.Range.Font.Size = 12;
+            table.Borders.Enable = 1;
+            table.Rows[1].Range.Font.Bold = 1;
+            table.Rows[1].Range.Shading.BackgroundPatternColor = WdColor.wdColorGray15;
+        }
+
+        #endregion
         private void AddAllUsersReportHeader(Document doc, DateTime startDate, DateTime endDate)
         {
             var title = doc.Paragraphs.Add();
@@ -568,141 +765,5 @@ namespace wpf_тесты_для_обучения
 
         #endregion
 
-        #region Excel Report Components
-
-        //private void AddExcelHeader(IXLWorksheet worksheet, Users user)
-        //{
-        //    worksheet.Cell("A1").Value = $"Отчет по пользователю: {user.FullName}";
-        //    worksheet.Range("A1:E1").Merge().Style.Font.Bold = true;
-        //    worksheet.Range("A1:E1").Style.Font.FontSize = 16;
-        //    worksheet.Range("A1:E1").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-
-        //    worksheet.Cell("A2").Value = $"Дата формирования: {DateTime.Now:dd.MM.yyyy HH:mm}";
-        //    worksheet.Range("A2:E2").Merge().Style.Font.Italic = true;
-        //    worksheet.Range("A2:E2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-        //}
-
-        //private void AddExcelUserInfo(IXLWorksheet worksheet, Users user)
-        //{
-        //    worksheet.Cell("A4").Value = "Информация о пользователе:";
-        //    worksheet.Cell("A4").Style.Font.Bold = true;
-        //    worksheet.Cell("A4").Style.Font.FontSize = 14;
-
-        //    worksheet.Cell("A5").Value = $"ФИО: {user.FullName}";
-        //    worksheet.Cell("A6").Value = $"Должность: {user.UserRole.Title}";
-        //}
-
-        //private void AddExcelResultsTable(IXLWorksheet worksheet, List<Results> results)
-        //{
-        //    var groupedResults = results.GroupBy(r => r.TestId);
-
-        //    // Заголовки таблицы
-        //    worksheet.Cell("A8").Value = "№";
-        //    worksheet.Cell("B8").Value = "Тест";
-        //    worksheet.Cell("C8").Value = "Баллы";
-        //    worksheet.Cell("D8").Value = "Процент";
-        //    worksheet.Cell("E8").Value = "Дата";
-
-        //    // Стиль заголовков
-        //    var headerRange = worksheet.Range("A8:E8");
-        //    headerRange.Style.Font.Bold = true;
-        //    headerRange.Style.Fill.BackgroundColor = XLColor.LightGray;
-        //    headerRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-
-        //    // Заполнение данными
-        //    int row = 9;
-        //    foreach (var group in groupedResults)
-        //    {
-        //        var bestResult = group.OrderByDescending(r => r.Percent).First();
-        //        worksheet.Cell(row, 1).Value = row - 8;
-        //        worksheet.Cell(row, 2).Value = bestResult.Test.Title;
-        //        worksheet.Cell(row, 3).Value = $"{bestResult.Score} из {bestResult.Test.Count}";
-        //        worksheet.Cell(row, 4).Value = bestResult.Percent / 100; // Для формата процентов
-        //        worksheet.Cell(row, 5).Value = bestResult.Date;
-
-        //        // Форматирование
-        //        worksheet.Cell(row, 4).Style.NumberFormat.Format = "0.00%";
-        //        worksheet.Cell(row, 5).Style.DateFormat.Format = "dd.MM.yyyy";
-
-        //        row++;
-        //    }
-
-        //    // Настройка ширины столбцов
-        //    worksheet.Columns().AdjustToContents();
-        //}
-
-        //private void AddExcelStatistics(IXLWorksheet worksheet, List<Results> results)
-        //{
-        //    int startRow = results.GroupBy(r => r.TestId).Count() + 11;
-
-        //    worksheet.Cell(startRow, 1).Value = "Статистика:";
-        //    worksheet.Cell(startRow, 1).Style.Font.Bold = true;
-        //    worksheet.Cell(startRow, 1).Style.Font.FontSize = 14;
-
-        //    worksheet.Cell(startRow + 1, 1).Value = $"Всего пройдено тестов: {results.GroupBy(r => r.TestId).Count()}";
-
-        //    var avgScore = results.Average(r => r.Score);
-        //    worksheet.Cell(startRow + 2, 1).Value = $"Средний балл: {Math.Round(avgScore, 2)}";
-
-        //    var avgPercent = results.Average(r => r.Percent);
-        //    worksheet.Cell(startRow + 3, 1).Value = $"Средний процент выполнения: {Math.Round(avgPercent, 2)}%";
-
-        //    var bestTest = results.OrderByDescending(r => r.Percent).First();
-        //    worksheet.Cell(startRow + 4, 1).Value = $"Лучший результат: {bestTest.Percent}% ({bestTest.Test.Title})";
-        //}
-
-        //private void AddExcelCharts(IXLWorksheet worksheet, List<Results> results)
-        //{
-        //    var groupedResults = results.GroupBy(r => r.TestId);
-        //    int dataRows = groupedResults.Count();
-        //    int startRow = 8;
-
-        //    // График результатов тестов
-        //    var chart = worksheet.Drawings.AddChart("Результаты тестов", XLChartType.ColumnClustered);
-        //    chart.SetPosition(dataRows + startRow + 7, 0, 5, 0);
-        //    chart.SetSize(800, 400);
-
-        //    var rangeData = worksheet.Range(
-        //        worksheet.Cell(startRow + 1, 4),
-        //        worksheet.Cell(startRow + dataRows, 4));
-        //    var rangeLabels = worksheet.Range(
-        //        worksheet.Cell(startRow + 1, 2),
-        //        worksheet.Cell(startRow + dataRows, 2));
-
-        //    chart.AddSeries(rangeLabels, rangeData);
-        //    chart.Title.Text = "Результаты тестирования (%)";
-        //    chart.Axes.CategoryAxis.Title.Text = "Тесты";
-        //    chart.Axes.ValueAxis.Title.Text = "Процент выполнения";
-        //}
-
-        #endregion
-
-        /// <summary>
-        /// Генерирует отчет в Excel
-        /// </summary>
-        //private void GenerateExcelReport(Users user, List<Results> results, string filePath)
-        //{
-        //    using (var workbook = new XLWorkbook())
-        //    {
-        //        var worksheet = workbook.Worksheets.Add("Результаты");
-
-        //        // 1. Заголовок отчета
-        //        AddExcelHeader(worksheet, user);
-
-        //        // 2. Информация о пользователе
-        //        AddExcelUserInfo(worksheet, user);
-
-        //        // 3. Сводная таблица результатов
-        //        AddExcelResultsTable(worksheet, results);
-
-        //        // 4. Статистика
-        //        AddExcelStatistics(worksheet, results);
-
-        //        // 5. Графики (опционально)
-        //        AddExcelCharts(worksheet, results);
-
-        //        workbook.SaveAs(filePath);
-        //    }
-        //}
     }
 }

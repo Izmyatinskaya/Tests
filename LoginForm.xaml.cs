@@ -29,10 +29,10 @@ namespace wpf_тесты_для_обучения
             try {
                 InitializeComponent();
                 string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DB.mdf");
-                //_databaseHelper = new DatabaseHelper($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True");
+                _databaseHelper = new DatabaseHelper($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={databasePath};Integrated Security=True");
                 //D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\DB.mdf Server=(localdb)\MSSQLLocalDB;Integrated Security=true;
 
-                _databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
+                //_databaseHelper = new DatabaseHelper("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Проекты\\Тесты обучение WPF\\wpf тесты для обучения\\DB.mdf\";Integrated Security=True");
                 _databaseHelper.AllUsers = Properties.Settings.Default._allUsers;
                 LoadUsersIntoComboBox();
             }

@@ -345,7 +345,7 @@ namespace wpf_тесты_для_обучения
                                 Title = "за все время",
                                 Style = (Style)FindResource("SubMenuButtonStyle2"),
                                 Level = 2,
-                                //ClickAction = DeleteUser
+                                ClickAction = AllTimeReport
                             }
                         }
                     },
@@ -1124,6 +1124,25 @@ namespace wpf_тесты_для_обучения
             };
         }
 
+        private void AllTimeReport()
+        {
+            var dialog = new FolderBrowserDialog
+            {
+                Description = "Выберите папку для сохранения отчета",
+                ShowNewFolderButton = true
+            };
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string selectedPath = dialog.SelectedPath;
+                Reports reports = new Reports(_databaseHelper);
+                reports.GenerateAllUsersOverallReport(selectedPath);
+            }
+            else
+            {
+                Console.WriteLine("Выбор отменен пользователем.");
+            };
+        }
         private void usersComboBox4_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Users user = usersComboBox4.SelectedItem as Users;
