@@ -249,7 +249,7 @@ namespace wpf_тесты_для_обучения
             try
             {
                 if (!ValidateAllQuestions())
-                    return;
+                { MessageBox.Show($"Вы не выбрали ответ(-ы) на вопрос(-ы)", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation); return; }
                 double result = 0;
                 int insertedId = 0;
                 List<int> answerIds = new List<int>();

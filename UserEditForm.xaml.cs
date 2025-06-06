@@ -156,12 +156,12 @@ namespace wpf_тесты_для_обучения
         {
             if (control is TextBox textBox)
             {
-                textBox.BorderBrush = Brushes.Gray;
+                textBox.BorderBrush = (SolidColorBrush)FindResource("AccentBrush"); //Brushes.Gray;
                 textBox.ToolTip = null;
             }
             else if (control is ComboBox comboBox)
             {
-                comboBox.BorderBrush = Brushes.Gray;
+                comboBox.BorderBrush = (SolidColorBrush)FindResource("AccentBrush");
                 comboBox.ToolTip = null;
             }
         }
@@ -250,7 +250,7 @@ namespace wpf_тесты_для_обучения
             // Проверка результата
             if (result != null && int.TryParse(result.ToString(), out int count) && count > 1)
             {
-                MessageBox.Show("Пользователь с таким ФИО уже существует.", "Уведомление");
+                MessageBox.Show("Пользователь с таким ФИО уже существует.", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -275,7 +275,7 @@ namespace wpf_тесты_для_обучения
 
             _databaseHelper.ExecuteNonQuery(query, parameters);
 
-            MessageBox.Show( "Данные пользователя успешно отредактированы", "Уведомление");
+            MessageBox.Show( "Данные пользователя успешно изменены", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
 
         }

@@ -92,7 +92,7 @@ namespace wpf_тесты_для_обучения
 
             _databaseHelper.ExecuteNonQuery(query, parameters);
 
-            MessageBox.Show("Ответ успешно добавлен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Ответ успешно изменен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
         }
         protected int UpdateErrors()

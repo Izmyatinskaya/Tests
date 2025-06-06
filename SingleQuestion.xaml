@@ -10,7 +10,7 @@
         <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
 
-    <StackPanel>
+    <StackPanel Margin="0,0,0,10" >
         <!-- Верхняя панель с номером и удалением -->
         <DockPanel Margin="5" VerticalAlignment="Center">
 
@@ -22,15 +22,21 @@
                     Click="DeleteBlock" DockPanel.Dock="Right" VerticalAlignment="Center"/>
            
             <Button Name="copyQuestionButton" Content="📄" Foreground="Gray" Width="20" Height="20"
-                    Background="Transparent" BorderThickness="0" Visibility="Collapsed"
+                    Background="Transparent" BorderThickness="0" Visibility="Visible"
                     Click="CopyBlock" DockPanel.Dock="Right" VerticalAlignment="Center"/>
 
             <!-- Поле для ввода вопроса -->
             <TextBox x:Name="questionTextBox"
+                     Style="{StaticResource GreyTextBoxStyle}"
                  Text="Введите вопрос?" 
                  FontSize="14" TextWrapping="Wrap" 
                  VerticalScrollBarVisibility="Auto" 
-                 Margin="5" PreviewMouseLeftButtonUp="questionTextBox_PreviewMouseLeftButtonUp" KeyDown="questionTextBox_KeyDown" TextChanged="questionTextBox_TextChanged" VerticalAlignment="Center" MouseDoubleClick="questionTextBox_MouseDoubleClick" />
+                 Margin="5" 
+                     PreviewMouseLeftButtonUp="questionTextBox_PreviewMouseLeftButtonUp" 
+                     KeyDown="questionTextBox_KeyDown" 
+                     TextChanged="questionTextBox_TextChanged" 
+                     VerticalAlignment="Center" 
+ />
 
             <TextBlock x:Name="questionTextBlock" Style="{StaticResource BaseTextStyle24}" Visibility="Collapsed" VerticalAlignment="Center" FontFamily="Lato Medium"/>
 
@@ -39,22 +45,9 @@
        
         <!-- Само изображение (отображается, если выбрано) -->
         <Image Name="image" Source="{Binding ImageSource}"
-           Visibility="{Binding ShowImage, Converter={StaticResource BooleanToVisibilityConverter}}" Cursor="Hand" MouseDown="image_MouseDown_1" MaxHeight="500"/>
-        <!--<Button Name="fullImageButton" Click="ShowFullImage" Width="14" Height="13">
-                <Button.Background>
-                    <ImageBrush ImageSource="/page_white_magnify.png"/>
-                </Button.Background>
-            </Button>-->
-        <!--<RadioButton x:Name="radioButton" IsChecked="True" Foreground="Black">
-            <RadioButton.Resources>
-                --><!-- Цвет кружка в выбранном состоянии --><!--
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF0078D7"/>
-                --><!-- Цвет кружка в обычном состоянии --><!--
-                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#FFCCCCCC"/>
-                --><!-- Цвет границы --><!--
-                <SolidColorBrush x:Key="{x:Static SystemColors.ControlDarkBrushKey}" Color="#FF707070"/>
-            </RadioButton.Resources>
-        </RadioButton>-->
+           Visibility="{Binding ShowImage, Converter={StaticResource BooleanToVisibilityConverter}}" 
+        Cursor="Hand" MouseDown="image_MouseDown_1" MaxHeight="500" Margin="10,0,10,10"/>
+
         <!-- Список ответов -->
         <StackPanel x:Name="AnswersPanel" Margin="5"/>
 

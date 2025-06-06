@@ -20,7 +20,7 @@
         <!-- Заголовок -->
         <TextBlock Text="Изменение пользователя"
                    TextAlignment="Center"
-                   Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,10" />
+                   Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,10" TextWrapping="Wrap" />
 
         <!-- Основная часть -->
         <Border Grid.Row="1"

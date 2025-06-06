@@ -21,6 +21,8 @@ using Panel = System.Windows.Controls.Panel;
 using Window = System.Windows.Window;
 using wpf_тесты_для_обучения.Enums;
 using static System.Net.Mime.MediaTypeNames;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace wpf_тесты_для_обучения
 {
@@ -30,6 +32,21 @@ namespace wpf_тесты_для_обучения
         private DatabaseHelper _databaseHelper;
         private int currentTest;
         private TestMode _mode;
+        // Новое свойство для привязки к TextBox
+        private double _completionPercentage;
+        public double CompletionPercentage
+        {
+            get => _completionPercentage;
+            set
+            {
+                if (_completionPercentage != value)
+                {
+                    _completionPercentage = value;
+                    OnPropertyChanged(nameof(CompletionPercentage));
+                }
+            }
+        }
+
         public TestAddForm(DatabaseHelper databaseHelper)
         {
             try
@@ -38,6 +55,9 @@ namespace wpf_тесты_для_обучения
                 _databaseHelper = databaseHelper;
                 DataContext = this;
                 LoadRolesIntoComboBox();
+
+                CompletionPercentage = 70.0; // Например
+                UpdateCompletedPercentTextBoxText();
             }
             catch (Exception ex)
             {
@@ -163,6 +183,15 @@ namespace wpf_тесты_для_обучения
 
                 string title = result.Rows[0]["Title"].ToString();
                 double percent = Convert.ToDouble(result.Rows[0]["Is_Completed"]);
+                // Загружаем Is_Completed в CompletionPercentage
+                if (result.Rows[0]["Is_Completed"] != DBNull.Value)
+                {
+                    CompletionPercentage = Convert.ToDouble(result.Rows[0]["Is_Completed"]);
+                }
+                else
+                {
+                    CompletionPercentage = 0.0; // Или какое-то значение по умолчанию
+                }
 
                 completedPercentTextBox.Text = percent.ToString();
                 titleTextBox.Visibility = Visibility.Collapsed;
@@ -270,7 +299,7 @@ namespace wpf_тесты_для_обучения
                         return;
                     }
 
-                    double percent = Convert.ToDouble(completedPercentTextBox.Text);
+                    double percent = CompletionPercentage; //обработать ошибку
                     string title = titleTextBox.Text;
                     if (_mode == TestMode.Create)
                     {
@@ -392,7 +421,7 @@ namespace wpf_тесты_для_обучения
                                 }
                             }
                         }
-
+                        MessageBox.Show("Новый тест успешно создан!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     if (_mode == TestMode.Edit)
                     {
@@ -683,7 +712,7 @@ namespace wpf_тесты_для_обучения
                                 }
                             }
                         }
-
+                        MessageBox.Show("Тест успешно изменен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
 
                     BaseQuestion.ResetQuestionCounter(); // Сбрасываем счётчик
@@ -966,17 +995,156 @@ namespace wpf_тесты_для_обучения
         }
         private void titleTextBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            titleTextBox.SelectAll();
+            //titleTextBox.SelectAll();
+
+            if (sender is TextBox textBox)
+            {
+                if (textBox.Text == "Введите название теста ...")
+                    (sender as TextBox)?.SelectAll();
+            }
         }
         private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (titleTextBox.Text != "Введите название теста ...")
-                titleTextBox.Foreground = Brushes.Black;
+            //if (titleTextBox.Text != "Введите название теста ...")
+            //    titleTextBox.Foreground = Brushes.Black;
+
+            titleTextBox.Foreground = string.IsNullOrEmpty(titleTextBox.Text) ||
+                                   titleTextBox.Text == "Введите название теста ..."
+                                   ? Brushes.Gray
+                                   : Brushes.Black;
         }
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             BaseQuestion.ResetQuestionCounter();
         }
 
+        // --- Методы для валидации и форматирования TextBox (аналогичные AdminForm) ---
+
+        // Обработчик PreviewTextInput для фильтрации ввода
+        private void CompletedPercentTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string currentText = textBox.Text;
+            string proposedText = currentText.Insert(textBox.CaretIndex, e.Text);
+
+            bool isNumber = Regex.IsMatch(e.Text, "[0-9]");
+            bool isDecimalPoint = (e.Text == "." || e.Text == ",");
+
+            if (isDecimalPoint)
+            {
+                if (currentText.Contains(".") || currentText.Contains(","))
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+
+            if (!isNumber && !isDecimalPoint)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            string tempText = proposedText.Replace(',', '.');
+            int decimalIndex = tempText.IndexOf('.');
+            if (decimalIndex != -1 && tempText.Length - (decimalIndex + 1) > 2)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (double.TryParse(tempText, NumberStyles.Float, CultureInfo.InvariantCulture, out double parsedValue))
+            {
+                if (parsedValue > 100.0)
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+        }
+
+        // Обработчик LostFocus для форматирования и окончательной валидации
+        private void CompletedPercentTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                string cleanedText = textBox.Text.Trim();
+                cleanedText = cleanedText.Replace(',', '.');
+
+                if (double.TryParse(cleanedText, NumberStyles.Float, CultureInfo.InvariantCulture, out double value))
+                {
+                    value = Math.Round(value, 2);
+                    value = Math.Max(0.0, Math.Min(100.0, value));
+
+                    CompletionPercentage = value;
+                    UpdateCompletedPercentTextBoxText();
+                }
+                else
+                {
+                    // Если ввод некорректен, устанавливаем предыдущее значение или 0.0
+                    // И явно вызываем ошибку валидации
+                    CompletionPercentage = 0.0; // Или _completionPercentage (предыдущее валидное)
+                    UpdateCompletedPercentTextBoxText();
+                    Validation.MarkInvalid(textBox.GetBindingExpression(TextBox.TextProperty),
+                        new ValidationError(new PercentageValidationRule(), textBox.GetBindingExpression(TextBox.TextProperty),
+                                            "Некорректное число. Установлено значение по умолчанию.", null));
+                }
+            }
+        }
+
+        // Метод для обновления текста в TextBox на основе значения свойства
+        private void UpdateCompletedPercentTextBoxText()
+        {
+            if (completedPercentTextBox != null)
+            {
+                completedPercentTextBox.Text = CompletionPercentage.ToString("0.00", CultureInfo.InvariantCulture);
+            }
+        }
+    }
+    public class PercentageValidationRule : ValidationRule
+    {
+        public double MinValue { get; set; } = 0.0;
+        public double MaxValue { get; set; } = 100.0;
+
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            string strValue = value as string;
+
+            if (string.IsNullOrWhiteSpace(strValue))
+            {
+                return new ValidationResult(false, "Поле не может быть пустым.");
+            }
+
+            // Заменяем запятую на точку для парсинга, если используется запятая как десятичный разделитель
+            strValue = strValue.Replace(',', '.');
+
+            if (double.TryParse(strValue, NumberStyles.Float, CultureInfo.InvariantCulture, out double percentage))
+            {
+                if (percentage < MinValue || percentage > MaxValue)
+                {
+                    return new ValidationResult(false, $"Значение должно быть от {MinValue} до {MaxValue}.");
+                }
+
+                // Дополнительная проверка на количество знаков после запятой
+                // Ищем позицию точки
+                int decimalPointIndex = strValue.IndexOf('.');
+                if (decimalPointIndex != -1)
+                {
+                    // Если есть точка, считаем знаки после нее
+                    int decimalPlaces = strValue.Length - (decimalPointIndex + 1);
+                    if (decimalPlaces > 2)
+                    {
+                        return new ValidationResult(false, "Разрешено не более двух знаков после запятой.");
+                    }
+                }
+
+                return ValidationResult.ValidResult;
+            }
+            else
+            {
+                return new ValidationResult(false, "Введите корректное число.");
+            }
+        }
     }
 }

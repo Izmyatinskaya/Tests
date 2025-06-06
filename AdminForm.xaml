@@ -27,10 +27,57 @@
             <Image Source="/logobelar-1 2.jpg" Margin="0,3,0,0" Width="80" DockPanel.Dock="Left"/>
             <TextBlock Style="{StaticResource BaseTextStyle}" Text="Тесты для адаптации" VerticalAlignment="Center" Margin="10,0,0,0"/>
 
-            <StackPanel  Orientation="Horizontal" Margin="5,0,30,0" DockPanel.Dock="Right">
+            <Grid DockPanel.Dock="Right" Margin="5,0,30,0">
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="NotificationsButton_Click"
+            Cursor="Hand"
+            Background="Transparent"
+            BorderThickness="0"
+            Padding="0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" x:Name="NotificationsButtonPanel">
+                        <Image Source="/alert-circle.png" Width="27" Margin="0,0,7,0" />
+                        <TextBlock Style="{StaticResource BaseTextStyle}" Text="Уведомления" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <Ellipse Width="15" Height="15" Fill="Red" HorizontalAlignment="Right" VerticalAlignment="Top"
+             Margin="0,14,102,0" x:Name="UnreadNotificationIndicator" Visibility="Collapsed"/>
+
+                <Popup x:Name="NotificationsPopup"
+           PlacementTarget="{Binding ElementName=NotificationsButtonPanel}"
+           Placement="Bottom"
+           AllowsTransparency="True"
+           StaysOpen="False"
+           IsOpen="{Binding IsNotificationsPopupOpen, Mode=TwoWay}"
+           HorizontalOffset="0"
+           VerticalOffset="5">
+                    <Border BorderBrush="LightGray" BorderThickness="1" Background="White" CornerRadius="5"
+                Padding="10" MaxHeight="300" MaxWidth="300">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="NotificationsStackPanel">
+                                <TextBlock Text="Нет уведомлений" Foreground="Gray" FontStyle="Italic"
+                               Visibility="{Binding IsEmptyNotificationsMessageVisible, Mode=TwoWay}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Popup>
+            </Grid>
+            
+            <!--<Grid DockPanel.Dock="Right" Margin="5,0,30,0">
+                <StackPanel Orientation="Horizontal" x:Name="NotificationsButtonPanel">
+                    <Image Source="/alert-circle.png" Width="27" Margin="0,0,7,0" />
+                    <TextBlock Style="{StaticResource BaseTextStyle}" Text="Уведомления" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <Ellipse Width="15" Height="15" Fill="Red" HorizontalAlignment="Right" VerticalAlignment="Top"
+             Margin="0,14,102,0" x:Name="UnreadNotificationIndicator" Visibility="Collapsed"/>
+            </Grid>-->
+            <!--<StackPanel  Orientation="Horizontal" Margin="5,0,30,0" DockPanel.Dock="Right">
                 <Image Source="/alert-circle.png" Width="27" Margin="0,0,7,0"  />
+                <Ellipse Width="15" Height="15" Fill="Red" x:Name="UnreadNotificationIndicator" Visibility="Visible"/>
                 <TextBlock Style="{StaticResource BaseTextStyle}" Text="Уведомления" VerticalAlignment="Center"/>
-            </StackPanel>
+            </StackPanel>-->
 
             <StackPanel x:Name="refreshButton" Orientation="Horizontal" Margin="5,0,30,0"
             DockPanel.Dock="Right" RenderTransformOrigin="0.5,0.5"

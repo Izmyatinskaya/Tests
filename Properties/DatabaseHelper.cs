@@ -1535,8 +1535,145 @@ namespace wpf_тесты_для_обучения.Properties
 
             return dataTable;
         }
-    }
 
+        public bool HasCompletedAllAdaptationTestsByPercentage(int userId)
+        {
+            // 1. Сначала получаем Role_Id пользователя
+            string getUserRoleQuery = $"SELECT Role_Id FROM Users WHERE Id = {userId}";
+            // Убедитесь, что колонка с ID роли в таблице Users называется UserRole_Id.
+            // Если она называется UserRole (как в вашей модели Users), то измените запрос:
+            // string getUserRoleQuery = $"SELECT UserRole FROM Users WHERE Id = {userId}";
+
+            object userRoleIdObj = ExecuteScalar(getUserRoleQuery);
+
+            if (userRoleIdObj == DBNull.Value || userRoleIdObj == null)
+            {
+                // Если роль пользователя не найдена, или он не имеет роли.
+                // В зависимости от вашей бизнес-логики:
+                // - Если отсутствие роли означает, что он не может пройти адаптацию -> return false
+                // - Если отсутствие роли означает, что ему не назначены тесты -> return true
+                // Я предположу, что это означает, что нет тестов для прохождения.
+                return true;
+            }
+            int userRoleId = Convert.ToInt32(userRoleIdObj);
+
+            // 2. Получаем список тестов, назначенных данной роли через таблицу RoleAccess
+            string getTestsForRoleQuery = $@"
+            SELECT T.Id, T.Title, T.Is_Completed
+            FROM Tests T
+            JOIN RoleAccess RA ON T.Id = RA.Test_Id
+            WHERE RA.Role_Id = {userRoleId};
+        ";
+            DataTable assignedTestsTable = ExecuteSelectQuery(getTestsForRoleQuery);
+
+            if (assignedTestsTable == null || assignedTestsTable.Rows.Count == 0)
+            {
+                // Если для данной роли не назначено ни одного теста, считаем, что адаптация пройдена.
+                return true;
+            }
+
+            // 3. Проверяем прохождение каждого назначенного теста
+            foreach (DataRow testRow in assignedTestsTable.Rows)
+            {
+                int testId = Convert.ToInt32(testRow["Id"]);
+                double completionPercentageThreshold = Convert.ToDouble(testRow["Is_Completed"]); // Это процент
+
+                // Получаем общее количество вопросов в тесте
+                string getQuestionCountQuery = $"SELECT COUNT(Id) FROM Questions WHERE Test_Id = {testId}";
+                int totalQuestions = (int)ExecuteScalar(getQuestionCountQuery);
+
+                if (totalQuestions == 0)
+                {
+                    // Если в тесте нет вопросов, считаем, что он пройден (для этого пользователя)
+                    continue; // Переходим к следующему тесту
+                }
+
+                // Получаем лучший (самый последний по дате, а затем по Score) результат пользователя для данного теста
+                string getUserTestScoreQuery = $@"
+                SELECT TOP 1 Score
+                FROM Results
+                WHERE User_Id = {userId} AND Test_Id = {testId}
+                ORDER BY Date DESC, Score DESC;
+            ";
+                object resultScoreObj = ExecuteScalar(getUserTestScoreQuery);
+
+                if (resultScoreObj == DBNull.Value || resultScoreObj == null)
+                {
+                    // Пользователь еще не проходил этот назначенный тест
+                    return false;
+                }
+
+                double userScore = Convert.ToDouble(resultScoreObj);
+
+                // Рассчитываем процент правильных ответов пользователя
+                double userPercentage = (userScore / totalQuestions) * 100;
+
+                // Сравниваем процент пользователя с порогом
+                if (userPercentage < completionPercentageThreshold)
+                {
+                    // Пользователь не прошел этот назначенный тест по порогу
+                    return false;
+                }
+            }
+
+            // Если все назначенные тесты пройдены с результатом, равным или выше порога
+            return true;
+        }
+
+        //public bool HasCompletedAllAdaptationTestsByPercentage(int userId)
+        //{
+        //    string getAllTestsQuery = "SELECT Id, Title, Is_Completed FROM Tests";
+        //    DataTable allTestsTable = ExecuteSelectQuery(getAllTestsQuery);
+
+        //    if (allTestsTable == null || allTestsTable.Rows.Count == 0)
+        //    {
+        //        return true;
+        //    }
+
+        //    foreach (DataRow testRow in allTestsTable.Rows)
+        //    {
+        //        int testId = Convert.ToInt32(testRow["Id"]);
+        //        double completionPercentageThreshold = Convert.ToDouble(testRow["Is_Completed"]); // Это процент
+
+        //        // Получаем количество вопросов в тесте
+        //        string getQuestionCountQuery = $"SELECT COUNT(Id) FROM Questions WHERE Test_Id = {testId}";
+        //        int totalQuestions = (int)ExecuteScalar(getQuestionCountQuery);
+
+        //        if (totalQuestions == 0)
+        //        {
+        //            // Если в тесте нет вопросов, считаем, что он пройден
+        //            continue;
+        //        }
+
+        //        // Получаем лучший результат (количество правильных ответов) пользователя для данного теста
+        //        string getUserTestScoreQuery = $@"
+        //            SELECT TOP 1 Score
+        //            FROM Results
+        //            WHERE User_Id = {userId} AND Test_Id = {testId}
+        //            ORDER BY Date DESC, Score DESC;
+        //        ";
+        //        object resultScoreObj = ExecuteScalar(getUserTestScoreQuery);
+
+        //        if (resultScoreObj == DBNull.Value || resultScoreObj == null)
+        //        {
+        //            return false; // Пользователь еще не проходил этот тест
+        //        }
+
+        //        double userScore = Convert.ToDouble(resultScoreObj);
+
+        //        // Рассчитываем процент правильных ответов пользователя
+        //        double userPercentage = (userScore / totalQuestions) * 100;
+
+        //        // Сравниваем процент пользователя с порогом
+        //        if (userPercentage < completionPercentageThreshold)
+        //        {
+        //            return false; // Пользователь не прошел этот тест по порогу
+        //        }
+        //    }
+
+        //    return true;
+        //}
+    }
 }
 
 

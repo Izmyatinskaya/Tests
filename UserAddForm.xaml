@@ -8,8 +8,10 @@
         mc:Ignorable="d"
         Title="Добавление нового пользователя"
         Width="700"
-        Background="{StaticResource WindowDefaultBackground}"
-        WindowStartupLocation="CenterScreen" MinHeight="650" Icon="/Frame 8.png" Height="650" MaxHeight="650" ResizeMode="NoResize">
+          Background="{StaticResource WindowDefaultBackground}"
+    WindowStartupLocation="CenterScreen"
+xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" MinHeight="650" 
+        Height="650" MaxHeight="650" ResizeMode="NoResize" Cursor="">
 
     <Grid Margin="73,35,73,35">
         <Grid.RowDefinitions>

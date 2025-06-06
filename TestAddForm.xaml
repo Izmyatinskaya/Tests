@@ -6,23 +6,12 @@
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
         Title="TestAddForm"
-        Width="895"
-        Height="650"
+        Width="950"
+        Height="680"
         Background="{StaticResource WindowDefaultBackground}"
         WindowStartupLocation="CenterScreen" Closing="Window_Closing" MinWidth="698" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
         ScrollViewer.VerticalScrollBarVisibility="Auto">
     <Grid x:Name="myGrid">
-
-        <!-- Определяем строки -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <!-- Фиксированный блок сверху -->
-            <RowDefinition Height="279*"/>
-            <RowDefinition Height="302*"/>
-            <!-- Прокручиваемая область -->
-            <RowDefinition Height="Auto"/>
-            <!-- Фиксированная кнопка снизу -->
-        </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
@@ -30,13 +19,10 @@
         </Grid.ColumnDefinitions>
 
         <!-- Верхний блок: фиксированный TextBox и TextBlock -->
-        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10,10,10,10">
-            <TextBox Name="titleTextBox"
-                     FontSize="16"
-                     Foreground="Gray"
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="30,30,30,10">
+            <TextBox x:Name="titleTextBox"
+                     Style="{StaticResource GreyTextBoxStyle}"
                      Text="Введите название теста ..."
-                     Margin="0,0,0,10"
-                     SelectionBrush="#FFFFBE5E"
                      PreviewMouseLeftButtonUp="titleTextBox_PreviewMouseLeftButtonUp"
                      TextChanged="titleTextBox_TextChanged"/>
 
@@ -44,57 +30,95 @@
         </StackPanel>
 
         <!-- Прокручиваемая область -->
-        <ScrollViewer Grid.Column="0" Margin="25,100,10,10" VerticalScrollBarVisibility="Auto" Grid.RowSpan="3" HorizontalScrollBarVisibility="Disabled">
-            <StackPanel x:Name="questionsStackPanel" Width="Auto" HorizontalAlignment="Stretch">
-                <!--Здесь будут блоки вопросов-->
-            </StackPanel>
-            <!--<DockPanel x:Name="questionsStackPanel"   HorizontalAlignment="Stretch">
+        <Border Style="{StaticResource LightBorder}"  
+Margin="30,80,30,30"
+Grid.Column="0" Grid.Row="0" Padding="15,10,0,10">
+            <ScrollViewer Grid.Column="0"  VerticalScrollBarVisibility="Auto" Grid.RowSpan="3" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel x:Name="questionsStackPanel" Width="Auto" HorizontalAlignment="Stretch">
+                    <!--Здесь будут блоки вопросов-->
+                </StackPanel>
+                <!--<DockPanel x:Name="questionsStackPanel"   HorizontalAlignment="Stretch">
                 
             </DockPanel>-->
-        </ScrollViewer>
+            </ScrollViewer>
+        </Border>
 
         <!-- Правый столбец (без изменений) -->
-        <StackPanel Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Margin="10,10,10,10" Visibility="{Binding ViewMode}">
-            <TextBlock Style="{StaticResource BoldTextBlockStyle}">
-                Нажмите, чтобы создать новый вопрос
-            </TextBlock>
-            <Button Content="- Один вариант" Style="{StaticResource CustomButtonStyle}" Click="Button_Click_1"/>
-            <Button Content="- Несколько вариантов" Style="{StaticResource CustomButtonStyle}" Click="Button_Click"/>
-            <Button Content="- С картинкой" Style="{StaticResource CustomButtonStyle}" Click="Button_Click_2"/>
-            <Button Style="{StaticResource CustomButtonStyle}" Click="Button_Click_3">
-                <TextBlock Text="- Картинка + варианты" TextWrapping="Wrap"/>
-            </Button>
+        <Border Style="{StaticResource LightBorder}"  
+        Margin="0" 
+        Grid.Column="1"  Padding="15,10,15,0">
+            <StackPanel Margin="10,0,10,10" Visibility="{Binding ViewMode}">
+                <TextBlock Style="{StaticResource BoldTextStyle}" Margin="0,0,0,5" >
+                Нажмиет на кнопку, чтобы создать вопрос
+                </TextBlock>
+                <Button Content="1 ответ" Style="{StaticResource AddQuestionButtonStyle}" Click="Button_Click_1"  Tag="check-circle.jpg" Margin="0,0,0,5"/>
+                <Button Content="множественный выбор"  Style="{StaticResource AddQuestionButtonStyle}" Click="Button_Click"  Tag="check-square.jpg" Margin="0,0,0,5"/>
+                <Button Content="1 ответ с картинкой" Style="{StaticResource AddQuestionButtonStyle}" Click="Button_Click_2"   Tag="check-circle-image.jpg" Margin="0,0,0,5"/>
+                <Button Content="множественный выбор с картинкой" Style="{StaticResource AddQuestionButtonStyle}" Click="Button_Click_3" Tag="check-square-image.jpg" Margin="0,0,0,5" />
 
 
-            <TextBlock Style="{StaticResource BoldTextBlockStyle}">
-               Введите процент верных ответов для прохождения теста
-            </TextBlock>
-            <TextBox Name="completedPercentTextBox"
-            Height="30"
+                <!--<Separator Margin="15,5,15,10"></Separator>-->
+                <TextBlock Style="{StaticResource BoldTextStyle}" Margin="0,10,0,5" >
+               Введите порог прохождения теста, %
+                </TextBlock>
+                <TextBox Name="completedPercentTextBox"
+                 Style="{StaticResource GreyTextBoxStyle}"
+                 Height="34"
+                 BorderBrush="#FFABADB3"
+                 BorderThickness="1"
+                 PreviewTextInput="CompletedPercentTextBox_PreviewTextInput"
+                 LostFocus="CompletedPercentTextBox_LostFocus">
+                    <TextBox.Text>
+                        <Binding Path="CompletionPercentage"
+                         Mode="TwoWay"
+                         UpdateSourceTrigger="LostFocus"
+                         FallbackValue="0.00">
+                            <Binding.ValidationRules>
+                                <local:PercentageValidationRule MinValue="0.00" MaxValue="100.00"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <DockPanel>
+                                <TextBlock Foreground="Red" FontSize="10" FontWeight="Bold" Margin="5,0,0,0"
+                                   DockPanel.Dock="Right"
+                                   Text="{Binding ElementName=adornedElement, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+                                <AdornedElementPlaceholder x:Name="adornedElement"/>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
+                <!--<TextBox Name="completedPercentTextBox"
+                         Style="{StaticResource GreyTextBoxStyle}"
+            Height="34"
+                         Text="Пример: 10"
             BorderBrush="#FFABADB3"
-            BorderThickness="1" />
-            <!-- Раздел выбора должностей -->
-            <TextBlock Style="{StaticResource BoldTextBlockStyle}">
-                Выберите должности, которые смогут проходить этот тест
-            </TextBlock>
-            <ListBox Name="rolesListBox" MaxHeight="115">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding Title}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            BorderThickness="1" />-->
+                <!-- Раздел выбора должностей -->
+                <TextBlock Style="{StaticResource BoldTextStyle}" Margin="0,10,0,5" >
+                Укажите должности, проходящие тест
+                </TextBlock>
+                <ListBox Name="rolesListBox" MaxHeight="115" Margin="0,0,0,10">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding Title}" Style="{StaticResource OrangeCheckBoxStyle}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
-            <Button Content="Готово"
+                <Button Content="Готово"
                     Style="{StaticResource OrangeButtonStyle}"
                     FontSize="20"
-                    Click="Button_Click_4"
-                    Width="150"/>
+                    Click="Button_Click_4" Height="42"
+                    />
 
-            <TextBlock x:Name="ErrorTextBlock" TextWrapping="Wrap" Foreground="Red" Visibility="Collapsed" Margin="0,0,0,5"/>
-        </StackPanel>
+                <TextBlock x:Name="ErrorTextBlock" TextWrapping="Wrap" Foreground="Red" Visibility="Collapsed" Margin="0,0,0,5"/>
+            </StackPanel>
+        </Border>
 
     </Grid>
 </Window>

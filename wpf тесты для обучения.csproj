@@ -176,8 +176,11 @@
       <DependentUpon>ReportPeriodForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reports.cs" />
-    <Compile Include="Results.cs" />
-    <Compile Include="Roles.cs" />
+    <Compile Include="Models\Results.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="SelectEmployeeForm.xaml.cs">
+      <DependentUpon>SelectEmployeeForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SetRoleForm.xaml.cs">
       <DependentUpon>SetRoleForm.xaml</DependentUpon>
     </Compile>
@@ -188,7 +191,7 @@
       <DependentUpon>TestAddForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestEnum.cs" />
-    <Compile Include="Tests.cs" />
+    <Compile Include="Models\Tests.cs" />
     <Compile Include="TestViewMistakesForm.xaml.cs">
       <DependentUpon>TestViewMistakesForm.xaml</DependentUpon>
     </Compile>
@@ -201,7 +204,7 @@
     <Compile Include="UserEditForm.xaml.cs">
       <DependentUpon>UserEditForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ReportPeriodForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectEmployeeForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -401,6 +408,30 @@
     <Resource Include="-zoom90.png" />
     <Content Include="1600.jpg" />
     <Resource Include="alert-circle.png" />
+    <Resource Include="check-circle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="check-circle-image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="check-square.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="check-square-image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="check-circle.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="check-circle-image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="check-square.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="check-square-image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="cursors\wordpad_7010.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

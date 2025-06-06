@@ -85,3 +85,5 @@ D:\Проекты\Тесты обучение WPF\wpf тесты для обуч
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\ReportPeriodForm.baml
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\MenuControl.g.cs
 D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\MenuControl.baml
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\SelectEmployeeForm.g.cs
+D:\Проекты\Тесты обучение WPF\wpf тесты для обучения\obj\Debug\SelectEmployeeForm.baml

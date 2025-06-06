@@ -267,13 +267,15 @@ namespace wpf_тесты_для_обучения
                 var textBox = new TextBox
                 {
                     Text = answerText,
+                    MaxWidth = 500,
                     MinWidth = 200,
                     Foreground = Brushes.Black,
                     FontSize = 14,
                     TextWrapping = TextWrapping.Wrap,
                     VerticalAlignment = VerticalAlignment.Center,
                     HorizontalAlignment = HorizontalAlignment.Stretch,
-                    Margin = new Thickness(5, 0, 0, 0)
+                    Margin = new Thickness(5, 0, 0, 0),
+                    Style = (Style)FindResource("GreyTextBoxStyle")
                 };
                 Grid.SetColumn(textBox, 2); // Текстбокс в третьей колонке
                 answerGrid.Children.Add(textBox);
@@ -283,7 +285,10 @@ namespace wpf_тесты_для_обучения
                     Content = "❌",
                     Style = (Style)FindResource("AddAnswerButtonStyle"),
                     Width = 20,
-                    Height = 20,
+                    Height = 20, 
+                    Foreground = Brushes.Red,
+                    Background = Brushes.Transparent,
+                    BorderThickness = new Thickness(0),
                     Margin = new Thickness(5, 0, 0, 0),
                     VerticalAlignment = VerticalAlignment.Center
                 };
@@ -318,7 +323,11 @@ namespace wpf_тесты_для_обучения
         {
             var newAnswer = new StackPanel { Orientation = Orientation.Horizontal };
 
-            var radioButton = new RadioButton { GroupName = _groupName, Margin = new Thickness(0, 2, 5, 0) };
+            var radioButton = new RadioButton { 
+                GroupName = _groupName,
+                Margin = new Thickness(0, 2, 5, 0),
+                Style = (Style)FindResource("OrangeRadioButtonStyle")
+            };
             var textBox = new TextBox
             {
                 Text = "Введите ответ",
@@ -327,21 +336,28 @@ namespace wpf_тесты_для_обучения
                 MaxWidth = 500,
                 FontSize = 14,
                 TextWrapping = TextWrapping.Wrap,
-                Margin = new Thickness(0, 0, 0, 5)
+                Margin = new Thickness(0, 0, 0, 5),
+                Style = (Style)FindResource("GreyTextBoxStyle")
             };
             var deleteButton = new Button
             {
                 Style = (Style)FindResource("AddAnswerButtonStyle"),
                 Content = "❌",
+                Foreground = Brushes.Red,
+                Background = Brushes.Transparent,
+                BorderThickness = new Thickness(0),
                 Width = 20,
                 Height = 20,
                 Margin = new Thickness(5, 0, 0, 4)
             };
             deleteButton.Click += DeleteAnswer;
             //textBox.PreviewMouseLeftButtonUp += TextBox_SelectAll;
-            textBox.PreviewMouseLeftButtonUp += (s, er) => TextBox_SelectAll(s, er, textBox.Text);
-            //textBox.MouseDoubleClick += TextBox_SelectAll;
+//textBox.MouseDoubleClick += TextBox_SelectAll;
+            //textBox.PreviewMouseLeftButtonUp += (s, er) => TextBox_SelectAll(s, er, textBox.Text);
+            textBox.PreviewMouseLeftButtonUp += (s, er) => TextBox_PreviewMouseLeftButtonUp(s, er);
+            textBox.TextChanged += (s, ee) => TextBox_TextChanged(s, ee);
             textBox.TextChanged += (s, ee) => UpdateErrorMessages();
+            
             radioButton.Checked += (s, t) => UpdateErrorMessages();
 
             newAnswer.Children.Add(radioButton);
@@ -462,7 +478,10 @@ namespace wpf_тесты_для_обучения
         private void questionTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (AnswersPanel != null)
+            {
                 UpdateErrorMessages();
+                TextBox_TextChanged(sender, e);
+            }
         }
         public override void SetError(string message)
         {
@@ -475,10 +494,7 @@ namespace wpf_тесты_для_обучения
             ErrorTextBlock.Text = string.Empty;
             ErrorTextBlock.Visibility = Visibility.Collapsed;
         }
-        private void questionTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //TextBox_SelectAll(sender, e);
-        }
+        
 
     }
 

@@ -28,33 +28,45 @@ namespace wpf_тесты_для_обучения
         /// <summary>
         /// Генерирует отчеты по пользователю в указанных форматах
         /// </summary>
-        public void GenerateUserReports(int userId, string outputDirectory, bool generateWord = true, bool generateExcel = true)
+        public void GenerateUserReports(List<int> userIds, string outputDirectory, bool generateWord = true, bool generateExcel = true)
         {
-            var user = GetUser(userId);
-            if (user == null)
-                throw new ArgumentException("Пользователь не найден");
-
-            var results = GetUserResults(userId);
-            if (!results.Any())
-                throw new InvalidOperationException("Нет данных о результатах тестирования");
-
             // Создаем директорию, если не существует
             Directory.CreateDirectory(outputDirectory);
 
-            string baseFileName = $"Отчет_по_пользователю_{user.FirstName}_{user.Name}_{DateTime.Now:dd_MM_yyyy}";
-
-            if (generateWord)
+            foreach (var userId in userIds)
             {
-                string wordFilePath = Path.Combine(outputDirectory, $"{baseFileName}.docx");
-                GenerateWordReport(user, results, wordFilePath);
-            }
+                var user = GetUser(userId);
+                if (user == null)
+                {
+                    Console.WriteLine($"Пользователь с ID {userId} не найден, пропускаем...");
+                    continue;
+                }
 
-            if (generateExcel)
-            {
-                string excelFilePath = Path.Combine(outputDirectory, $"{baseFileName}.xlsx");
-                //GenerateExcelReport(user, results, excelFilePath);
+                var results = GetUserResults(userId);
+                if (!results.Any())
+                {
+                    Console.WriteLine($"Нет данных о результатах тестирования для пользователя {user.FullName}, пропускаем...");
+                    continue;
+                }
+
+                string baseFileName = $"Отчет_по_пользователю_{user.FirstName}_{user.Name}_{DateTime.Now:dd_MM_yyyy}";
+
+                if (generateWord)
+                {
+                    string wordFilePath = Path.Combine(outputDirectory, $"{baseFileName}.docx");
+                    GenerateWordReport(user, results, wordFilePath);
+                    Console.WriteLine($"Создан Word отчет для пользователя {user.FullName}: {wordFilePath}");
+                }
+
+                if (generateExcel)
+                {
+                    string excelFilePath = Path.Combine(outputDirectory, $"{baseFileName}.xlsx");
+                    //GenerateExcelReport(user, results, excelFilePath);
+                    Console.WriteLine($"Создан Excel отчет для пользователя {user.FullName}: {excelFilePath}");
+                }
             }
-        }
+    }
+       
 
         /// <summary>
         /// Генерирует отчет в Word

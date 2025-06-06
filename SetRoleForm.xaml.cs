@@ -92,13 +92,16 @@ namespace wpf_тесты_для_обучения
             try
             {
                 Roles role = (Roles)rolesComboBox.SelectedItem;
+                
+                if (role == null) return;
+
                 string users_id = string.Join(",", _users);
 
                 string query = $@"Update Users SET Role_Id = {role.Id} where Users.Id in ({users_id})";
 
                 _databaseHelper.ExecuteNonQuery(query);
 
-                MessageBox.Show("Роли установлены успешно", "Уведомление");
+                MessageBox.Show("Роли установлены успешно", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
             catch (Exception ex)

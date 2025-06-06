@@ -75,7 +75,7 @@ namespace wpf_тесты_для_обучения
                     string password = passwordBox1.Password.ToString().Trim(' ');
                     if (passwordDB != password)
                     {
-                        MessageBox.Show("Ошибка", "Неверный пароль");
+                        MessageBox.Show( "Неверный пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Stop);
                         passwordBox1.Clear();
                         return;
                     }
@@ -92,7 +92,7 @@ namespace wpf_тесты_для_обучения
                     this.Close();
                 }
                 else
-                    MessageBox.Show($"Вы не выбрали пользователя");
+                    MessageBox.Show($"Вы не выбрали пользователя", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (Exception ex)
             {

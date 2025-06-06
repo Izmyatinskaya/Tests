@@ -32,14 +32,70 @@ using System.Collections.ObjectModel;
 using static MaterialDesignThemes.Wpf.Theme;
 using DataGrid = System.Windows.Controls.DataGrid;
 using Panel = System.Windows.Controls.Panel;
+using System.ComponentModel;
 namespace wpf_тесты_для_обучения
 {
     /// <summary>
     /// Логика взаимодействия для AdminForm.xaml
     /// </summary>
-    public partial class AdminForm : Window
+    public partial class AdminForm : Window, INotifyPropertyChanged // Обязательно реализуем INotifyPropertyChanged
     {
         private DatabaseHelper _databaseHelper;
+        private ObservableCollection<string> _notifications = new ObservableCollection<string>();
+        private bool _isNotificationsPopupOpen;
+        private bool _isEmptyNotificationsMessageVisible = true;
+
+
+        // Свойство для связывания видимости Popup
+        public bool IsNotificationsPopupOpen
+        {
+            get => _isNotificationsPopupOpen;
+            set
+            {
+                if (_isNotificationsPopupOpen != value)
+                {
+                    _isNotificationsPopupOpen = value;
+                    OnPropertyChanged(nameof(IsNotificationsPopupOpen));
+                    // Добавим логику скрытия индикатора при открытии Popup
+                    if (value && UnreadNotificationIndicator != null) // Если Popup открывается
+                    {
+                        UnreadNotificationIndicator.Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
+        }
+
+        // Свойство для связывания видимости сообщения "Нет уведомлений"
+        public bool IsEmptyNotificationsMessageVisible
+        {
+            get => _isEmptyNotificationsMessageVisible;
+            set
+            {
+                if (_isEmptyNotificationsMessageVisible != value)
+                {
+                    _isEmptyNotificationsMessageVisible = value;
+                    OnPropertyChanged(nameof(IsEmptyNotificationsMessageVisible));
+                }
+            }
+        }
+
+        public ObservableCollection<string> Notifications // Это свойство, которое хранит сами строки уведомлений
+        {
+            get => _notifications;
+            set
+            {
+                _notifications = value;
+                OnPropertyChanged(nameof(Notifications));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         List<List<int>> allFilters = new List<List<int>>
         {
             new List<int>(),
@@ -50,23 +106,149 @@ namespace wpf_тесты_для_обучения
         {
             new List<int>()
         };
+
         public AdminForm(DatabaseHelper databaseHelper)
         {
             try
             {
                 InitializeComponent();
-                DataContext = this;
+                DataContext = this; // Устанавливаем DataContext окна на само себя для привязок
                 _databaseHelper = databaseHelper;
-                InitializeMenu();
-                //checkBoxAllUsers.IsChecked = _databaseHelper.AllUsers;
-                LoadAll();
+                InitializeMenu(); // Ваш метод инициализации меню
+                _ = LoadNotifications(); // Запускаем асинхронную загрузку уведомлений
+                LoadAll(); // Ваш метод загрузки всего остального
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при отключении базы данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Ошибка при инициализации: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
+
+        private void TablesVisibility(Panel panelToShow = null)
+        {
+            var allPanels = new List<Panel>
+            {
+                testsPanel, usersPanel, rolessPanel, resultsPanel, dbPanel, QAPanel
+            };
+            foreach (var panel in allPanels)
+            {
+                panel.Visibility = panel == panelToShow
+                ? Visibility.Visible
+                : Visibility.Collapsed;
+            }
+        }
+
+        public async Task LoadNotifications()
+        {
+            try
+            {
+                Notifications.Clear(); // Очищаем ObservableCollection
+
+                List<Users> usersList = await Task.Run(() => _databaseHelper.GetUsersWithRolesToCombobox());
+
+                foreach (var user in usersList)
+                {
+                    bool hasCompleted = await Task.Run(() => _databaseHelper.HasCompletedAllAdaptationTestsByPercentage(user.Id));
+
+                    if (hasCompleted) 
+                    {
+                        Notifications.Add($"Пользователь {user.FullName} успешно прошел(-а) адаптацию.");
+                    }
+                }
+
+                if (NotificationsStackPanel != null) // Проверяем, что элемент UI инициализирован
+                {
+                    NotificationsStackPanel.Children.Clear(); // Очищаем содержимое StackPanel в Popup
+
+                    if (Notifications.Any())
+                    {
+                        IsEmptyNotificationsMessageVisible = false; // Скрываем сообщение "Нет уведомлений"
+
+                        foreach (var message in Notifications)
+                        {
+                            TextBlock notificationTextBlock = new TextBlock
+                            {
+                                Text = message,
+                                Margin = new Thickness(0, 0, 0, 5), // Отступ между уведомлениями
+                                TextWrapping = TextWrapping.Wrap, // Перенос текста
+                                Foreground = Brushes.Black // Цвет текста уведомления
+                            };
+                            NotificationsStackPanel.Children.Add(notificationTextBlock);
+                        }
+                    }
+                    else
+                    {
+                        IsEmptyNotificationsMessageVisible = true; 
+                        TextBlock noNotificationsTextBlock = new TextBlock
+                        {
+                            Text = "Нет новых уведомлений.",
+                            Foreground = Brushes.Gray,
+                            FontStyle = FontStyles.Italic,
+                            Margin = new Thickness(0, 0, 0, 0)
+                        };
+                        NotificationsStackPanel.Children.Add(noNotificationsTextBlock);
+                    }
+                }
+
+                if (UnreadNotificationIndicator != null) 
+                {
+                    if (Notifications.Any() && !IsNotificationsPopupOpen)
+                    {
+                        UnreadNotificationIndicator.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        UnreadNotificationIndicator.Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при загрузке уведомлений: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Обработчик события клика по кнопке уведомлений
+        private void NotificationsButton_Click(object sender, RoutedEventArgs e)
+        {
+            IsNotificationsPopupOpen = !IsNotificationsPopupOpen;
+            // Логика скрытия индикатора уже перенесена в setter IsNotificationsPopupOpen
+            // Чтобы при каждом открытии Popup заново загружались актуальные данные:
+            // _ = LoadNotifications(); // Раскомментировать, если требуется обновление при каждом открытии
+        }
+        //public async Task LoadNotifications()
+        //{
+        //    try
+        //    {
+        //        List<Users> usersList = new List<Users>();
+        //        List<string> messageList = new List<string>();
+        //        usersList = await Task.Run(() => _databaseHelper.GetUsersWithRolesToCombobox());
+
+        //        foreach (var user in usersList)
+        //        {
+        //            bool hasCompleted = await Task.Run(() => _databaseHelper.HasCompletedAllAdaptationTestsByPercentage(user.Id));
+
+        //            if (hasCompleted)
+        //            {
+        //                messageList.Add(user.FullName + " успешно прошел адаптацию");
+        //            }
+        //        }
+        //        if (messageList.Any())
+        //        {
+        //            UnreadNotificationIndicator.Visibility = Visibility.Visible;
+
+
+        //        }
+        //        else
+        //        {
+        //            UnreadNotificationIndicator.Visibility = Visibility.Collapsed;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Произошла ошибка при загрузке уведомлений: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
         private void InitializeMenu()
         {
             // Создаем коллекцию пунктов меню
@@ -85,6 +267,7 @@ namespace wpf_тесты_для_обучения
                         Title = "Управление",
                         Style = (Style)FindResource("SubMenuButtonStyle1"),
                         Level = 1,
+                        ClickAction = () =>{TablesVisibility(testsPanel); },
                         Children = new List<MenuItem>
                         {
                             new MenuItem
@@ -182,7 +365,7 @@ namespace wpf_тесты_для_обучения
                         Title = "Режим просмотра",
                         Style = (Style)FindResource("SubMenuButtonStyle1"),
                         Level = 1,
-                        ClickAction = viewTest
+                        ClickAction = () =>{TablesVisibility(testsPanel); viewTest(); },
                         
                     },
                     new MenuItem
@@ -190,6 +373,7 @@ namespace wpf_тесты_для_обучения
                         Title = "Импорт/Экспорт",
                         Style = (Style)FindResource("SubMenuButtonStyle1"),
                         Level = 1,
+                         ClickAction = () =>{TablesVisibility(testsPanel); },
                         Children = new List<MenuItem>
                         {
                             new MenuItem
@@ -374,21 +558,6 @@ namespace wpf_тесты_для_обучения
 
             // Присваиваем созданную коллекцию свойству MenuItems нашего контрола
             MainMenu.MenuItems = menuItems;
-        }
-        private void TablesVisibility(Panel panelToShow = null)
-        {
-            // Список всех DataGrid на странице
-            var allPanels = new List<Panel>
-            {
-                testsPanel, usersPanel, rolessPanel, resultsPanel, dbPanel, QAPanel
-            };
-            foreach (var panel in allPanels)
-            {
-                panel.Visibility = panel == panelToShow
-                ? Visibility.Visible
-                : Visibility.Collapsed;
-            }
-            
         }
         
         public void LoadAll()
@@ -1094,34 +1263,8 @@ namespace wpf_тесты_для_обучения
 
         private void UserReport()
         {
-            if (resultsDataGrid.SelectedItems.Count > 1)
-            {
-                MessageBox.Show("Выберите только одного пользователя", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
-            }
-            Results results = resultsDataGrid.SelectedItem as Results;
-            if (results == null)
-            {
-                MessageBox.Show("Выберите пользователя", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
-            }
-
-            var dialog = new FolderBrowserDialog
-            {
-                Description = "Выберите папку для сохранения отчета",
-                ShowNewFolderButton = true
-            };
-
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string selectedPath = dialog.SelectedPath;
-                Reports reports = new Reports(_databaseHelper);
-                reports.GenerateUserReports(results.UserId, selectedPath, true);
-            }
-            else
-            {
-                Console.WriteLine("Выбор отменен пользователем.");
-            };
+            SelectEmployeeForm selectEmployeeForm = new SelectEmployeeForm(_databaseHelper);
+            selectEmployeeForm.ShowDialog(); 
         }
 
         private void AllTimeReport()

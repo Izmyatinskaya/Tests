@@ -10,7 +10,8 @@
         <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid>
-        <StackPanel>
+
+        <StackPanel Margin="0,0,0,10" >
             <!-- Верхняя панель с номером и удалением -->
             <DockPanel Margin="5" VerticalAlignment="Center">
                 <TextBlock Style="{StaticResource BaseTextStyle24}"  VerticalAlignment="Top"
@@ -20,14 +21,16 @@
                     Background="Transparent" BorderThickness="0"
                     Click="DeleteBlock" DockPanel.Dock="Right" VerticalAlignment="Center"/>
 
-              
+
                 <Button Name="copyQuestionButton" Content="📄" Foreground="Gray" Width="20" Height="20"
-        Background="Transparent" BorderThickness="0" Visibility="Collapsed"
+        Background="Transparent" BorderThickness="0" Visibility="Visible"
         Click="CopyBlock" DockPanel.Dock="Right" VerticalAlignment="Center"/>
 
 
                 <!-- Поле для ввода вопроса -->
-            <TextBox x:Name="questionTextBox"
+                <TextBox x:Name="questionTextBox"
+                     Style="{StaticResource GreyTextBoxStyle}"
+                     
                  Text="Введите вопрос?" 
                  FontSize="14" TextWrapping="Wrap"
                  VerticalScrollBarVisibility="Auto"
@@ -37,7 +40,7 @@
                 <!--<TextBlock x:Name="questionTextBlock" Visibility="Collapsed" FontSize="14" TextWrapping="Wrap" Margin="5" Foreground="Black" VerticalAlignment="Center"/>-->
             </DockPanel>
 
-            <Image Name="image" Source="{Binding ImageSource}"
+            <Image Name="image" Source="{Binding ImageSource}" Margin="10,0,10,10"
    Visibility="{Binding ShowImage, Converter={StaticResource BooleanToVisibilityConverter}}" Cursor="Hand" MouseDown="image_MouseDown_1" MaxHeight="500" MouseEnter="image_MouseEnter"/>
 
             <!-- Список ответов -->

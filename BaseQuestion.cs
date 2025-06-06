@@ -13,6 +13,8 @@ using System.ComponentModel;
 using System.Windows.Input;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Windows.Controls.Primitives;
+using static System.Net.Mime.MediaTypeNames;
+using Image = System.Windows.Controls.Image;
 
 namespace wpf_тесты_для_обучения
 {
@@ -340,6 +342,31 @@ namespace wpf_тесты_для_обучения
             if(text == "Введите ответ")
             (sender as TextBox)?.SelectAll();
         }
+
+        protected void TextBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                if (textBox.Text == "Введите ответ")
+                    (sender as TextBox)?.SelectAll();
+
+                if (textBox.Text == "Введите вопрос?")
+                    (sender as TextBox)?.SelectAll();
+            }
+        }
+
+        protected void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                textBox.Foreground = string.IsNullOrEmpty(textBox.Text) ||
+                                   textBox.Text == "Введите вопрос?" ||
+                                   textBox.Text == "Введите ответ"
+                                   ? Brushes.Gray
+                                   : Brushes.Black;
+            }
+        }
+
         // Абстрактный метод для добавления ответа (реализуется в наследниках)
         protected abstract void AddAnswer(object sender = null, RoutedEventArgs e = null);
 

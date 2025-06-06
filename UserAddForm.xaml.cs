@@ -80,6 +80,8 @@ namespace wpf_тесты_для_обучения
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
             this.Close();
         }
 
@@ -140,7 +142,7 @@ namespace wpf_тесты_для_обучения
 
                 _databaseHelper.ExecuteNonQuery(query, parameters);
 
-                MessageBox.Show("Пользователь успешно добавлен", "Уведомление");
+                MessageBox.Show("Пользователь успешно добавлен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 if (titleTextBlock.Text == "Регистрация")
                 {
                     LoginForm loginForm = new LoginForm();
@@ -275,12 +277,12 @@ namespace wpf_тесты_для_обучения
             {
                 if (control is TextBox textBox)
                 {
-                    textBox.BorderBrush = Brushes.Gray;
+                    textBox.BorderBrush = (SolidColorBrush)FindResource("AccentBrush"); //Brushes.Gray;
                     textBox.ToolTip = null;
                 }
                 else if (control is ComboBox comboBox)
                 {
-                    comboBox.BorderBrush = Brushes.Gray;
+                    comboBox.BorderBrush = (SolidColorBrush)FindResource("AccentBrush");
                     comboBox.ToolTip = null;
                 }
             }
