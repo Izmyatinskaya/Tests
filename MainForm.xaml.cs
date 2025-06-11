@@ -157,7 +157,7 @@ namespace wpf_тесты_для_обучения
                     };
 
                     testContainer.Children.Add(resultsButton);
-                    resultsButton.SetValue(Panel.ZIndexProperty, 10);
+                    resultsButton.SetValue(Panel.ZIndexProperty, 20);
 
                     // ListBox с результатами
                     ListBox resultsListBox = new ListBox

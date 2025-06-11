@@ -315,6 +315,31 @@ namespace wpf_тесты_для_обучения
                         {
                             throw new Exception("Ошибка при добавлении теста в базу данных.");
                         }
+                        //foreach (var child in questionsStackPanel.Children)
+                        //{
+                        //    if (child is SingleQuestion singleQuestion)
+                        //    {
+                        //        string questionText = singleQuestion.questionTextBox.Text;
+                        //        string imageFileNameForDb = null; // Изменено на imageFileNameForDb
+                        //        if (singleQuestion.ShowImage && singleQuestion.image.Source != null)
+                        //        {
+                        //            // Вызываем SaveImage(), который теперь возвращает только имя файла
+                        //            imageFileNameForDb = singleQuestion.SaveImage();
+                        //            if (string.IsNullOrEmpty(imageFileNameForDb))
+                        //            {
+                        //                MessageBox.Show("Ошибка при сохранении изображения вопроса.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        //                return;
+                        //            }
+                        //        }
+                        //        query = imageFileNameForDb == null ? // Используем imageFileNameForDb
+                        //            @"INSERT INTO Questions (Test_Id, Question_Text) OUTPUT INSERTED.Id VALUES (@testid, @text)" :
+                        //            @"INSERT INTO Questions (Test_Id, Question_Text, Image) OUTPUT INSERTED.Id VALUES (@testid, @text, @img)";
+
+                        //        parameters = imageFileNameForDb == null ? // Используем imageFileNameForDb
+                        //            new SqlParameter[] { new SqlParameter("@testid", testId), new SqlParameter("@text", questionText) } :
+                        //            new SqlParameter[] { new SqlParameter("@testid", testId), new SqlParameter("@text", questionText), new SqlParameter("@img", imageFileNameForDb) }; // Передаем только имя файла
+
+                        //        int questionId = Convert.ToInt32(_databaseHelper.ExecuteScalar(query, parameters));
                         foreach (var child in questionsStackPanel.Children)
                         {
                             if (child is SingleQuestion singleQuestion)
@@ -364,6 +389,27 @@ namespace wpf_тесты_для_обучения
                                 }
                             }
 
+                            //if (child is MultipleQuestion multipleQuestion)
+                            //{
+                            //    string questionText = multipleQuestion.questionTextBox.Text;
+                            //    string imageFileNameForDb = null; // Изменено на imageFileNameForDb
+                            //    if (multipleQuestion.ShowImage && multipleQuestion.image.Source != null)
+                            //    {
+                            //        imageFileNameForDb = multipleQuestion.SaveImage(); // Вызываем SaveImage()
+                            //        if (string.IsNullOrEmpty(imageFileNameForDb))
+                            //        {
+                            //            MessageBox.Show("Ошибка при сохранении изображения вопроса.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                            //            return;
+                            //        }
+                            //    }
+                            //    query = imageFileNameForDb == null ? // Используем imageFileNameForDb
+                            //        @"INSERT INTO Questions (Test_Id, Question_Text) OUTPUT INSERTED.Id VALUES (@testid, @text)" :
+                            //        @"INSERT INTO Questions (Test_Id, Question_Text, Image) OUTPUT INSERTED.Id VALUES (@testid, @text, @img)";
+                            //    parameters = imageFileNameForDb == null ? // Используем imageFileNameForDb
+                            //        new SqlParameter[] { new SqlParameter("@testid", testId), new SqlParameter("@text", questionText) } :
+                            //        new SqlParameter[] { new SqlParameter("@testid", testId), new SqlParameter("@text", questionText), new SqlParameter("@img", imageFileNameForDb) }; // Передаем только имя файла
+
+                            //    int questionId = Convert.ToInt32(_databaseHelper.ExecuteScalar(query, parameters));
                             if (child is MultipleQuestion multipleQuestion)
                             {
                                 string questionText = multipleQuestion.questionTextBox.Text;
@@ -423,6 +469,366 @@ namespace wpf_тесты_для_обучения
                         }
                         MessageBox.Show("Новый тест успешно создан!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
+                    //        if (_mode == TestMode.Edit)
+                    //        {
+                    //            string getQuestionsQuery = "SELECT Id FROM Questions WHERE Test_Id = @testId";
+                    //            SqlParameter[] getQuestionsParams = { new SqlParameter("@testId", CurrentTest) };
+
+                    //            DataTable questionsTable = _databaseHelper.ExecuteSelectQuery(getQuestionsQuery, getQuestionsParams);
+                    //            List<int> existingQuestionIds = questionsTable.AsEnumerable()
+                    //                .Select(row => row.Field<int>("Id"))
+                    //                .ToList();
+                    //            List<int> updatedQuestionIds = questionsStackPanel.Children
+                    //            .OfType<BaseQuestion>() // Базовый класс вопросов
+                    //            .Where(q => q.question != null)
+                    //            .Select(q => q.question.Id)
+                    //            .ToList();
+                    //            List<int> questionsToDelete = existingQuestionIds.Except(updatedQuestionIds).ToList();
+                    //            foreach (int questionId in questionsToDelete)
+                    //            {
+                    //                string deleteAnswersQuery = "DELETE FROM Answers WHERE Question_Id = @questionId";
+                    //                string deleteQuestionQuery = "DELETE FROM Questions WHERE Id = @questionId";
+
+                    //                SqlParameter[] deleteParams = { new SqlParameter("@questionId", questionId) };
+                    //                SqlParameter[] deleteParams2 = { new SqlParameter("@questionId", questionId) };
+
+                    //                _databaseHelper.ExecuteNonQuery(deleteAnswersQuery, deleteParams);
+                    //                _databaseHelper.ExecuteNonQuery(deleteQuestionQuery, deleteParams2);
+                    //            }
+
+                    //            string query = @"UPDATE Tests SET Title = @title, Is_Completed = @completed WHERE Id = @id";
+                    //            SqlParameter[] parameters = new SqlParameter[] {
+                    //    new SqlParameter("@title", title),
+                    //    new SqlParameter("@id", CurrentTest),
+                    //    new SqlParameter("@completed", percent)
+                    //};
+
+                    //            // Обновляем тест
+                    //            int rowsAffected = _databaseHelper.ExecuteNonQuery(query, parameters);
+                    //            if (rowsAffected <= 0)
+                    //            {
+                    //                throw new Exception("Ошибка при обновлении теста.");
+                    //            }
+                    //            foreach (var child in questionsStackPanel.Children)
+                    //            {
+                    //                if (child is SingleQuestion singleQuestion)
+                    //                {
+                    //                    string questionText = singleQuestion.questionTextBox.Text;
+                    //                    string imageFileNameForDb = null; // Изменено на imageFileNameForDb
+                    //                    if (singleQuestion.ShowImage && singleQuestion.image.Source != null)
+                    //                    {
+                    //                        // Этот блок с BitmapImage.UriSource.LocalPath может быть избыточен
+                    //                        // если SaveImage() и так берет this.ImagePath
+                    //                        if (singleQuestion.image.Source is BitmapImage bitmapImage && bitmapImage.UriSource != null)
+                    //                        {
+                    //                            // Если image.Source уже загружен из папки Images,
+                    //                            // и файл не изменился, можно просто получить его имя.
+                    //                            // Если ImagePath обновляется при выборе файла, то это будет его путь.
+                    //                            // Важно: если image.Source - это временный файл или буфер, LocalPath может быть неверным.
+                    //                            // singleQuestion.ImagePath = bitmapImage.UriSource.LocalPath; // Это может быть не нужно, если SaveImage берет this.ImagePath
+                    //                        }
+                    //                        // singleQuestion.ImageSource = (BitmapImage)imageSource; // Это тоже UI-связанная логика
+
+                    //                        imageFileNameForDb = singleQuestion.SaveImage(); // Вызываем SaveImage(), который теперь возвращает только имя файла
+                    //                        if (string.IsNullOrEmpty(imageFileNameForDb))
+                    //                        {
+                    //                            MessageBox.Show("Ошибка при сохранении изображения вопроса.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //                            return;
+                    //                        }
+                    //                    }
+
+
+                    //                    if (singleQuestion.question != null && singleQuestion.question.Id != 0) // Проверяем, существует ли вопрос (Id > 0)
+                    //                    {
+                    //                        // Обновляем существующий вопрос
+                    //                        // Важно: если ShowImage стало false, а картинка была, нужно установить Image = NULL в БД
+                    //                        // Иначе, если ShowImage true и картинка есть, сохраняем новое имя файла
+                    //                        // Если ShowImage true, но картинки нет, оставляем Image = NULL
+
+                    //                        // Логика определения нового значения для поля Image в БД:
+                    //                        string finalImageForDbUpdate = null;
+                    //                        if (singleQuestion.ShowImage && !string.IsNullOrEmpty(imageFileNameForDb))
+                    //                        {
+                    //                            finalImageForDbUpdate = imageFileNameForDb; // Новое имя файла, если картинка есть и отображается
+                    //                        }
+                    //                        else if (!singleQuestion.ShowImage && singleQuestion.question?.Image != null)
+                    //                        {
+                    //                            // Пользователь убрал изображение, устанавливаем NULL в БД.
+                    //                            // Очистка файла на диске: Если хотите, можно добавить логику удаления файла,
+                    //                            // но это сложнее, т.к. нужно убедиться, что файл не используется в других вопросах.
+                    //                            finalImageForDbUpdate = null;
+                    //                        }
+                    //                        else if (singleQuestion.question?.Image != null && !singleQuestion.ShowImage)
+                    //                        {
+                    //                            // Изображение было, но его не показывают - значит его нужно удалить из БД.
+                    //                            finalImageForDbUpdate = null;
+                    //                        }
+                    //                        else if (singleQuestion.question?.Image != null && string.IsNullOrEmpty(imageFileNameForDb) && singleQuestion.ShowImage)
+                    //                        {
+                    //                            // Изображение было, ShowImage включено, но новое изображение не было выбрано/сохранено (SaveImage вернул null/пустую строку)
+                    //                            // В этом случае, возможно, это ошибка или нужно сохранить старое изображение
+                    //                            finalImageForDbUpdate = singleQuestion.question.Image; // Сохраняем старое изображение, если нет нового
+                    //                        }
+                    //                        else if (singleQuestion.question?.Image == null && string.IsNullOrEmpty(imageFileNameForDb) && !singleQuestion.ShowImage)
+                    //                        {
+                    //                            // Изображения не было и нет, и не показываем
+                    //                            finalImageForDbUpdate = null;
+                    //                        }
+                    //                        else if (singleQuestion.question?.Image == null && !string.IsNullOrEmpty(imageFileNameForDb) && singleQuestion.ShowImage)
+                    //                        {
+                    //                            // Изображения не было, но появилось новое
+                    //                            finalImageForDbUpdate = imageFileNameForDb;
+                    //                        }
+
+
+                    //                        query = finalImageForDbUpdate == null ?
+                    //                            @"UPDATE Questions SET Question_Text = @text, Image = NULL WHERE Id = @id" : // Устанавливаем NULL, если нет изображения
+                    //                            @"UPDATE Questions SET Question_Text = @text, Image = @img WHERE Id = @id";
+
+                    //                        parameters = finalImageForDbUpdate == null ?
+                    //                            new SqlParameter[] { new SqlParameter("@id", singleQuestion.question.Id), new SqlParameter("@text", questionText) } :
+                    //                            new SqlParameter[] { new SqlParameter("@id", singleQuestion.question.Id), new SqlParameter("@text", questionText), new SqlParameter("@img", finalImageForDbUpdate) }; // Передаем только имя файла
+
+                    //                        rowsAffected = _databaseHelper.ExecuteNonQuery(query, parameters);
+
+                    //                        if (rowsAffected <= 0)
+                    //                        {
+                    //                            MessageBox.Show("Ошибка при обновлении вопроса.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //                            return;
+                    //                        }
+                    //                    }
+                    //                    else
+                    //                    {
+                    //                        // Вставляем новый вопрос, если Id не задан
+                    //                        query = imageFileNameForDb == null ?
+                    //                            @"INSERT INTO Questions (Test_Id, Question_Text) OUTPUT INSERTED.Id VALUES (@testid, @text)" :
+                    //                            @"INSERT INTO Questions (Test_Id, Question_Text, Image) OUTPUT INSERTED.Id VALUES (@testid, @text, @img)";
+
+                    //                        parameters = imageFileNameForDb == null ?
+                    //                            new SqlParameter[] { new SqlParameter("@testid", CurrentTest), new SqlParameter("@text", questionText) } :
+                    //                            new SqlParameter[] { new SqlParameter("@testid", CurrentTest), new SqlParameter("@text", questionText), new SqlParameter("@img", imageFileNameForDb) };
+
+                    //                        int newQuestionId = Convert.ToInt32(_databaseHelper.ExecuteScalar(query, parameters));
+
+                    //                        if (newQuestionId > 0)
+                    //                        {
+                    //                            if (singleQuestion.question == null)
+                    //                            {
+                    //                                singleQuestion.question = new Questions(); // Создаем новый объект, если его нет
+                    //                            }
+                    //                            singleQuestion.question.Id = newQuestionId; // Присваиваем новый ID объекту
+                    //                        }
+                    //                        else
+                    //                        {
+                    //                            MessageBox.Show("Ошибка при добавлении вопроса.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //                            return;
+                    //                        }
+                    //                    }
+                    //                    string selectAnswersForQuestionQuery = "SELECT Id FROM Answers WHERE Question_Id = @questionId";
+                    //                    SqlParameter[] answersQueryParams = { new SqlParameter("@questionId", singleQuestion.question.Id) };
+
+                    //                    DataTable answers = _databaseHelper.ExecuteSelectQuery(selectAnswersForQuestionQuery, answersQueryParams);
+                    //                    List<int> answerIdsDB = answers.AsEnumerable().Select(row => row.Field<int>("Id")).ToList();
+                    //                    List<int> answerIdsElements = GetAnswersIdsList(singleQuestion.AnswersPanel);
+                    //                    List<int> missingIds = answerIdsDB.Except(answerIdsElements).ToList();
+
+                    //                    if (missingIds.Count != 0)
+                    //                    {
+                    //                        foreach (var answerId in missingIds)
+                    //                        {
+                    //                            string deleteQuery = @"DELETE FROM Answers WHERE Id = @answerId";
+
+                    //                            SqlParameter[] deleteParameters = new SqlParameter[]
+                    //                            {
+                    //                new SqlParameter("@answerId", answerId)
+                    //                            };
+
+                    //                            int rowsAffected2 = _databaseHelper.ExecuteNonQuery(deleteQuery, deleteParameters);
+
+                    //                            if (rowsAffected2 <= 0)
+                    //                            {
+                    //                                MessageBox.Show("Ошибка при удалении ответа с ID: " + answerId, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //                                return; // Прерывание на ошибке, если нужно остановить выполнение
+                    //                            }
+                    //                        }
+                    //                    }
+                    //                    foreach (var answerChild in singleQuestion.AnswersPanel.Children)
+                    //                    {
+                    //                        if (answerChild is StackPanel stackPanel)
+                    //                        {
+                    //                            SortAnswersOut(stackPanel, singleQuestion.question.Id, singleQuestion.question);
+                    //                        }
+                    //                        if (answerChild is Grid grid)
+                    //                        {
+                    //                            SortAnswersOut(grid, singleQuestion.question.Id, singleQuestion.question);
+                    //                        }
+                    //                    }
+                    //                }
+                    //                if (child is MultipleQuestion multipleQuestion)
+                    //                {
+                    //                    string questionText = multipleQuestion.questionTextBox.Text;
+                    //                    string imageFileNameForDb = null; // Изменено на imageFileNameForDb
+                    //                    if (multipleQuestion.ShowImage && multipleQuestion.image.Source != null)
+                    //                    {
+                    //                        // if (multipleQuestion.image.Source is BitmapImage bitmapImage && bitmapImage.UriSource != null)
+                    //                        // {
+                    //                        //     multipleQuestion.ImagePath = bitmapImage.UriSource.LocalPath;
+                    //                        // }
+                    //                        // multipleQuestion.ImageSource = (BitmapImage)imageSource;
+
+                    //                        imageFileNameForDb = multipleQuestion.SaveImage();
+                    //                        if (string.IsNullOrEmpty(imageFileNameForDb))
+                    //                        {
+                    //                            MessageBox.Show("Ошибка при сохранении изображения вопроса.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //                            return;
+                    //                        }
+                    //                    }
+
+
+                    //                    if (multipleQuestion.question != null && multipleQuestion.question.Id != 0) // Проверяем, существует ли вопрос (Id > 0)
+                    //                    {
+                    //                        string finalImageForDbUpdate = null;
+                    //                        if (multipleQuestion.ShowImage && !string.IsNullOrEmpty(imageFileNameForDb))
+                    //                        {
+                    //                            finalImageForDbUpdate = imageFileNameForDb;
+                    //                        }
+                    //                        else if (!multipleQuestion.ShowImage && multipleQuestion.question?.Image != null)
+                    //                        {
+                    //                            finalImageForDbUpdate = null;
+                    //                        }
+                    //                        else if (multipleQuestion.question?.Image != null && string.IsNullOrEmpty(imageFileNameForDb))
+                    //                        {
+                    //                            finalImageForDbUpdate = multipleQuestion.question.Image;
+                    //                        }
+                    //                        else if (multipleQuestion.question?.Image == null && !string.IsNullOrEmpty(imageFileNameForDb) && multipleQuestion.ShowImage)
+                    //                        {
+                    //                            finalImageForDbUpdate = imageFileNameForDb;
+                    //                        }
+                    //                        else if (multipleQuestion.question?.Image == null && string.IsNullOrEmpty(imageFileNameForDb) && !multipleQuestion.ShowImage)
+                    //                        {
+                    //                            finalImageForDbUpdate = null;
+                    //                        }
+
+                    //                        query = finalImageForDbUpdate == null ?
+                    //                            @"UPDATE Questions SET Question_Text = @text, Image = NULL WHERE Id = @id" :
+                    //                            @"UPDATE Questions SET Question_Text = @text, Image = @img WHERE Id = @id";
+
+                    //                        parameters = finalImageForDbUpdate == null ?
+                    //                            new SqlParameter[] { new SqlParameter("@id", multipleQuestion.question.Id), new SqlParameter("@text", questionText) } :
+                    //                            new SqlParameter[] { new SqlParameter("@id", multipleQuestion.question.Id), new SqlParameter("@text", questionText), new SqlParameter("@img", finalImageForDbUpdate) };
+
+                    //                        rowsAffected = _databaseHelper.ExecuteNonQuery(query, parameters);
+
+                    //                        if (rowsAffected <= 0)
+                    //                        {
+                    //                            MessageBox.Show("Ошибка при обновлении вопроса.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //                            return;
+                    //                        }
+                    //                    }
+                    //                    else
+                    //                    {
+                    //                        query = imageFileNameForDb == null ?
+                    //                            @"INSERT INTO Questions (Test_Id, Question_Text) OUTPUT INSERTED.Id VALUES (@testid, @text)" :
+                    //                            @"INSERT INTO Questions (Test_Id, Question_Text, Image) OUTPUT INSERTED.Id VALUES (@testid, @text, @img)";
+
+                    //                        parameters = imageFileNameForDb == null ?
+                    //                            new SqlParameter[] { new SqlParameter("@testid", CurrentTest), new SqlParameter("@text", questionText) } :
+                    //                            new SqlParameter[] { new SqlParameter("@testid", CurrentTest), new SqlParameter("@text", questionText), new SqlParameter("@img", imageFileNameForDb) };
+
+                    //                        int newQuestionId = Convert.ToInt32(_databaseHelper.ExecuteScalar(query, parameters));
+
+                    //                        if (newQuestionId > 0)
+                    //                        {
+                    //                            if (multipleQuestion.question == null)
+                    //                            {
+                    //                                multipleQuestion.question = new Questions(); // Создаем новый объект, если его нет
+                    //                            }
+                    //                            multipleQuestion.question.Id = newQuestionId;
+                    //                        }
+                    //                        else
+                    //                        {
+                    //                            MessageBox.Show("Ошибка при добавлении вопроса.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //                            return;
+                    //                        }
+                    //                    }
+                    //                    string selectAnswersForQuestionQuery = "SELECT Id FROM Answers WHERE Question_Id = @questionId";
+                    //                    SqlParameter[] answersQueryParams = { new SqlParameter("@questionId", multipleQuestion.question.Id) };
+
+                    //                    DataTable answers = _databaseHelper.ExecuteSelectQuery(selectAnswersForQuestionQuery, answersQueryParams);
+                    //                    List<int> answerIdsDB = answers.AsEnumerable().Select(row => row.Field<int>("Id")).ToList();
+                    //                    List<int> answerIdsElements = GetAnswersIdsList(multipleQuestion.AnswersPanel);
+                    //                    List<int> missingIds = answerIdsDB.Except(answerIdsElements).ToList();
+
+                    //                    if (missingIds.Count != 0)
+                    //                    {
+                    //                        foreach (var answerId in missingIds)
+                    //                        {
+                    //                            string deleteQuery = @"DELETE FROM Answers WHERE Id = @answerId";
+
+                    //                            SqlParameter[] deleteParameters = new SqlParameter[]
+                    //                            {
+                    //                new SqlParameter("@answerId", answerId)
+                    //                            };
+
+                    //                            int rowsAffected2 = _databaseHelper.ExecuteNonQuery(deleteQuery, deleteParameters);
+
+                    //                            if (rowsAffected2 <= 0)
+                    //                            {
+                    //                                MessageBox.Show("Ошибка при удалении ответа с ID: " + answerId, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //                                return; // Прерывание на ошибке, если нужно остановить выполнение
+                    //                            }
+                    //                        }
+                    //                    }
+                    //                    foreach (var answerChild in multipleQuestion.AnswersPanel.Children)
+                    //                    {
+                    //                        if (answerChild is StackPanel stackPanel)
+                    //                        {
+                    //                            SortAnswersOut(stackPanel, multipleQuestion.question.Id, multipleQuestion.question);
+                    //                        }
+                    //                        if (answerChild is Grid grid)
+                    //                        {
+                    //                            SortAnswersOut(grid, multipleQuestion.question.Id, multipleQuestion.question);
+                    //                        }
+                    //                    }
+                    //                }
+                    //            }
+
+                    //            if (rolesListBox.ItemsSource is List<Roles> roles)
+                    //            {
+                    //                var selectedRoles = roles.Where(r => r.IsSelected).Select(r => r.Id).ToList();
+
+                    //                if (selectedRoles.Any())
+                    //                {
+                    //                    using (SqlConnection connection = _databaseHelper.GetConnection())
+                    //                    {
+                    //                        connection.Open();
+
+                    //                        // Удаляем старые записи для теста
+                    //                        string deleteQuery = "DELETE FROM RoleAccess WHERE Test_Id = @t_id";
+                    //                        using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
+                    //                        {
+                    //                            deleteCommand.Parameters.AddWithValue("@t_id", CurrentTest);
+                    //                            deleteCommand.ExecuteNonQuery();
+                    //                        }
+
+                    //                        // Добавляем только новые выбранные роли
+                    //                        string insertQuery = @"INSERT INTO RoleAccess (Role_Id, Test_Id) VALUES (@r_id, @t_id)";
+                    //                        using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                    //                        {
+                    //                            insertCommand.Parameters.Add("@r_id", SqlDbType.Int);
+                    //                            insertCommand.Parameters.AddWithValue("@t_id", CurrentTest);
+
+                    //                            foreach (int roleId in selectedRoles)
+                    //                            {
+                    //                                insertCommand.Parameters["@r_id"].Value = roleId;
+                    //                                insertCommand.ExecuteNonQuery();
+                    //                            }
+                    //                        }
+                    //                    }
+                    //                }
+                    //            }
+                    //            MessageBox.Show("Тест успешно изменен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //        }
                     if (_mode == TestMode.Edit)
                     {
                         string getQuestionsQuery = "SELECT Id FROM Questions WHERE Test_Id = @testId";
@@ -715,7 +1121,7 @@ namespace wpf_тесты_для_обучения
                         MessageBox.Show("Тест успешно изменен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
 
-                    BaseQuestion.ResetQuestionCounter(); // Сбрасываем счётчик
+                        BaseQuestion.ResetQuestionCounter(); // Сбрасываем счётчик
 
                     this.Close();
                 }

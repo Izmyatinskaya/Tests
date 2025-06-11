@@ -196,7 +196,7 @@ namespace wpf_тесты_для_обучения.Properties
                 List<Users> users = new List<Users>();
                 string query = "Select Users.Id as uId, First_Name, Name, Last_Name, Password, Roles.Id as rId,  Title, Is_Done from Users join Roles on Role_Id = Roles.Id";
                 if (!AllUsers)
-                { 
+                {
                     query += " where Is_Done = 0";
                     //if (HideAdministrators)
                     //    query += " AND Roles.Id != 1";
@@ -612,6 +612,47 @@ namespace wpf_тесты_для_обучения.Properties
                 return null;
             }
         }
+        public List<Answers> GetAnswersListByQuestionId(int idQ)
+        {
+            try
+            {
+                List<Answers> answers = new List<Answers>();
+                string query = $"Select Id, Question_Id, Answer_Text, Is_Correct from Answers Where Question_Id = {idQ}";
+
+                using (SqlConnection connection = GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Создаем объект роли
+                                Answers answer = new Answers
+                                {
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    QuestionId = Convert.ToInt32(reader["Question_Id"]),
+                                    AnswerText = reader["Answer_Text"].ToString(),
+                                    IsCorrect = (bool)reader["Is_Correct"]
+                                };
+                                answers.Add(answer);
+                            }
+                        }
+                    }
+                }
+
+                return answers;
+            }
+            catch (Exception ex)
+            {
+                // Вывод сообщения об ошибке при поиске файла
+                MessageBox.Show($"Исключение: {ex.Message}\n" +
+                    $"Метод: {ex.TargetSite}\n" +
+                    $"Трассировка стека: {ex.StackTrace}", "Ошибка получения списка ответов", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return null;
+            }
+        }
         public List<Tests> GetTestsForRole(int roleId)
         {
             try
@@ -903,6 +944,7 @@ namespace wpf_тесты_для_обучения.Properties
                                     UserId = Convert.ToInt32(reader["User_Id"]),
                                     TestId = Convert.ToInt32(reader["Test_Id"]),
                                     Score = Convert.ToDouble(reader["Score"]),
+                                    Date = Convert.ToDateTime(reader["Date"]),
                                     RowNumber = Convert.ToInt32(reader["RowNumber"]),
                                     User = user,
                                     Test = test

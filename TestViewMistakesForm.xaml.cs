@@ -91,7 +91,7 @@ namespace wpf_тесты_для_обучения
                 int countBals = (int)_databaseHelper.ExecuteSelectQuery(query).Rows[0]["idC"];
 
                 query = $"SELECT Score FROM Results WHERE Test_Id = {CurrentTest} And Results.Id = {CurrentRes}";
-                double countUsersBals = Convert.ToDouble(_databaseHelper.ExecuteSelectQuery(query).Rows[0]["Score"]);
+                double countUsersBals = Math.Round(Convert.ToDouble(_databaseHelper.ExecuteSelectQuery(query).Rows[0]["Score"]),2);
 
 
                 string title = result.Rows[0]["Title"].ToString();

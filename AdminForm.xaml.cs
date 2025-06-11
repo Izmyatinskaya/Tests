@@ -33,6 +33,7 @@ using static MaterialDesignThemes.Wpf.Theme;
 using DataGrid = System.Windows.Controls.DataGrid;
 using Panel = System.Windows.Controls.Panel;
 using System.ComponentModel;
+using static System.Net.Mime.MediaTypeNames;
 namespace wpf_тесты_для_обучения
 {
     /// <summary>
@@ -44,7 +45,6 @@ namespace wpf_тесты_для_обучения
         private ObservableCollection<string> _notifications = new ObservableCollection<string>();
         private bool _isNotificationsPopupOpen;
         private bool _isEmptyNotificationsMessageVisible = true;
-
 
         // Свойство для связывания видимости Popup
         public bool IsNotificationsPopupOpen
@@ -212,43 +212,9 @@ namespace wpf_тесты_для_обучения
         private void NotificationsButton_Click(object sender, RoutedEventArgs e)
         {
             IsNotificationsPopupOpen = !IsNotificationsPopupOpen;
-            // Логика скрытия индикатора уже перенесена в setter IsNotificationsPopupOpen
-            // Чтобы при каждом открытии Popup заново загружались актуальные данные:
-            // _ = LoadNotifications(); // Раскомментировать, если требуется обновление при каждом открытии
+           
         }
-        //public async Task LoadNotifications()
-        //{
-        //    try
-        //    {
-        //        List<Users> usersList = new List<Users>();
-        //        List<string> messageList = new List<string>();
-        //        usersList = await Task.Run(() => _databaseHelper.GetUsersWithRolesToCombobox());
-
-        //        foreach (var user in usersList)
-        //        {
-        //            bool hasCompleted = await Task.Run(() => _databaseHelper.HasCompletedAllAdaptationTestsByPercentage(user.Id));
-
-        //            if (hasCompleted)
-        //            {
-        //                messageList.Add(user.FullName + " успешно прошел адаптацию");
-        //            }
-        //        }
-        //        if (messageList.Any())
-        //        {
-        //            UnreadNotificationIndicator.Visibility = Visibility.Visible;
-
-
-        //        }
-        //        else
-        //        {
-        //            UnreadNotificationIndicator.Visibility = Visibility.Collapsed;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Произошла ошибка при загрузке уведомлений: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
+      
         private void InitializeMenu()
         {
             // Создаем коллекцию пунктов меню
@@ -608,6 +574,7 @@ namespace wpf_тесты_для_обучения
             List<Tests> tests = _databaseHelper.GetTestsList();
             testsComboBox1.ItemsSource = null;
             testsComboBox1.ItemsSource = tests;
+            testsComboBox1.Text = "Выберите тест";
         }
         public void LoadTests()
         {
@@ -849,29 +816,6 @@ namespace wpf_тесты_для_обучения
                 MessageBox.Show($"Произошла непредвиденная ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        //        private void Button_Click_4(object sender, RoutedEventArgs e)
-        //        {
-        //            try
-        //            {
-        //                comboStackPanel.Visibility = Visibility.Visible;
-        //                doubleGrid.Visibility = Visibility.Visible;
-        //                answersQuestionsToolBar.Visibility = Visibility.Visible;
-        //                testsDataGrid.Visibility = Visibility.Collapsed;
-        //                testsToolBar.Visibility = Visibility.Collapsed;
-        //                LoadTestsToComboBox();
-        //                LoadAnswers();
-        //                LoadQuestions();
-        //                LoadAll();
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show($"Исключение: {ex.Message}\n" +
-        //                  $"Метод: {ex.TargetSite}\n" +
-        //                  $"Трассировка стека: {ex.StackTrace}", "Ошибка загрузки формы входа", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-        //            }
-        //        }
-
         private void testsTitleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Tests t1 = testsComboBox1.SelectedItem as Tests;
@@ -1127,6 +1071,22 @@ namespace wpf_тесты_для_обучения
 
         private void ExportTest()
         {
+            //Tests selectedTest = GetSelectedTest(); // Предполагается, что у вас есть такой метод
+
+            //if (selectedTest == null)
+            //{
+            //    MessageBox.Show("Пожалуйста, выберите тест для экспорта.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //    return;
+            //}
+
+            //System.Windows.Forms.FolderBrowserDialog folderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            //folderDialog.Description = "Выберите папку для сохранения экспортированного теста";
+
+            //if (folderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    string selectedPath = folderDialog.SelectedPath;
+            //    _testDataManager.ExportTest(selectedPath, selectedTest);
+            //}
             var selectedTest = GetSelectedTest();
             if (selectedTest == null)
             {
@@ -1162,8 +1122,18 @@ namespace wpf_тесты_для_обучения
 
         }
 
+
         private void ImportTest()
         {
+            //System.Windows.Forms.FolderBrowserDialog folderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            //folderDialog.Description = "Выберите папку с экспортированным тестом для импорта";
+
+            //if (folderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    string selectedPath = folderDialog.SelectedPath;
+            //    _testDataManager.ImportTest(selectedPath);
+            //}
+
             try
             {
                 // Открытие диалога выбора файла
@@ -1520,136 +1490,28 @@ namespace wpf_тесты_для_обучения
         {
             LoadAll();
         }
+        // Метод, который будет вызываться при выборе вопроса в таблице вопросов
+        private void questionsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (questionsDataGrid.SelectedItem is Questions selectedQuestion)
+            {
+                LoadAnswersByQuestionId(selectedQuestion.Id);
+            }
+        }
 
-        //        private Questions GetSelectedQuestion()
-        //        {
-        //            return questionsDataGrid.SelectedItem as Questions;
-        //        }
-        //        private Answers GetSelectedAnswer()
-        //        {
-        //            return answersDataGrid.SelectedItem as Answers;
-        //        }
-        //        //new test
-        //        private void Button_Click_2(object sender, RoutedEventArgs e)
-        //        {
-        //            TestAddForm testAddForm = new TestAddForm(_databaseHelper);
-        //            testAddForm.ShowDialog();
-        //            LoadAll();
-        //        }
-
-        //        private void reloadTests_Click(object sender, RoutedEventArgs e)
-        //        {
-        //            LoadTests();
-        //        }
-
-        //        private void reloadUsers_Click(object sender, RoutedEventArgs e)
-        //        {
-        //            LoadUsers();
-        //        }
-
-        //        private void reloadRoles_Click(object sender, RoutedEventArgs e)
-        //        {
-        //            LoadRoles();
-        //        }
-
-        //        private void reloadResults_Click(object sender, RoutedEventArgs e)
-        //        {
-        //            LoadResults();
-        //        }
-
-        //        private void reloadQuestionsAnswers_Click(object sender, RoutedEventArgs e)
-        //        {
-        //            LoadQuestions();
-        //            LoadAnswers();
-        //        }
-
-
-        //        private void questionsDataGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        //        {
-        //            // Ищем, на какую ячейку кликнули
-        //            DataGridCell cell = FindParent<DataGridCell>(e.OriginalSource as DependencyObject);
-
-        //            if (cell != null)
-        //            {
-        //                // Получаем индекс колонки
-        //                int columnIndex = cell.Column.DisplayIndex;
-
-        //                // Проверяем, что кликнули именно во **вторую колонку** (индекс 1)
-        //                if (columnIndex == 2)
-        //                {
-        //                    // Получаем данные строки, к которой принадлежит ячейка
-        //                    var row = FindParent<DataGridRow>(cell);
-        //                    if (row != null)
-        //                    {
-        //                        // Получаем объект, связанный с этой строкой
-        //                        Questions question = row.Item as Questions;
-
-        //                        if (question != null)
-        //                        {
-        //                            // Получаем содержимое ячейки (текст вопроса)
-        //                            string cellContent = question.Image;
-
-        //                            BaseQuestion.ShowFullImage(question.Image);
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        // Вспомогательный метод для поиска родителя нужного типа
-        //        private static T FindParent<T>(DependencyObject child) where T : DependencyObject
-        //        {
-        //            while (child != null)
-        //            {
-        //                if (child is T parent)
-        //                    return parent;
-        //                child = VisualTreeHelper.GetParent(child);
-        //            }
-        //            return null;
-        //        }
-
-        //        private void questionsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //        {
-        //            if (questionsDataGrid.SelectedItem is Questions selectedQuestion)
-        //            {
-        //                //MessageBox.Show($"Вы выбрали вопрос: {selectedQuestion.QuestionText}");
-        //                Questions q1 = questionsDataGrid.SelectedItem as Questions;
-        //                q1.LoadAnswersFromDatabase(_databaseHelper);
-        //                answersDataGrid.ItemsSource = null;
-        //                answersDataGrid.ItemsSource = q1.Answers;
-        //            }
-
-        //        }
-
-        //        private void deleteQuestion_Click(object sender, RoutedEventArgs e)
-        //        {
-        //            deleteQuestions(); LoadAll();
-        //        }
-
-        //        private void deleteAnswer_Click(object sender, RoutedEventArgs e)
-        //        {
-
-        //            deleteAnswers(); LoadAll();
-        //        }
-
-        //        private void Button_Click_5(object sender, RoutedEventArgs e)
-        //        {
-        //            comboStackPanel.Visibility = Visibility.Collapsed;
-        //            doubleGrid.Visibility = Visibility.Collapsed;
-        //            answersQuestionsToolBar.Visibility = Visibility.Collapsed;
-        //            testsDataGrid.Visibility = Visibility.Visible;
-        //            testsToolBar.Visibility = Visibility.Visible;
-        //            LoadTests(); LoadAll();
-        //        }
-
-        //        private void resetTables_Click(object sender, RoutedEventArgs e)
-        //        {
-        //            testsTitleComboBox.SelectedIndex = -1;
-        //            LoadAll();
-        //            LoadQuestions();
-        //            LoadAnswers();
-        //        }
-
+        public void LoadAnswersByQuestionId(int questionId)
+        {
+            try
+            {
+                List<Answers> answers = _databaseHelper.GetAnswersListByQuestionId(questionId);
+                answersDataGrid.ItemsSource = null;
+                answersDataGrid.ItemsSource = answers;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке ответов: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
     }
 }
