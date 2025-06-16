@@ -124,12 +124,14 @@ namespace wpf_тесты_для_обучения
                 questionTextBox.Visibility = Visibility.Collapsed;
                 questionTextBlock.Visibility = Visibility.Visible;
                 questionTextBlock.Text = questionText;
+                copyQuestionButton.Visibility = Visibility.Collapsed;
             }
             else
             {
                 questionTextBlock.Visibility = Visibility.Collapsed;
                 questionTextBox.Visibility = Visibility.Visible;
                 questionTextBox.Text = questionText;
+                copyQuestionButton.Visibility = Visibility.Visible;
             }
 
             // Загружаем ответы
