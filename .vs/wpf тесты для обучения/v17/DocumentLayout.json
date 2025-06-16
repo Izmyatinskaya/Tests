@@ -3,51 +3,59 @@
   "WorkspaceRootPath": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|d:\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0442\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 wpf\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\adminform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:adminform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\adminform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:adminform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|d:\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0442\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 wpf\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\basequestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:basequestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\properties\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:properties\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\DatabaseHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|d:\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0442\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 wpf\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\testaddform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:testaddform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\testaddform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:testaddform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\testviewpassform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:testviewpassform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\basequestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:basequestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\adminform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:adminform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\loginform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:loginform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\singlequestion.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:singlequestion.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\properties\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:properties\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\mainform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:mainform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\mainform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:mainform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\singlequestion.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:singlequestion.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\setroleform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:setroleform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\DatabaseHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\testviewpassform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:testviewpassform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\singlequestion.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:singlequestion.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\testviewmistakesform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:testviewmistakesform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\singlequestion.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:singlequestion.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -60,18 +68,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\testviewpassform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:testviewpassform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\loginform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:loginform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\testaddform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:testaddform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\usereditform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -92,10 +88,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\setroleform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:setroleform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\setroleform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:setroleform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\editroleform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -134,10 +126,6 @@
       "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:addroleform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\loginform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:loginform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\reportperiodform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:reportperiodform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -152,26 +140,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\menucontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A38FF290-F853-4EFC-ADE5-06FAB039EF1E}|wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F.csproj|solutionrelative:menucontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Tests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Tests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Results.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Results.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -181,17 +149,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 4,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "BaseQuestion.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\BaseQuestion.cs",
               "RelativeDocumentMoniker": "BaseQuestion.cs",
               "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\BaseQuestion.cs",
               "RelativeToolTip": "BaseQuestion.cs",
-              "ViewState": "AgIAADYDAAAAAAAAAAAgwEADAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAC0DAAAAAAAAAAAewCUDAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-07T05:22:31.017Z",
               "IsPinned": true,
@@ -199,13 +167,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "DatabaseHelper.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Properties\\DatabaseHelper.cs",
               "RelativeDocumentMoniker": "Properties\\DatabaseHelper.cs",
               "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Properties\\DatabaseHelper.cs",
               "RelativeToolTip": "Properties\\DatabaseHelper.cs",
-              "ViewState": "AgIAAJIGAAAAAAAAAADwv7kGAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANkAAAAAAAAAAAAawPsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T05:07:34.443Z",
               "IsPinned": true,
@@ -213,13 +181,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "TestAddForm.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestAddForm.xaml.cs",
               "RelativeDocumentMoniker": "TestAddForm.xaml.cs",
               "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestAddForm.xaml.cs",
               "RelativeToolTip": "TestAddForm.xaml.cs",
-              "ViewState": "AgIAAFUEAAAAAAAAAAAiwGEEAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAACUBAAAAAAAAAAAAADwBAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-07T05:28:30.324Z",
               "IsPinned": true,
@@ -227,38 +195,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "TestAddForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestAddForm.xaml",
-              "RelativeDocumentMoniker": "TestAddForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestAddForm.xaml",
-              "RelativeToolTip": "TestAddForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-07T05:29:22.062Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AdminForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AdminForm.xaml",
-              "RelativeDocumentMoniker": "AdminForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AdminForm.xaml",
-              "RelativeToolTip": "AdminForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-01T09:45:32.783Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AdminForm.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AdminForm.xaml.cs",
               "RelativeDocumentMoniker": "AdminForm.xaml.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AdminForm.xaml.cs*",
-              "RelativeToolTip": "AdminForm.xaml.cs*",
-              "ViewState": "AgIAAHMEAAAAAAAAAAASwIgEAAANAAAAAAAAAA==",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AdminForm.xaml.cs",
+              "RelativeToolTip": "AdminForm.xaml.cs",
+              "ViewState": "AgIAAEkBAAAAAAAAAAAIwGcBAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T05:07:34.429Z",
               "IsPinned": true,
@@ -266,7 +209,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "TestViewPassForm.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewPassForm.xaml.cs",
               "RelativeDocumentMoniker": "TestViewPassForm.xaml.cs",
@@ -280,26 +223,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "App.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\App.xaml",
-              "RelativeToolTip": "App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-21T13:24:58.748Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "MainForm.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MainForm.xaml.cs",
               "RelativeDocumentMoniker": "MainForm.xaml.cs",
               "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MainForm.xaml.cs",
               "RelativeToolTip": "MainForm.xaml.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAjwJ8AAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAJ4BAAAAAAAAAAAYwLMBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T08:29:51.082Z",
               "IsPinned": true,
@@ -307,33 +237,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MainForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MainForm.xaml",
-              "RelativeDocumentMoniker": "MainForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MainForm.xaml",
-              "RelativeToolTip": "MainForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-23T08:29:48.877Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 5,
               "Title": "LoginForm.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\LoginForm.xaml.cs",
               "RelativeDocumentMoniker": "LoginForm.xaml.cs",
               "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\LoginForm.xaml.cs",
               "RelativeToolTip": "LoginForm.xaml.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAIwB8AAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAcwD0AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-25T08:19:35.216Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 28,
               "Title": "AddRoleForm.xaml",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddRoleForm.xaml",
               "RelativeDocumentMoniker": "AddRoleForm.xaml",
@@ -346,13 +264,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DatabaseHelper.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\DatabaseHelper.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\DatabaseHelper.cs",
-              "ViewState": "AgIAAJIGAAAAAAAAAADwv7kGAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T12:40:28.93Z",
+              "DocumentIndex": 0,
+              "Title": "AdminForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AdminForm.xaml",
+              "RelativeDocumentMoniker": "AdminForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AdminForm.xaml",
+              "RelativeToolTip": "AdminForm.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-16T12:04:56.042Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TestAddForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestAddForm.xaml",
+              "RelativeDocumentMoniker": "TestAddForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestAddForm.xaml",
+              "RelativeToolTip": "TestAddForm.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-16T12:26:57.072Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
@@ -373,7 +306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "App.config",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\App.config",
               "RelativeDocumentMoniker": "App.config",
@@ -386,7 +319,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
+              "Title": "TestViewPassForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewPassForm.xaml",
+              "RelativeDocumentMoniker": "TestViewPassForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewPassForm.xaml",
+              "RelativeToolTip": "TestViewPassForm.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-07T09:51:42.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TestViewMistakesForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewMistakesForm.xaml",
+              "RelativeDocumentMoniker": "TestViewMistakesForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewMistakesForm.xaml",
+              "RelativeToolTip": "TestViewMistakesForm.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-25T11:31:29.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UserEditForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\UserEditForm.xaml",
+              "RelativeDocumentMoniker": "UserEditForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\UserEditForm.xaml",
+              "RelativeToolTip": "UserEditForm.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-08T06:19:41.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SingleQuestion.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SingleQuestion.xaml",
+              "RelativeDocumentMoniker": "SingleQuestion.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SingleQuestion.xaml",
+              "RelativeToolTip": "SingleQuestion.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-18T05:08:15.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "TestViewMistakesForm.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewMistakesForm.xaml.cs",
               "RelativeDocumentMoniker": "TestViewMistakesForm.xaml.cs",
@@ -399,74 +380,155 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SingleQuestion.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SingleQuestion.xaml",
-              "RelativeDocumentMoniker": "SingleQuestion.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SingleQuestion.xaml",
-              "RelativeToolTip": "SingleQuestion.xaml",
+              "DocumentIndex": 9,
+              "Title": "SetRoleForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SetRoleForm.xaml",
+              "RelativeDocumentMoniker": "SetRoleForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SetRoleForm.xaml",
+              "RelativeToolTip": "SetRoleForm.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-18T05:08:15.134Z",
+              "WhenOpened": "2025-06-04T11:48:01.854Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "TestViewPassForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewPassForm.xaml",
-              "RelativeDocumentMoniker": "TestViewPassForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewPassForm.xaml",
-              "RelativeToolTip": "TestViewPassForm.xaml",
+              "DocumentIndex": 26,
+              "Title": "EditAnswerForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditAnswerForm.xaml",
+              "RelativeDocumentMoniker": "EditAnswerForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditAnswerForm.xaml",
+              "RelativeToolTip": "EditAnswerForm.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-07T09:51:42.329Z"
+              "WhenOpened": "2025-05-08T06:16:01.876Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "Roles.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Roles.cs",
-              "RelativeDocumentMoniker": "Roles.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Roles.cs",
-              "RelativeToolTip": "Roles.cs",
+              "DocumentIndex": 34,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwCMAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T06:07:32.468Z"
+              "WhenOpened": "2025-05-07T05:35:42.592Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "TestViewMistakesForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewMistakesForm.xaml",
-              "RelativeDocumentMoniker": "TestViewMistakesForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\TestViewMistakesForm.xaml",
-              "RelativeToolTip": "TestViewMistakesForm.xaml",
+              "DocumentIndex": 24,
+              "Title": "MenuControl.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MenuControl.xaml.cs",
+              "RelativeDocumentMoniker": "MenuControl.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MenuControl.xaml.cs",
+              "RelativeToolTip": "MenuControl.xaml.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAjwGcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T06:00:32.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "AddRoleForm.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddRoleForm.xaml.cs",
+              "RelativeDocumentMoniker": "AddRoleForm.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddRoleForm.xaml.cs",
+              "RelativeToolTip": "AddRoleForm.xaml.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAcwIoAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T05:59:57.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DatabaseHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\DatabaseHelper.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\DatabaseHelper.cs",
+              "ViewState": "AgIAAJIGAAAAAAAAAADwv7kGAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T12:40:28.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AddAnswerForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddAnswerForm.xaml",
+              "RelativeDocumentMoniker": "AddAnswerForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddAnswerForm.xaml",
+              "RelativeToolTip": "AddAnswerForm.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-25T11:31:29.965Z"
+              "WhenOpened": "2025-06-04T11:21:19.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "EditAnswerForm.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditAnswerForm.xaml.cs",
+              "RelativeDocumentMoniker": "EditAnswerForm.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditAnswerForm.xaml.cs",
+              "RelativeToolTip": "EditAnswerForm.xaml.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAmwF4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T11:12:51.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "EditQuestionForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditQuestionForm.xaml",
+              "RelativeDocumentMoniker": "EditQuestionForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditQuestionForm.xaml",
+              "RelativeToolTip": "EditQuestionForm.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-08T06:16:17.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "EditRoleForm.xaml",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditRoleForm.xaml",
+              "RelativeDocumentMoniker": "EditRoleForm.xaml",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditRoleForm.xaml",
+              "RelativeToolTip": "EditRoleForm.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-03T05:18:20.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "SetRoleForm.xaml.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SetRoleForm.xaml.cs",
+              "RelativeDocumentMoniker": "SetRoleForm.xaml.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SetRoleForm.xaml.cs",
+              "RelativeToolTip": "SetRoleForm.xaml.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAArwGcAAABvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T11:57:03.787Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "UserEditForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\UserEditForm.xaml",
-              "RelativeDocumentMoniker": "UserEditForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\UserEditForm.xaml",
-              "RelativeToolTip": "UserEditForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-08T06:19:41.789Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
               "Title": "UserAddForm.xaml",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\UserAddForm.xaml",
               "RelativeDocumentMoniker": "UserAddForm.xaml",
               "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\UserAddForm.xaml",
               "RelativeToolTip": "UserAddForm.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-04T12:10:03.859Z"
+              "WhenOpened": "2025-06-04T12:10:03.859Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "SingleQuestion.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SingleQuestion.xaml.cs",
               "RelativeDocumentMoniker": "SingleQuestion.xaml.cs",
@@ -479,40 +541,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "Tests.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Tests.cs",
-              "RelativeDocumentMoniker": "Tests.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Tests.cs",
-              "RelativeToolTip": "Tests.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T05:07:25.608Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "Users.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Users.cs",
-              "RelativeDocumentMoniker": "Users.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Users.cs",
-              "RelativeToolTip": "Users.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T06:26:30.627Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "Results.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Results.cs",
-              "RelativeDocumentMoniker": "Results.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Results.cs",
-              "RelativeToolTip": "Results.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T05:07:23.203Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "UserEditForm.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\UserEditForm.xaml.cs",
               "RelativeDocumentMoniker": "UserEditForm.xaml.cs",
@@ -520,11 +549,12 @@
               "RelativeToolTip": "UserEditForm.xaml.cs",
               "ViewState": "AgIAAI0AAAAAAAAAAAAmwKUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T12:19:58.258Z"
+              "WhenOpened": "2025-06-04T12:19:58.258Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 23,
               "Title": "AddQuestionForm.xaml",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddQuestionForm.xaml",
               "RelativeDocumentMoniker": "AddQuestionForm.xaml",
@@ -536,7 +566,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 31,
               "Title": "ReportPeriodForm.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\ReportPeriodForm.xaml.cs",
               "RelativeDocumentMoniker": "ReportPeriodForm.xaml.cs",
@@ -544,11 +574,12 @@
               "RelativeToolTip": "ReportPeriodForm.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T06:43:55.332Z"
+              "WhenOpened": "2025-06-03T06:43:55.332Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "UserAddForm.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\UserAddForm.xaml.cs",
               "RelativeDocumentMoniker": "UserAddForm.xaml.cs",
@@ -556,155 +587,12 @@
               "RelativeToolTip": "UserAddForm.xaml.cs",
               "ViewState": "AgIAAAoBAAAAAAAAAAArwB4BAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T12:10:20.617Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "EditAnswerForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditAnswerForm.xaml",
-              "RelativeDocumentMoniker": "EditAnswerForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditAnswerForm.xaml",
-              "RelativeToolTip": "EditAnswerForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-08T06:16:01.876Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\App.xaml.cs",
-              "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\App.xaml.cs",
-              "RelativeToolTip": "App.xaml.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAwCMAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T05:35:42.592Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "MenuControl.xaml.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MenuControl.xaml.cs",
-              "RelativeDocumentMoniker": "MenuControl.xaml.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MenuControl.xaml.cs",
-              "RelativeToolTip": "MenuControl.xaml.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAjwGcAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T06:00:32.846Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "AddAnswerForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddAnswerForm.xaml",
-              "RelativeDocumentMoniker": "AddAnswerForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddAnswerForm.xaml",
-              "RelativeToolTip": "AddAnswerForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-04T11:21:19.239Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "EditAnswerForm.xaml.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditAnswerForm.xaml.cs",
-              "RelativeDocumentMoniker": "EditAnswerForm.xaml.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditAnswerForm.xaml.cs",
-              "RelativeToolTip": "EditAnswerForm.xaml.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAmwF4AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T11:12:51.905Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "EditQuestionForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditQuestionForm.xaml",
-              "RelativeDocumentMoniker": "EditQuestionForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditQuestionForm.xaml",
-              "RelativeToolTip": "EditQuestionForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-08T06:16:17.672Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "EditRoleForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditRoleForm.xaml",
-              "RelativeDocumentMoniker": "EditRoleForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\EditRoleForm.xaml",
-              "RelativeToolTip": "EditRoleForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-03T05:18:20.064Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "SetRoleForm.xaml.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SetRoleForm.xaml.cs",
-              "RelativeDocumentMoniker": "SetRoleForm.xaml.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SetRoleForm.xaml.cs",
-              "RelativeToolTip": "SetRoleForm.xaml.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAArwGcAAABvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T11:57:03.787Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "SetRoleForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SetRoleForm.xaml",
-              "RelativeDocumentMoniker": "SetRoleForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\SetRoleForm.xaml",
-              "RelativeToolTip": "SetRoleForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-04T11:48:01.854Z",
+              "WhenOpened": "2025-06-04T12:10:20.617Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 32,
-              "Title": "AddRoleForm.xaml.cs",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddRoleForm.xaml.cs",
-              "RelativeDocumentMoniker": "AddRoleForm.xaml.cs",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\AddRoleForm.xaml.cs",
-              "RelativeToolTip": "AddRoleForm.xaml.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAcwIoAAABVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T05:59:57.159Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "MenuControl.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MenuControl.xaml",
-              "RelativeDocumentMoniker": "MenuControl.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\MenuControl.xaml",
-              "RelativeToolTip": "MenuControl.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-07T05:59:49.425Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "LoginForm.xaml",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\LoginForm.xaml",
-              "RelativeDocumentMoniker": "LoginForm.xaml",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\LoginForm.xaml",
-              "RelativeToolTip": "LoginForm.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-23T09:45:08.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
               "Title": "ReportPeriodForm.xaml",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\ReportPeriodForm.xaml",
               "RelativeDocumentMoniker": "ReportPeriodForm.xaml",
@@ -716,7 +604,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 33,
               "Title": "Reports.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\\u0422\u0435\u0441\u0442\u044B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 WPF\\wpf \u0442\u0435\u0441\u0442\u044B \u0434\u043B\u044F \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044F\\Reports.cs",
               "RelativeDocumentMoniker": "Reports.cs",
@@ -724,7 +612,8 @@
               "RelativeToolTip": "Reports.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAgwEkAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T05:03:11.641Z"
+              "WhenOpened": "2025-04-26T05:03:11.641Z",
+              "EditorCaption": ""
             }
           ]
         }

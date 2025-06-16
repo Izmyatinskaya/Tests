@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
-        Title="TestAddForm"
+        Title="Создание/Изменение теста"
         Width="950"
         Height="680"
         Background="{StaticResource WindowDefaultBackground}"

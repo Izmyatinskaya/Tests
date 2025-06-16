@@ -26,6 +26,7 @@ namespace wpf_тесты_для_обучения
     public partial class MainForm : Window
     {
         private DatabaseHelper _databaseHelper;
+        private bool _isClosingInitiatedByUser = false; // Флаг для отслеживания инициации закрытия
         public MainForm(DatabaseHelper databaseHelper)
         {
             try
@@ -223,7 +224,6 @@ namespace wpf_тесты_для_обучения
                 form.ShowDialog(); // или .Show(), если не модально
             }
         }
-
         public static string GetQuestionWord(int number)
         {
             int lastDigit = number % 10;
@@ -270,9 +270,6 @@ namespace wpf_тесты_для_обучения
                     return "баллов";
             }
         }
-
-
-
         private void UpdateCompletedTestsLabel()
         {
             try
@@ -299,8 +296,6 @@ namespace wpf_тесты_для_обучения
                    $"Трассировка стека: {ex.StackTrace}", "Ошибка обновления информации о тестах", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
-
-
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.Tag is Tests selectedTest)
@@ -309,7 +304,6 @@ namespace wpf_тесты_для_обучения
                 OpenTest(selectedTest);
             }
         }
-
         private void OpenTest(Tests test)
         {
             try
@@ -365,8 +359,6 @@ namespace wpf_тесты_для_обучения
                    $"Трассировка стека: {ex.StackTrace}", "Ошибка обновления блока результата", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
-
-
         private void UpdateTestButtonColors()
         {
             try
@@ -422,13 +414,37 @@ namespace wpf_тесты_для_обучения
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GoToLogin();
+            InitiateLogout();
         }
-        private void GoToLogin()
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-            this.Close();
+            // Если закрытие не было инициировано кнопкой выхода,
+            // то это, вероятно, закрытие через крестик или системное событие.
+            if (!_isClosingInitiatedByUser)
+            {
+                if (MessageBox.Show("Вы уверены, что хотите выйти?", "Уведомление", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+                {
+                    // Если пользователь подтвердил, открываем LoginForm
+                    LoginForm loginForm = new LoginForm();
+                    loginForm.Show();
+                }
+                else
+                {
+                    // Если пользователь отменил, предотвращаем закрытие окна
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void InitiateLogout()
+        {
+            if (MessageBox.Show("Вы уверены, что хотите выйти?", "Уведомление", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            {
+                _isClosingInitiatedByUser = true; // Устанавливаем флаг, что закрытие инициировано пользователем
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+                this.Close(); // Закрываем текущее окно
+            }
         }
     }
 }

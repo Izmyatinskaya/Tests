@@ -1,0 +1,40 @@
+﻿# --- Этап сборки (Build Stage) ---
+# Инструкция FROM: Выбери базовый образ с .NET SDK для сборки твоего приложения.
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+
+# Инструкция WORKDIR: Установи рабочую директорию внутри контейнера.
+WORKDIR /src
+
+# Инструкция COPY: Скопируй файл проекта (.csproj) и восстанови зависимости.
+# Используй путь к твоему csproj файлу относительно корня контекста сборки.
+COPY ["EventSphere.API/EventSphere.API.csproj", "EventSphere.API/"]
+# Инструкция RUN: Выполни команду dotnet restore для установки NuGet-папакетов.
+RUN dotnet restore "EventSphere.API/EventSphere.API.csproj"
+
+# Инструкция COPY: Скопируй весь остальной код приложения из текущей директории хоста.
+COPY . .
+
+# Инструкция WORKDIR: Перейди в папку конкретного проекта для публикации.
+WORKDIR "/src/EventSphere.API"
+
+# Инструкция RUN: Опубликуй приложение для релиза.
+# Используй dotnet publish с флагами -c Release, -o /app/publish, и /p:UseAppHost=false.
+RUN dotnet publish "EventSphere.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+
+# --- Этап финального образа (Final Stage) ---
+# Инструкция FROM: Выбери более легкий образ с .NET Runtime для запуска приложения.
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+
+# Инструкция WORKDIR: Установи рабочую директорию для финального приложения.
+WORKDIR /app
+
+# Инструкция EXPOSE: Объяви порт, который приложение слушает внутри контейнера (стандартный 8080 для HTTP).
+EXPOSE 8080
+
+# Инструкция COPY: Скопируй опубликованное приложение из этапа сборки (`build`)
+# в финальный образ.
+COPY --from=build /app/publish .
+
+# Инструкция ENTRYPOINT: Определи команду, которая будет выполняться при запуске контейнера.
+ENTRYPOINT ["dotnet", "EventSphere.API.dll"]

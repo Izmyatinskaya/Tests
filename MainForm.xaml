@@ -8,7 +8,7 @@
         Title="Главная" Height="520" Width="1000" 
         MinWidth="700" MinHeight="520" 
         WindowStartupLocation="CenterScreen" WindowState="Maximized" 
-        Background="{StaticResource WindowDefaultBackground}">
+        Background="{StaticResource WindowDefaultBackground}" Closing="Window_Closing">
 
     <Grid>
         <Grid.RowDefinitions>

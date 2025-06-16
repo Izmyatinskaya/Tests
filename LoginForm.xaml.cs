@@ -49,6 +49,7 @@ namespace wpf_тесты_для_обучения
             {
                 // Получаем список пользователей с ролями
                 List<Users> users = _databaseHelper.GetUsersWithRoles();
+                users = users.OrderBy(x => x.FullName).ToList();
                 // Очищаем ComboBox перед добавлением данных
                 userComboBox.Items.Clear();
 

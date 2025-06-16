@@ -374,6 +374,7 @@
     <Resource Include="Lato-ThinItalic.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="cenoobrazovanie.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -399,6 +400,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="TextFile1.txt" />
     <Resource Include="refresh2.png" />
     <Resource Include="refresh.png" />
     <Resource Include="логотипТесты.png" />

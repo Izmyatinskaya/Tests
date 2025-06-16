@@ -160,9 +160,9 @@
             <!--ТАБЛИЦА ТЕСТОВ-->
             <StackPanel  Name="testsPanel"  Visibility="Collapsed">
                 <DataGrid Name="testsDataGrid" MaxHeight="900" ScrollViewer.VerticalScrollBarVisibility="Auto"
-ScrollViewer.HorizontalScrollBarVisibility="Auto" AutoGenerateColumns="False" Style="{StaticResource DefaultDataGridStyle}" >
+ScrollViewer.HorizontalScrollBarVisibility="Auto" AutoGenerateColumns="False" Style="{StaticResource DefaultDataGridStyle}" IsReadOnly="True" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="№" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="№" Binding="{Binding Id}" Visibility="Collapsed" />
                         <DataGridTextColumn Header="Наименование" Binding="{Binding Title}" />
                         <DataGridTextColumn Header="Количество вопросов" Binding="{Binding Count}" />
                     </DataGrid.Columns>
@@ -202,7 +202,7 @@ ScrollViewer.HorizontalScrollBarVisibility="Auto" AutoGenerateColumns="False" St
                     <!--PreviewMouseLeftButtonDown="questionsDataGrid_PreviewMouseLeftButtonDown"
  SelectionChanged="questionsDataGrid_SelectionChanged" Style="{StaticResource DefaultDataGridStyle}" -->
 
-                    <DataGrid Name="questionsDataGrid" 
+                    <DataGrid Name="questionsDataGrid"  IsReadOnly="True"
                               Grid.Column="0" 
                               MaxHeight="800" 
                               ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -236,7 +236,7 @@ ScrollViewer.HorizontalScrollBarVisibility="Auto" AutoGenerateColumns="False" St
                     </DataGrid>
 
 
-                    <DataGrid Name="answersDataGrid" Grid.Column="1" MaxHeight="800" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    <DataGrid Name="answersDataGrid"  IsReadOnly="True" Grid.Column="1" MaxHeight="800" ScrollViewer.VerticalScrollBarVisibility="Auto"
                               ScrollViewer.HorizontalScrollBarVisibility="Auto" AutoGenerateColumns="False" Style="{StaticResource DefaultDataGridStyle}"  >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="№" Binding="{Binding Id}"/>
@@ -282,7 +282,7 @@ Style="{StaticResource ComboBoxStyle2}"  FontSize="16" SelectionChanged="rolesCo
                 <DockPanel x:Name="filtersDockPanel2" Margin="30,10,30,0">
                 </DockPanel>
 
-                <DataGrid Name="usersDataGrid" MaxHeight="900" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                <DataGrid Name="usersDataGrid"  IsReadOnly="True" MaxHeight="900" ScrollViewer.VerticalScrollBarVisibility="Auto"
           ScrollViewer.HorizontalScrollBarVisibility="Auto" AutoGenerateColumns="False" Style="{StaticResource DefaultDataGridStyle}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="№" Binding="{Binding Id}" />
@@ -367,7 +367,7 @@ Style="{StaticResource ComboBoxStyle2}"  FontSize="16" SelectionChanged="testsCo
                 </DockPanel>
 
 
-                <DataGrid Name="resultsDataGrid" MaxHeight="900" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                <DataGrid Name="resultsDataGrid"  IsReadOnly="True" MaxHeight="900" ScrollViewer.VerticalScrollBarVisibility="Auto"
           ScrollViewer.HorizontalScrollBarVisibility="Auto" AutoGenerateColumns="False" Style="{StaticResource DefaultDataGridStyle}" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="№" Binding="{Binding Id}" />
