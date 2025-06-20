@@ -829,14 +829,18 @@ namespace wpf_тесты_для_обучения
                 string filePath = Path.Combine(directoryPath, fileName);
 
                 // Если файл с таким именем уже существует, создаем уникальное имя
-                int count = 1;
-                while (File.Exists(filePath))
+                if (!File.Exists(filePath))
                 {
-                    filePath = Path.Combine(directoryPath, $"{Path.GetFileNameWithoutExtension(fileName)}_{count++}{Path.GetExtension(fileName)}");
+                    File.Copy(this.ImagePath, filePath);
                 }
+                //int count = 1;
+                //while (File.Exists(filePath))
+                //{
+                //    filePath = Path.Combine(directoryPath, $"{Path.GetFileNameWithoutExtension(fileName)}_{count++}{Path.GetExtension(fileName)}");
+                //}
 
-                // Копируем файл изображения в новый каталог
-                File.Copy(this.ImagePath, filePath);
+                //// Копируем файл изображения в новый каталог
+                //File.Copy(this.ImagePath, filePath);
 
                 // Загружаем изображение в ImageSource (если необходимо для отображения)
                 this.ImageSource = new BitmapImage(new Uri(filePath));

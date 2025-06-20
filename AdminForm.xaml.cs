@@ -45,6 +45,7 @@ namespace wpf_тесты_для_обучения
         private ObservableCollection<string> _notifications = new ObservableCollection<string>();
         private bool _isNotificationsPopupOpen;
         private bool _isEmptyNotificationsMessageVisible = true;
+        private bool _isClosingInitiatedByUser = false; // Флаг для отслеживания инициации закрытия
 
         // Свойство для связывания видимости Popup
         public bool IsNotificationsPopupOpen
@@ -514,10 +515,8 @@ namespace wpf_тесты_для_обучения
                 Style = (Style)FindResource("MenuButtonStyle"),
                 Level = 0,
                 ClickAction = () =>{
-                    TablesVisibility(); 
-                    LoginForm loginForm = new LoginForm();
-                    loginForm.Show();
-                    this.Close();
+                    TablesVisibility();
+                   InitiateLogout();
                 },
             }
         };
@@ -1513,5 +1512,33 @@ namespace wpf_тесты_для_обучения
             }
         }
 
+        private void window_Closing(object sender, CancelEventArgs e)
+        {
+            if (!_isClosingInitiatedByUser)
+            {
+                if (MessageBox.Show("Вы уверены, что хотите выйти?", "Уведомление", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+                {
+                    // Если пользователь подтвердил, открываем LoginForm
+                    LoginForm loginForm = new LoginForm();
+                    loginForm.Show();
+                }
+                else
+                {
+                    // Если пользователь отменил, предотвращаем закрытие окна
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void InitiateLogout()
+        {
+            if (MessageBox.Show("Вы уверены, что хотите выйти?", "Уведомление", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
+            {
+                _isClosingInitiatedByUser = true; // Устанавливаем флаг, что закрытие инициировано пользователем
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+                this.Close(); // Закрываем текущее окно
+            }
+        }
     }
 }

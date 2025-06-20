@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:wpf_тесты_для_обучения"
         mc:Ignorable="d"
         Background="{StaticResource WindowDefaultBackground}"
-        Title="Страница администратора" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Страница администратора" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" Closing="window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="62"/>

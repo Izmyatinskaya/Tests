@@ -1380,6 +1380,7 @@
             <Setter Property="Background" Value="White"/>
             <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
             <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="6,3,5,3"/>
             <Setter Property="Template">
